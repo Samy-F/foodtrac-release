@@ -736,6 +736,11 @@ section{padding:100px 0}
       </div>
       <div class="field-error" id="phoneError">Vul een geldig 06-nummer in (8 cijfers na +31 6)</div>
 
+      <div class="consent-row">
+        <div class="checkbox" id="consentBox"></div>
+        <span class="consent-text" id="consentText">Ja, stuur mij aanbiedingen via SMS en mijn kortingscode.</span>
+      </div>
+
       <button class="cta-btn" id="ctaBtn" disabled>
         <span id="ctaBtnText">Verstuur demo-SMS</span>
       </button>
@@ -1036,7 +1041,6 @@ const IS_LOCAL = location.protocol === 'file:'
 const API_BASE = IS_LOCAL
   ? 'http://localhost:8080/api/v1'
   : 'https://backend.foodtrac.nl/api/v1';
-const CAMPAIGN_SLUG = 'shiki-korting-250';
 
 const phoneInput   = document.getElementById('phoneInput');
 const inputGroup   = document.getElementById('inputGroup');
@@ -1107,33 +1111,6 @@ consentText.addEventListener('click',()=>consentBox.click());
 function friendlyError(status, data){
   const msg = (data && data.message) || '';
 
-  if(status === 409){
-    if(msg.toLowerCase().includes('already') || msg.toLowerCase().includes('duplicate') || msg.toLowerCase().includes('al geclaimd')){
-      return {
-        title: 'Al geclaimd',
-        desc: 'Dit nummer heeft deze korting al eerder ontvangen. Elke campagne kan maar 1x per nummer geclaimd worden.'
-      };
-    }
-    if(msg.toLowerCase().includes('stock') || msg.toLowerCase().includes('op')){
-      return {
-        title: 'Helaas, op is op',
-        desc: 'Alle kortingscodes voor deze campagne zijn vergeven. Houd onze volgende actie in de gaten!'
-      };
-    }
-    return { title: 'Niet beschikbaar', desc: msg || 'Deze campagne is op dit moment niet beschikbaar.' };
-  }
-  if(status === 403){
-    return {
-      title: 'Afgemeld',
-      desc: 'Dit nummer is afgemeld voor SMS-campagnes. Neem contact op als dit niet klopt.'
-    };
-  }
-  if(status === 404){
-    return {
-      title: 'Campagne niet gevonden',
-      desc: 'Deze demo-campagne is momenteel niet actief. Probeer het later opnieuw.'
-    };
-  }
   if(status === 429){
     return {
       title: 'Even geduld',
@@ -1148,7 +1125,7 @@ function friendlyError(status, data){
   }
   return {
     title: 'Er ging iets mis',
-    desc: 'We konden de SMS niet versturen. Probeer het later opnieuw.'
+    desc: msg || 'We konden de SMS niet versturen. Probeer het later opnieuw.'
   };
 }
 
@@ -1172,14 +1149,10 @@ ctaBtn.addEventListener('click', async ()=>{
   clearError();
 
   try{
-    const res = await fetch(API_BASE + '/claim/request', {
+    const res = await fetch(API_BASE + '/demo/sms', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        campaignSlug: CAMPAIGN_SLUG,
-        phone: e164,
-        marketingOptIn: true
-      })
+      body: JSON.stringify({ phone: e164 })
     });
 
     const data = await res.json().catch(()=>({}));
@@ -1189,7 +1162,7 @@ ctaBtn.addEventListener('click', async ()=>{
       submitted = true;
       demoStatus.className = 'demo-status ok show';
       statusTitle.textContent = 'SMS verstuurd!';
-      statusDesc.textContent = 'Check je telefoon \u2014 je kortingscode is onderweg. Het kan tot 30 seconden duren.';
+      statusDesc.textContent = 'Check je telefoon \u2014 de demo-SMS is onderweg. Het kan tot 30 seconden duren.';
       ctaBtnText.textContent = 'Verstuurd \u2713';
       ctaBtn.disabled = true;
     } else {
@@ -1199,15 +1172,8 @@ ctaBtn.addEventListener('click', async ()=>{
       statusTitle.textContent = err.title;
       statusDesc.textContent = err.desc;
 
-      // Allow retry for transient errors, not for duplicates/opt-out
-      if(res.status === 409 || res.status === 403){
-        submitted = true;
-        ctaBtnText.textContent = err.title;
-        ctaBtn.disabled = true;
-      } else {
-        ctaBtn.disabled = false;
-        ctaBtnText.textContent = 'Opnieuw proberen';
-      }
+      ctaBtn.disabled = false;
+      ctaBtnText.textContent = 'Opnieuw proberen';
     }
   } catch(err){
     // Network error
