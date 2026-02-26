@@ -262,6 +262,9 @@ section{padding:100px 0}
   .flow-arrow{transform:rotate(90deg) !important}
 }
 
+.flyer-wrapper{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+}
 .flyer-frame{
   width:220px;position:relative;
   border-radius:16px;overflow:hidden;
@@ -280,13 +283,41 @@ section{padding:100px 0}
     0 0 120px rgba(216,192,138,.08);
 }
 .flyer-frame img{width:100%;display:block}
-.flyer-label{
-  position:absolute;bottom:10px;left:10px;right:10px;
-  font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
-  text-align:center;padding:6px 10px;border-radius:8px;
-  background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
-  color:var(--gold);border:1px solid rgba(216,192,138,.2);
+
+/* Cloud bubble next to flyer */
+.flyer-cloud{
+  position:relative;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;
+  padding:14px 18px;
+  max-width:230px;
+  text-align:center;
 }
+.flyer-cloud::before{
+  content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  width:16px;height:16px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);border-bottom:none;border-right:none;
+  border-radius:4px 0 0 0;transform:translateX(-50%) rotate(45deg);
+}
+.flyer-cloud-title{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gold);margin-bottom:8px;
+}
+.flyer-channels{
+  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;
+}
+.flyer-channel{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:600;color:var(--text-2);
+  padding:4px 10px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  transition:all .2s;
+}
+.flyer-channel:hover{border-color:var(--blue);color:var(--text)}
+.flyer-channel svg{width:14px;height:14px;flex-shrink:0}
+.flyer-cloud-note{font-size:9px;color:var(--muted);line-height:1.4}
 
 .flow-arrow{
   display:flex;align-items:center;justify-content:center;
@@ -669,10 +700,33 @@ section{padding:100px 0}
       </div>
 
       <div class="flow-visual r" style="transition-delay:.25s">
-        <!-- Step 1: Flyer -->
-        <div class="flyer-frame">
-          <img src="shiki-flyer.png" alt="SHIKI Sushi flyer met QR-code">
-          <div class="flyer-label">Fysieke flyer in het restaurant</div>
+        <!-- Step 1: Flyer + channels -->
+        <div class="flyer-wrapper">
+          <div class="flyer-frame">
+            <img src="shiki-flyer.png" alt="SHIKI Sushi flyer met QR-code">
+          </div>
+          <div class="flyer-cloud">
+            <div class="flyer-cloud-title">Verspreid via</div>
+            <div class="flyer-channels">
+              <span class="flyer-channel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/><path d="M3 9h6"/><path d="M3 15h6"/></svg>
+                Flyers
+              </span>
+              <span class="flyer-channel">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                Instagram
+              </span>
+              <span class="flyer-channel">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </span>
+              <span class="flyer-channel">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.166 4.999c1.333-.02 2.524.064 3.582.175 1.055.119 2.237.356 3.082.755a5.2 5.2 0 011.907 1.381A5.1 5.1 0 0122.12 9.22c.4.863.596 2.015.704 3.075.108 1.063.161 2.252.175 3.576.01.884.01 1.768 0 2.652-.014 1.324-.067 2.513-.175 3.576-.108 1.06-.304 2.212-.704 3.075a5.1 5.1 0 01-1.383 1.91 5.2 5.2 0 01-1.907 1.381c-.845.399-2.027.636-3.082.755-1.058.111-2.249.195-3.582.175a74 74 0 01-2.332 0c-1.333.02-2.524-.064-3.582-.175-1.055-.119-2.237-.356-3.082-.755a5.2 5.2 0 01-1.907-1.381A5.1 5.1 0 01.88 15.174c-.4-.863-.596-2.015-.704-3.075C.068 11.036.015 9.847.001 8.523a74 74 0 010-2.652C.015 4.547.068 3.358.176 2.295.284 1.235.48.083.88-.78A5.1 5.1 0 012.263-.69 5.2 5.2 0 014.17-2.071c.845-.399 2.027-.636 3.082-.755C8.31-2.937 9.501-3.021 10.834-3.001a74 74 0 012.332 0zM9.996 8.27v7.46l6.462-3.73-6.462-3.73z"/></svg>
+                Snapchat
+              </span>
+            </div>
+            <div class="flyer-cloud-note">Online advertenties &amp; fysiek in het restaurant</div>
+          </div>
         </div>
 
         <!-- Arrow 1 -->
