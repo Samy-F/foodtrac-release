@@ -1208,10 +1208,10 @@ ctaBtn.addEventListener('click', async ()=>{
   clearError();
 
   try{
-    const res = await fetch(API_BASE + '/demo/sms', {
+    const res = await fetch(API_BASE + '/claim/request', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone: e164 })
+      body: JSON.stringify({ campaignSlug: 'shiki-korting-250', phone: e164, marketingOptIn: true })
     });
 
     const data = await res.json().catch(()=>({}));
@@ -1221,7 +1221,7 @@ ctaBtn.addEventListener('click', async ()=>{
       submitted = true;
       demoStatus.className = 'demo-status ok show';
       statusTitle.textContent = 'SMS verstuurd!';
-      statusDesc.textContent = 'Check je telefoon \u2014 de demo-SMS is onderweg. Het kan tot 30 seconden duren.';
+      statusDesc.textContent = 'Check je telefoon \u2014 je kortingscode is onderweg. Het kan tot 30 seconden duren.';
       ctaBtnText.textContent = 'Verstuurd \u2713';
       ctaBtn.disabled = true;
     } else {
