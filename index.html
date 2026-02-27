@@ -4,6 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FoodTrac — Wat is er nieuw? | feb 2026</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Open Graph / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://foodtrac-release.netlify.app/">
+<meta property="og:title" content="FoodTrac — Wat is er nieuw?">
+<meta property="og:description" content="SMS marketing, vernieuwd dashboard, koerier timing, herverbinden en meer. Bekijk alle nieuwe features van februari 2026.">
+<meta property="og:image" content="https://foodtrac-release.netlify.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="FoodTrac">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FoodTrac — Wat is er nieuw?">
+<meta name="twitter:description" content="SMS marketing, vernieuwd dashboard, koerier timing, herverbinden en meer.">
+<meta name="twitter:image" content="https://foodtrac-release.netlify.app/og-image.png">
+
+<!-- General -->
+<meta name="description" content="Bekijk alle nieuwe FoodTrac features: SMS marketing, vernieuwd dashboard, koerier timing en meer. Februari 2026 update.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -340,104 +364,221 @@ section{padding:100px 0}
 .flow-step p{font-size:10px;color:var(--muted);line-height:1.45}
 
 /* ═══════════════════════════════════════════════════════════════
-   INTERACTIVE SMS DEMO
+   INTERACTIVE SMS DEMO — Coupon Landing Style
    ═══════════════════════════════════════════════════════════════ */
 #try-sms{padding:100px 0;position:relative}
+#try-sms::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
 
-.demo-card{
-  max-width:520px;margin:0 auto;
-  border:1px solid var(--line-b);border-radius:24px;
+/* ─── Two-column coupon grid ───────────────────────────── */
+.coupon-grid{
+  width:min(980px,100%);margin:0 auto;
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:22px;align-items:stretch;
+}
+@media(max-width:880px){.coupon-grid{grid-template-columns:1fr}}
+
+.coupon-hero,.coupon-side{
+  border:1px solid rgba(255,255,255,.1);
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+  border-radius:28px;
+  box-shadow:0 20px 80px rgba(0,0,0,.55);
+  overflow:hidden;position:relative;
+}
+
+/* ─── Hero card glow ───────────────────────────────────── */
+.coupon-hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.9;
   background:
-    radial-gradient(600px 300px at 50% 0%,rgba(0,127,255,.06),transparent 60%),
-    linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
-  padding:36px 32px;position:relative;overflow:hidden;
-  box-shadow:0 32px 64px rgba(0,0,0,.3);
+    radial-gradient(900px 500px at 20% 0%,rgba(216,192,138,.18),transparent 60%),
+    radial-gradient(500px 350px at 80% 35%,rgba(216,192,138,.10),transparent 65%),
+    radial-gradient(600px 420px at 50% 120%,rgba(0,0,0,.55),transparent 65%);
 }
-.demo-card::before{
-  content:'';position:absolute;top:-1px;left:20%;right:20%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--blue-light),transparent);
+.coupon-hero-inner{
+  position:relative;padding:26px 26px 22px;
+  display:flex;flex-direction:column;height:100%;
 }
-.demo-card h3{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.demo-card .sub{font-size:13px;color:var(--text-2);margin-bottom:24px;line-height:1.6}
-.demo-card .sub strong{color:var(--text)}
 
+/* ─── Brand bar ────────────────────────────────────────── */
+.coupon-top{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.coupon-brand{display:flex;align-items:center;gap:12px;min-width:0}
+.coupon-brand svg{height:34px;width:auto;display:block;filter:drop-shadow(0 10px 20px rgba(0,0,0,.4))}
+.coupon-pill{
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);
+  border:1px solid rgba(216,192,138,.35);
+  background:rgba(216,192,138,.08);
+  padding:8px 10px;border-radius:999px;white-space:nowrap;
+}
+
+/* ─── Hero content ─────────────────────────────────────── */
+.coupon-hero h1{
+  margin:18px 0 8px;
+  font-size:clamp(28px,3.6vw,44px);
+  line-height:1.05;letter-spacing:-.02em;font-weight:900;
+}
+.coupon-sub{
+  margin:0 0 18px;color:rgba(255,255,255,.66);
+  font-size:15px;line-height:1.55;max-width:54ch;
+}
+.coupon-sub strong{color:var(--text)}
+
+/* ─── Form ─────────────────────────────────────────────── */
+.coupon-form{margin-top:6px;display:grid;gap:12px;max-width:520px}
+.coupon-form label{font-size:13px;color:rgba(255,255,255,.78)}
 .input-group{
   display:flex;align-items:center;gap:10px;
-  padding:14px 16px;border-radius:14px;
-  border:1px solid var(--line-b);background:rgba(0,0,0,.25);
-  transition:border-color .3s;margin-bottom:12px;
+  padding:14px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(0,0,0,.25);
+  backdrop-filter:blur(6px);
+  transition:border-color .3s;
 }
-.input-group:focus-within{border-color:rgba(0,127,255,.4)}
-.input-group.error{border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.04)}
+.input-group:focus-within{border-color:rgba(216,192,138,.4)}
+.input-group.error{border-color:rgba(255,92,92,.5);background:rgba(255,92,92,.04)}
 .flag-nl{
-  width:26px;height:18px;border-radius:3px;flex-shrink:0;
-  background:linear-gradient(180deg,#ae1c28 33.3%,#fff 33.3% 66.6%,#21468b 66.6%);
-  border:1px solid rgba(255,255,255,.15);
+  width:28px;height:20px;border-radius:4px;flex-shrink:0;
+  background:linear-gradient(#ae1c28 33.3%,#fff 33.3% 66.6%,#21468b 66.6%);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 20px rgba(0,0,0,.35);
 }
-.prefix{font-size:14px;color:var(--text-2);font-weight:600;flex-shrink:0}
 .input-group input{
   appearance:none;border:0;outline:none;background:transparent;
-  color:var(--text);font-size:15px;width:100%;font-family:var(--font);
+  color:var(--text);font-size:16px;width:100%;font-family:var(--font);
   letter-spacing:.02em;
 }
-.input-group input::placeholder{color:rgba(255,255,255,.28)}
+.input-group input::placeholder{color:rgba(255,255,255,.38)}
 
+.coupon-hint{
+  color:rgba(255,255,255,.55);font-size:12px;line-height:1.4;margin-top:8px;
+}
+
+/* ─── Consent ──────────────────────────────────────────── */
 .consent-row{
-  display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;
-  padding:0 2px;
+  display:flex;align-items:flex-start;gap:10px;margin-top:4px;
 }
 .checkbox{
-  width:18px;height:18px;border-radius:5px;flex-shrink:0;cursor:pointer;
-  border:1.5px solid var(--line-b);background:rgba(255,255,255,.04);
+  margin-top:3px;width:18px;height:18px;border-radius:5px;flex-shrink:0;cursor:pointer;
+  border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);
   display:flex;align-items:center;justify-content:center;
-  transition:all .2s;margin-top:1px;
+  transition:all .2s;accent-color:var(--gold);
 }
-.checkbox.checked{background:var(--blue);border-color:var(--blue)}
-.checkbox.checked::after{content:'\2713';font-size:11px;color:white;font-weight:700}
-.consent-text{font-size:11px;color:var(--text-2);line-height:1.5;cursor:pointer}
+.checkbox.checked{background:var(--gold);border-color:var(--gold)}
+.checkbox.checked::after{content:'\2713';font-size:11px;color:#0b0b0c;font-weight:700}
+.consent-text{font-size:14px;color:rgba(255,255,255,.85);line-height:1.4;cursor:pointer}
 
+.field-error{font-size:13px;color:#ff5c5c;margin-top:4px;display:none}
+.field-error.show{display:block}
+
+/* ─── CTA button — gold ───────────────────────────────── */
 .cta-btn{
-  width:100%;padding:15px 20px;border:none;border-radius:14px;
-  font-size:15px;font-weight:800;letter-spacing:.01em;cursor:pointer;
-  color:white;
-  background:linear-gradient(135deg,var(--blue),#4c6ef5);
-  box-shadow:0 12px 32px rgba(0,127,255,.25);
-  transition:transform .15s,filter .15s,box-shadow .15s;
-  font-family:var(--font);position:relative;overflow:hidden;
+  border:0;border-radius:14px;padding:14px 16px;
+  font-weight:800;font-size:15px;letter-spacing:.01em;cursor:pointer;
+  color:#0b0b0c;
+  background:linear-gradient(180deg,var(--gold),var(--gold-dim));
+  box-shadow:0 18px 45px rgba(216,192,138,.18);
+  transition:transform .12s ease,filter .12s ease;
+  min-width:220px;font-family:var(--font);
+  margin-top:8px;
 }
-.cta-btn:hover:not([disabled]){transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 16px 40px rgba(0,127,255,.3)}
-.cta-btn:active:not([disabled]){transform:translateY(0);filter:brightness(.98)}
-.cta-btn[disabled]{opacity:.55;cursor:not-allowed;transform:none;filter:grayscale(.2)}
+.cta-btn:hover:not([disabled]){transform:translateY(-1px);filter:brightness(1.03)}
+.cta-btn:active:not([disabled]){transform:translateY(0);filter:brightness(.99)}
+.cta-btn[disabled]{cursor:not-allowed;opacity:.7;filter:grayscale(.3) brightness(.85);transform:none}
 .cta-btn .spinner{
   display:inline-block;width:16px;height:16px;
-  border:2px solid rgba(255,255,255,.3);border-top-color:white;
+  border:2px solid rgba(11,11,12,.2);border-top-color:#0b0b0c;
   border-radius:50%;animation:spin .6s linear infinite;
   vertical-align:middle;margin-right:8px;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* ─── Status banner ────────────────────────────────────── */
 .demo-status{
-  margin-top:16px;padding:14px 16px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  border-radius:14px;padding:12px 14px;
   display:none;gap:10px;align-items:flex-start;
-  border:1px solid var(--line-b);background:rgba(255,255,255,.03);
+  margin-top:12px;
 }
 .demo-status.show{display:flex}
-.demo-status.ok{border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.05)}
-.demo-status.err{border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.05)}
+.demo-status.ok{border-color:rgba(78,224,138,.2);background:rgba(78,224,138,.06)}
+.demo-status.err{border-color:rgba(255,92,92,.2);background:rgba(255,92,92,.06)}
 .status-dot{
-  width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px;
-  background:var(--muted);
+  width:10px;height:10px;border-radius:999px;flex-shrink:0;margin-top:4px;
+  background:rgba(255,255,255,.35);
+  box-shadow:0 0 0 6px rgba(255,255,255,.06);
 }
-.demo-status.ok .status-dot{background:var(--green);box-shadow:0 0 0 4px rgba(34,197,94,.15)}
-.demo-status.err .status-dot{background:var(--red);box-shadow:0 0 0 4px rgba(239,68,68,.15)}
-.status-title{font-weight:800;font-size:13px;margin-bottom:2px}
-.status-desc{font-size:12px;color:var(--text-2);line-height:1.5}
+.demo-status.ok .status-dot{background:#4ee08a;box-shadow:0 0 0 6px rgba(78,224,138,.12)}
+.demo-status.err .status-dot{background:#ff5c5c;box-shadow:0 0 0 6px rgba(255,92,92,.12)}
+.status-title{font-weight:900;margin:0 0 2px}
+.status-desc{margin:0;color:rgba(255,255,255,.72);font-size:13px;line-height:1.45}
 
-.demo-note{
-  text-align:center;font-size:11px;color:var(--muted);margin-top:20px;line-height:1.5;
+/* ─── Foot link ────────────────────────────────────────── */
+.coupon-foot{
+  margin-top:auto;color:rgba(255,255,255,.55);font-size:12px;line-height:1.5;
+  padding-top:12px;
 }
-.field-error{font-size:11px;color:var(--red);margin:-6px 0 10px 2px;display:none}
-.field-error.show{display:block}
+.coupon-foot a{color:rgba(255,255,255,.55);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25)}
+.coupon-foot a:hover{color:rgba(255,255,255,.8);text-decoration:underline}
+
+/* ─── Side panel — Klantenbestand ──────────────────────── */
+.coupon-side-inner{
+  padding:22px;height:100%;
+  display:flex;flex-direction:column;gap:16px;
+}
+.kb-header{
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.kb-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:rgba(216,192,138,.12);border:1px solid rgba(216,192,138,.25);
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.kb-header-text{font-size:14px;font-weight:700}
+.kb-header-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:1px}
+
+.kb-stat-row{display:flex;gap:10px}
+.kb-stat{
+  flex:1;padding:12px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  text-align:center;
+}
+.kb-stat-num{
+  font-size:22px;font-weight:900;letter-spacing:-.02em;
+  background:linear-gradient(180deg,var(--gold),var(--gold-dim));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.kb-stat-label{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
+
+.kb-benefit{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:10px 12px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.02);
+  transition:border-color .2s,background .2s;
+}
+.kb-benefit:hover{border-color:rgba(216,192,138,.2);background:rgba(216,192,138,.04)}
+.kb-benefit-icon{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+  background:rgba(216,192,138,.1);border:1px solid rgba(216,192,138,.2);
+}
+.kb-benefit-title{font-size:12px;font-weight:700;margin-bottom:1px}
+.kb-benefit-desc{font-size:11px;color:rgba(255,255,255,.5);line-height:1.45}
+
+.coupon-sep{height:1px;background:rgba(255,255,255,.1);margin:4px 0}
+.demo-note{
+  text-align:center;font-size:11px;color:rgba(255,255,255,.55);margin-top:auto;line-height:1.5;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    2. DASHBOARD V2
@@ -763,59 +904,131 @@ section{padding:100px 0}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     PROBEER HET UIT — INTERACTIVE SMS DEMO
+     PROBEER HET UIT — INTERACTIVE SMS DEMO (Coupon Landing Style)
      ═══════════════════════════════════════════════════════════ -->
 <section id="try-sms">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:40px">
-      <div class="label r" style="justify-content:center">Probeer het zelf</div>
+      <div class="label r" style="justify-content:center;--blue:var(--gold)">Probeer het zelf</div>
       <h2 class="stitle r" style="transition-delay:.1s;text-align:center">Ontvang een echte<br>demo-SMS</h2>
       <p class="sdesc r" style="transition-delay:.2s;text-align:center;margin-left:auto;margin-right:auto">
-        Benieuwd hoe het werkt? Vul je telefoonnummer in en ontvang <strong style="color:var(--text)">direct een SMS</strong> van FoodTrac.
+        Benieuwd hoe het werkt? Vul je telefoonnummer in en ontvang <strong style="color:var(--text)">direct een SMS</strong> met een kortingscode van FoodTrac.
       </p>
     </div>
 
-    <div class="demo-card r" style="transition-delay:.25s">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#0059b3);display:flex;align-items:center;justify-content:center;font-size:16px">&#128172;</div>
-        <div>
-          <div style="font-weight:800;font-size:14px">FoodTrac SMS Demo</div>
-          <div style="font-size:11px;color:var(--muted)">Probeer het zelf</div>
+    <div class="coupon-grid r" style="transition-delay:.25s">
+      <!-- LEFT — Hero card -->
+      <div class="coupon-hero">
+        <div class="coupon-hero-inner">
+          <div class="coupon-top">
+            <div class="coupon-brand">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="34" viewBox="0 335.5 612 121"><path fill="#fff" d="M22.866,345.363v13.287h39.216v87.619h100.906V345.363H22.866z M149.701,432.982H75.369v-74.31h74.31 v74.31H149.701z"/><rect x="103.117" y="386.697" fill="#fff" width="18.514" height="18.514"/><path fill="#fff" d="M212.843,357.636c-2.971,0-5.273,0.599-6.909,1.773c-1.635,1.175-2.464,2.948-2.464,5.296 c0,2.165,1.198,4.076,3.569,5.711c2.372,1.635,5.55,3.201,9.51,4.675c3.224,1.174,5.964,2.51,8.267,4.03 c2.28,1.52,4.191,3.592,5.711,6.263c1.52,2.648,2.279,6.033,2.279,10.109c0,3.523-0.921,6.793-2.74,9.787 c-1.819,2.993-4.49,5.388-8.013,7.139c-3.523,1.75-7.737,2.647-12.619,2.647c-4.076,0-8.129-0.599-12.159-1.818 c-4.03-1.198-7.76-3.04-11.214-5.527l5.941-10.478c2.349,1.728,5.043,3.155,8.06,4.261s5.757,1.681,8.151,1.681 c2.833,0,5.319-0.599,7.415-1.819c2.095-1.197,3.132-3.154,3.132-5.872c0-3.523-3.316-6.585-9.925-9.188 c-3.892-1.543-7.139-3.04-9.741-4.444c-2.602-1.428-4.836-3.454-6.724-6.125c-1.888-2.648-2.833-5.987-2.833-10.017 c0-5.872,1.935-10.615,5.803-14.185c3.869-3.592,9.003-5.527,15.451-5.849c5.066,0,9.303,0.576,12.711,1.727 c3.408,1.151,6.701,2.763,9.925,4.859l-5.112,10.293C222.376,359.271,217.218,357.636,212.843,357.636z"/><path fill="#fff" d="M334.911,414.33h-13.448v-25.676h-30.511v25.676h-13.448v-68.276h13.448v29.613h30.511v-29.613h13.448 V414.33z"/><path fill="#fff" d="M397.522,346.054v68.276h-13.448v-68.276H397.522z"/><path fill="#fff" d="M471.072,373.778l2.049-2.602l22.268-25.146h17.433l-28.209,30.604l28.301,37.673H495.85l-21.047-29.129 l-3.362,3.362v25.791h-13.632v-68.276h13.632v24.294L471.072,373.778z"/><path fill="#fff" d="M579.232,346.054v68.276h-13.448v-68.276H579.232z"/><path fill="#fff" d="M191.68,434.778c0-1.267-0.806-2.004-1.957-2.004c-0.967,0-1.865,0.875-1.865,1.889 c0,0.967,0.645,1.543,2.003,1.957c2.993,0.968,4.099,2.073,4.099,4.49c0,2.511-1.796,4.191-4.26,4.191 c-2.464,0-4.237-1.773-4.283-4.375h2.026c0.023,1.496,0.898,2.51,2.257,2.51c1.358,0,2.233-0.967,2.233-2.349 c0-1.014-0.438-1.658-1.934-2.165c-3.431-1.151-4.191-2.279-4.191-4.26c0-2.118,1.75-3.776,3.892-3.776 c2.279,0,3.938,1.45,3.983,3.868h-2.003V434.778z"/><path fill="#fff" d="M222.261,431.186h2.026v9.487c0,2.901-2.049,4.652-4.651,4.652s-4.652-1.773-4.652-4.652v-9.487h2.027 v9.326c0,1.728,0.967,2.948,2.625,2.948c1.658,0,2.625-1.244,2.625-2.948V431.186z"/><path fill="#fff" d="M251.367,434.778c0-1.267-0.806-2.004-1.957-2.004c-0.967,0-1.865,0.875-1.865,1.889 c0,0.967,0.645,1.543,2.003,1.957c2.994,0.968,4.099,2.073,4.099,4.49c0,2.511-1.796,4.191-4.26,4.191 c-2.487,0-4.237-1.773-4.283-4.375h2.026c0.023,1.496,0.898,2.51,2.257,2.51c1.358,0,2.233-0.967,2.233-2.349 c0-1.014-0.46-1.658-1.934-2.165c-3.431-1.151-4.168-2.279-4.168-4.26c0-2.118,1.75-3.776,3.892-3.776 c2.28,0,3.938,1.45,3.984,3.868h-2.027V434.778z"/><path fill="#fff" d="M282.455,445.049v-6.033h-5.711v6.033h-2.026v-13.863h2.026v5.987h5.711v-5.987h2.026v13.863H282.455z"/><path fill="#fff" d="M306.403,445.049v-13.863h2.026v13.863H306.403z"/><path fill="#fff" d="M362.521,442.884c-1.105,1.658-2.44,2.441-4.029,2.441c-2.349,0-4.237-1.797-4.237-4.146 c0-1.704,0.944-3.178,2.671-3.961c-1.036-1.036-1.335-1.796-1.335-2.763c0-1.935,1.45-3.547,3.5-3.547 c1.957,0,3.454,1.566,3.454,3.523c0,1.474-0.806,2.603-2.326,3.339l1.843,1.797l1.52-3.063h2.188l-2.257,4.583l2.786,2.855 l-1.358,1.358L362.521,442.884z M358.261,438.578c-1.175,0.391-1.957,1.266-1.957,2.579c0,1.335,0.921,2.303,2.21,2.303 c1.06,0,1.958-0.576,2.672-1.98L358.261,438.578z M360.518,434.387c0-0.875-0.622-1.612-1.451-1.612 c-0.852,0-1.45,0.714-1.45,1.682c0,0.645,0.368,1.243,1.174,1.957C360.126,435.745,360.518,435.216,360.518,434.387z"/><path fill="#fff" d="M411.73,445.049v-13.863h2.026v12.021h4.812v1.865h-6.839V445.049z"/><path fill="#fff" d="M445.535,445.325c-3.846,0-7.116-3.293-7.116-7.047c0-4.26,3.271-7.346,7.162-7.346 c4.122,0,7.276,3.247,7.276,7.115C452.857,442.216,449.634,445.325,445.535,445.325z M450.831,438.163 c0-2.878-2.188-5.389-5.112-5.389c-3.753,0-5.296,3.225-5.296,5.297c0,2.786,2.026,5.389,5.204,5.389 C448.92,443.46,450.831,440.696,450.831,438.163z"/><path fill="#fff" d="M481.365,431.186h2.026v9.487c0,2.901-2.049,4.652-4.651,4.652s-4.651-1.773-4.651-4.652v-9.487h2.026 v9.326c0,1.728,0.967,2.948,2.625,2.948s2.625-1.244,2.625-2.948V431.186z"/><path fill="#fff" d="M514.249,445.049l-6.862-10.731h-0.047v10.731h-2.026v-13.863h2.211l6.747,10.547h0.046v-10.547h2.026 v13.863H514.249L514.249,445.049z"/><path fill="#fff" d="M543.102,440.006v-1.865h8.773c-0.138,4.605-3.615,7.161-7.322,7.161c-3.754,0-6.954-3.27-6.954-7 c0-4.491,3.454-7.393,6.954-7.393c2.671,0,4.951,1.267,6.355,3.754h-2.372c-1.174-1.358-2.349-1.889-3.892-1.889 c-2.694,0-5.02,2.557-5.02,5.297c0,2.925,2.303,5.389,5.112,5.389c2.188,0,3.96-1.221,4.835-3.454H543.102z"/><path fill="#fff" d="M572.83,445.049v-13.863h7.484v1.865h-5.458v4.1h5.458v1.865h-5.458v4.214h5.458v1.865h-7.484V445.049z"/></svg>
+            </div>
+            <div class="coupon-pill">QR-actie &bull; Online bestellen</div>
+          </div>
+
+          <h1>Claim je &euro;7,50 korting</h1>
+          <p class="coupon-sub">
+            Vul je 06-nummer in. Je ontvangt een <strong>SMS</strong> met je persoonlijke kortingscode om te gebruiken bij je volgende bestelling.
+          </p>
+
+          <div class="coupon-form">
+            <div>
+              <label for="phoneInput">Telefoonnummer</label>
+              <div class="input-group" id="inputGroup">
+                <div class="flag-nl"></div>
+                <input type="tel" id="phoneInput" placeholder="06 1234 5678" maxlength="12" autocomplete="off" inputmode="tel">
+              </div>
+              <div class="field-error" id="phoneError">Ongeldig telefoonnummer</div>
+              <div class="coupon-hint">1 kortingsbon per nummer. Bijvoorbeeld: 06 12345678</div>
+            </div>
+
+            <div class="consent-row">
+              <div class="checkbox" id="consentBox"></div>
+              <span class="consent-text" id="consentText">Ja, stuur mij aanbiedingen via SMS en mijn kortingscode.</span>
+            </div>
+
+            <div class="coupon-hint">Afmelden kan altijd via de website.</div>
+
+            <div>
+              <button class="cta-btn" id="ctaBtn" disabled>
+                <span id="ctaBtnText">Stuur mijn kortingscode</span>
+              </button>
+            </div>
+
+            <div class="demo-status" id="demoStatus">
+              <div class="status-dot"></div>
+              <div>
+                <div class="status-title" id="statusTitle"></div>
+                <div class="status-desc" id="statusDesc"></div>
+              </div>
+            </div>
+
+            <div class="coupon-foot">
+              <a href="https://coupons.foodtrac.nl/optout">Afmelden voor SMS-aanbiedingen</a>
+            </div>
+          </div>
         </div>
-        <div class="pill pill-green" style="margin-left:auto;font-size:9px">LIVE</div>
       </div>
 
-      <h3>Ontvang een demo-SMS</h3>
-      <p class="sub">Vul je telefoonnummer in en ontvang <strong>direct een SMS</strong> van FoodTrac.</p>
+      <!-- RIGHT — Klantenbestand panel -->
+      <aside class="coupon-side">
+        <div class="coupon-side-inner">
+          <div class="kb-header">
+            <div class="kb-icon">&#128202;</div>
+            <div>
+              <div class="kb-header-text">Klantenbestand opbouwen</div>
+              <div class="kb-header-sub">Elke claim = nieuw klantprofiel</div>
+            </div>
+          </div>
 
-      <div class="input-group" id="inputGroup">
-        <div class="flag-nl"></div>
-        <span class="prefix">+31 6</span>
-        <input type="tel" id="phoneInput" placeholder="1234 5678" maxlength="9" autocomplete="off" inputmode="numeric">
-      </div>
-      <div class="field-error" id="phoneError">Vul een geldig 06-nummer in (8 cijfers na +31 6)</div>
+          <div class="kb-stat-row">
+            <div class="kb-stat">
+              <div class="kb-stat-num">847</div>
+              <div class="kb-stat-label">Nummers</div>
+            </div>
+            <div class="kb-stat">
+              <div class="kb-stat-num">63%</div>
+              <div class="kb-stat-label">Conversie</div>
+            </div>
+            <div class="kb-stat">
+              <div class="kb-stat-num">&euro;4,2k</div>
+              <div class="kb-stat-label">Omzet</div>
+            </div>
+          </div>
 
-      <div class="consent-row">
-        <div class="checkbox" id="consentBox"></div>
-        <span class="consent-text" id="consentText">Ja, stuur mij aanbiedingen via SMS en mijn kortingscode.</span>
-      </div>
+          <div class="coupon-sep"></div>
 
-      <button class="cta-btn" id="ctaBtn" disabled>
-        <span id="ctaBtnText">Verstuur demo-SMS</span>
-      </button>
+          <div class="kb-benefit">
+            <div class="kb-benefit-icon">&#128241;</div>
+            <div>
+              <div class="kb-benefit-title">Direct bereikbaar</div>
+              <div class="kb-benefit-desc">Stuur later nieuwe acties naar je hele klantenbestand via SMS.</div>
+            </div>
+          </div>
 
-      <div class="demo-status" id="demoStatus">
-        <div class="status-dot"></div>
-        <div>
-          <div class="status-title" id="statusTitle"></div>
-          <div class="status-desc" id="statusDesc"></div>
+          <div class="kb-benefit">
+            <div class="kb-benefit-icon">&#127919;</div>
+            <div>
+              <div class="kb-benefit-title">Gericht targeten</div>
+              <div class="kb-benefit-desc">Filter op bestelgedrag en stuur persoonlijke aanbiedingen.</div>
+            </div>
+          </div>
+
+          <div class="kb-benefit">
+            <div class="kb-benefit-icon">&#128200;</div>
+            <div>
+              <div class="kb-benefit-title">Meetbare resultaten</div>
+              <div class="kb-benefit-desc">Volg claims, conversies en omzet per campagne in real-time.</div>
+            </div>
+          </div>
+
+          <div class="demo-note">
+            &#128274; Nummers worden GDPR-compliant opgeslagen.<br>
+            Klanten kunnen zich altijd afmelden.
+          </div>
         </div>
-      </div>
-
-      <div class="demo-note">
-        &#128274; Je nummer wordt alleen gebruikt voor deze demo.<br>
-        Geen spam, geen opslag. Eenmalige verzending.
-      </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -1011,7 +1224,7 @@ section{padding:100px 0}
 'use strict';
 
 /* ─── Card glow follow cursor ───────────────────────────── */
-document.querySelectorAll('.card,.demo-card').forEach(card=>{
+document.querySelectorAll('.card,.coupon-hero').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r = card.getBoundingClientRect();
     card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
@@ -1120,13 +1333,15 @@ function getRawDigits(){
 }
 
 function formatPhone(val){
-  const nums = val.replace(/\D/g,'');
-  if(nums.length<=4) return nums;
-  return nums.slice(0,4)+' '+nums.slice(4,8);
+  const nums = val.replace(/\D/g,'').slice(0,10);
+  if(nums.length<=2) return nums;
+  if(nums.length<=6) return nums.slice(0,2)+' '+nums.slice(2);
+  return nums.slice(0,2)+' '+nums.slice(2,6)+' '+nums.slice(6);
 }
 
 function isValidPhone(){
-  return getRawDigits().length === 8;
+  const raw = getRawDigits();
+  return raw.length >= 8 && raw.length <= 10;
 }
 
 function validateForm(){
@@ -1146,8 +1361,7 @@ function clearError(){
 }
 
 phoneInput.addEventListener('input',()=>{
-  const raw = getRawDigits().slice(0,8);
-  phoneInput.value = formatPhone(raw);
+  phoneInput.value = formatPhone(phoneInput.value);
   clearError();
   validateForm();
 });
@@ -1155,7 +1369,7 @@ phoneInput.addEventListener('input',()=>{
 phoneInput.addEventListener('blur',()=>{
   const raw = getRawDigits();
   if(raw.length > 0 && raw.length < 8){
-    showError('Vul een geldig 06-nummer in (8 cijfers na +31 6)');
+    showError('Ongeldig telefoonnummer');
   }
 });
 
@@ -1192,18 +1406,20 @@ function friendlyError(status, data){
 ctaBtn.addEventListener('click', async ()=>{
   if(ctaBtn.disabled) return;
 
-  const raw = getRawDigits();
-  if(raw.length !== 8){
-    showError('Vul een geldig 06-nummer in (8 cijfers na +31 6)');
+  let raw = getRawDigits();
+  if(raw.length < 8 || raw.length > 10){
+    showError('Ongeldig telefoonnummer');
     return;
   }
 
-  // Build E.164 format: +316XXXXXXXX
+  // Normalize to E.164: strip leading 0 or 06, build +316XXXXXXXX
+  if(raw.startsWith('06')) raw = raw.slice(2);
+  else if(raw.startsWith('0')) raw = raw.slice(1);
   const e164 = '+316' + raw;
 
   // UI: loading
   ctaBtn.disabled = true;
-  ctaBtnText.innerHTML = '<span class="spinner"></span>SMS wordt verstuurd\u2026';
+  ctaBtnText.innerHTML = '<span class="spinner"></span>Bezig\u2026';
   demoStatus.className = 'demo-status';
   clearError();
 
@@ -1220,8 +1436,8 @@ ctaBtn.addEventListener('click', async ()=>{
       // Success
       submitted = true;
       demoStatus.className = 'demo-status ok show';
-      statusTitle.textContent = 'SMS verstuurd!';
-      statusDesc.textContent = 'Check je telefoon \u2014 je kortingscode is onderweg. Het kan tot 30 seconden duren.';
+      statusTitle.textContent = 'SMS verstuurd';
+      statusDesc.textContent = 'Check je telefoon voor de kortingscode.';
       ctaBtnText.textContent = 'Verstuurd \u2713';
       ctaBtn.disabled = true;
     } else {
