@@ -364,6 +364,60 @@ section{padding:100px 0}
 .flow-step p{font-size:10px;color:var(--muted);line-height:1.45}
 
 /* ═══════════════════════════════════════════════════════════════
+   2. REVIEW BOOSTER
+   ═══════════════════════════════════════════════════════════════ */
+#review-booster{padding:120px 0;position:relative}
+#review-booster::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:860px){.review-grid{grid-template-columns:1fr;gap:32px}}
+
+.wa-header{
+  padding:10px 16px 8px;
+  background:linear-gradient(180deg,#075e54,#064e45);
+  display:flex;align-items:center;gap:10px;
+}
+.wa-header-avatar{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green),#128c7e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;
+}
+.wa-header-name{font-size:12px;font-weight:600;color:#e9edef}
+.wa-header-sub{font-size:9px;color:rgba(255,255,255,.55)}
+
+.wa-chat{
+  flex:1;padding:12px 14px;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;gap:10px;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") #0b141a;
+}
+.wa-bubble{
+  max-width:92%;padding:10px 14px;border-radius:16px 16px 16px 4px;
+  font-size:12px;line-height:1.55;color:#E9EDEF;
+  background:linear-gradient(135deg,#1a3c2c,#132f24);
+  border:1px solid rgba(34,197,94,.15);
+  opacity:0;transform:translateY(12px) scale(.96);
+  transition:all .5s var(--ease);
+}
+.wa-bubble.show{opacity:1;transform:translateY(0) scale(1)}
+.wa-bubble .wa-time{font-size:9px;color:var(--muted);text-align:right;margin-top:3px}
+.wa-bubble .wa-code{
+  display:inline-block;margin-top:6px;padding:4px 10px;border-radius:6px;
+  background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.25);
+  font-family:var(--mono);font-weight:700;font-size:13px;color:var(--green);
+  letter-spacing:.06em;
+}
+
+.review-flow .flow-visual{
+  grid-template-columns:auto 1fr auto 1fr auto;
+}
+@media(max-width:860px){
+  .review-flow .flow-visual{grid-template-columns:1fr;gap:24px;justify-items:center}
+}
+
+/* ═══════════════════════════════════════════════════════════════
    INTERACTIVE SMS DEMO — Coupon Landing Style
    ═══════════════════════════════════════════════════════════════ */
 #try-sms{padding:100px 0;position:relative}
@@ -740,14 +794,15 @@ section{padding:100px 0}
       Wat is er<br><span class="g">nieuw?</span>
     </h1>
     <p class="hero-sub r" style="transition-delay:.3s">
-      Meer klanten bereiken via SMS, een compleet vernieuwd dashboard, real-time koerier-inzichten en verbeterde gebruiksvriendelijkheid op elk scherm.
+      Meer klanten bereiken via SMS, automatisch reviews verzamelen, een compleet vernieuwd dashboard, real-time koerier-inzichten en verbeterde gebruiksvriendelijkheid op elk scherm.
     </p>
     <div class="hero-chips r" style="transition-delay:.45s">
       <a href="#sms" class="hero-chip"><em>01</em> SMS Marketing</a>
-      <a href="#dashboard" class="hero-chip"><em>02</em> Dashboard V2</a>
-      <a href="#more" class="hero-chip"><em>03</em> Koerier Timing</a>
-      <a href="#more" class="hero-chip"><em>04</em> Herverbinden</a>
-      <a href="#more" class="hero-chip"><em>05</em> Redesigns</a>
+      <a href="#review-booster" class="hero-chip"><em>02</em> Review Booster</a>
+      <a href="#dashboard" class="hero-chip"><em>03</em> Dashboard V2</a>
+      <a href="#more" class="hero-chip"><em>04</em> Koerier Timing</a>
+      <a href="#more" class="hero-chip"><em>05</em> Herverbinden</a>
+      <a href="#more" class="hero-chip"><em>06</em> Redesigns</a>
     </div>
   </div>
   <div class="scroll-hint r" style="transition-delay:.65s">
@@ -1034,11 +1089,135 @@ section{padding:100px 0}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     2. STATISTIEKEN DASHBOARD V2
+     2. REVIEW BOOSTER
+     ═══════════════════════════════════════════════════════════ -->
+<section id="review-booster">
+  <div class="wrap">
+    <div class="review-grid">
+      <div>
+        <div class="label r" style="--blue:var(--green)">02 &mdash; Nieuw</div>
+        <h2 class="stitle r" style="transition-delay:.1s">Automatische<br>Review Booster</h2>
+        <p class="sdesc r" style="transition-delay:.2s">
+          Verzamel meer Google Reviews op de automatische piloot. Na elke bezorging ontvangt je klant een WhatsApp-bericht met een review-link &eacute;n een kortingscode als beloning.
+        </p>
+        <div class="r" style="transition-delay:.25s;margin-top:-10px;margin-bottom:24px;padding:16px 20px;border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.04));border:1px solid rgba(34,197,94,.15)">
+          <p style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">Wil je dit ook voor jouw restaurant?</p>
+          <p style="font-size:13px;color:var(--text-2);line-height:1.5">Neem contact op met FoodTrac en we zetten het voor je op. <a href="https://www.foodtrac.nl" style="color:var(--green);font-weight:600">www.foodtrac.nl</a></p>
+        </div>
+
+        <div class="feature-list r" style="transition-delay:.3s">
+          <div class="feature-item">
+            <div class="feature-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128236;</div>
+            <div>
+              <h4>Automatisch na bezorging</h4>
+              <p>WhatsApp-bericht naar de klant zodra de bestelling op tijd is afgeleverd.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#11088;</div>
+            <div>
+              <h4>Review + beloning</h4>
+              <p>Klant plaatst een review en ontvangt automatisch een kortingscode voor de volgende bestelling.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" style="background:var(--blue-glow);border:1px solid rgba(0,127,255,.2)">&#128202;</div>
+            <div>
+              <h4>Campagne statistieken</h4>
+              <p>Berichten verstuurd, reviews ontvangen, codes verzilverd &mdash; alles in je dashboard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp Phone mockup -->
+      <div class="r" style="transition-delay:.35s">
+        <div class="phone-frame" id="waPhoneMock">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background:#0b141a">
+            <div class="phone-status">
+              <span>20:14</span>
+              <span style="display:flex;gap:4px;align-items:center">
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="3.5" y="4" width="2.5" height="6" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="7" y="2" width="2.5" height="8" rx="0.5" fill="rgba(255,255,255,.7)"/><rect x="10.5" y="0" width="2.5" height="10" rx="0.5" fill="white"/></svg>
+                <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><rect x="0" y="1" width="14" height="8" rx="1.5" stroke="rgba(255,255,255,.5)" stroke-width="1"/><rect x="1.5" y="2.5" width="9" height="5" rx="0.5" fill="var(--green)"/><rect x="15" y="3" width="2" height="4" rx="0.5" fill="rgba(255,255,255,.3)"/></svg>
+              </span>
+            </div>
+            <div class="wa-header">
+              <div class="wa-header-avatar">FT</div>
+              <div>
+                <div class="wa-header-name">FoodTrac &mdash; Shiki Sushi</div>
+                <div class="wa-header-sub">zakelijk account</div>
+              </div>
+            </div>
+            <div class="wa-chat">
+              <div class="wa-bubble" id="wa1">
+                Bedankt voor je bestelling bij <strong>Shiki Sushi</strong>! &#127843;<br><br>
+                We hopen dat je ervan genoten hebt. Laat een review achter:<br>
+                <span style="color:var(--green);text-decoration:underline">g.page/shiki-sushi/review</span><br><br>
+                Als bedankje ontvang je een kortingscode &#127873;
+                <div class="wa-time">20:14 &#10003;&#10003;</div>
+              </div>
+              <div class="wa-bubble" id="wa2">
+                Bedankt voor je review! &#11088;<br><br>
+                Hier is je kortingscode:<br>
+                <span class="wa-code">REVIEW-7K9X</span><br><br>
+                Bestel opnieuw via:<br>
+                <span style="color:var(--green);text-decoration:underline">www.restaurantshiki.com</span>
+                <div class="wa-time">20:32 &#10003;&#10003;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow diagram -->
+    <div class="flow-section review-flow">
+      <div style="text-align:center;margin-bottom:8px">
+        <div class="label r" style="justify-content:center;--blue:var(--green)">Zo werkt het</div>
+        <h3 class="r" style="font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em;transition-delay:.1s">Van bezorging naar review</h3>
+        <p class="r" style="font-size:14px;color:var(--text-2);max-width:48ch;margin:10px auto 0;line-height:1.6;transition-delay:.15s">
+          Na een succesvolle bezorging ontvangt de klant automatisch een WhatsApp-bericht. Na het plaatsen van een review krijgt de klant een kortingscode.
+        </p>
+      </div>
+
+      <div class="flow-visual r" style="transition-delay:.25s">
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128693;</div>
+          <h4>Bestelling bezorgd</h4>
+          <p>Koerier levert de bestelling op tijd af</p>
+        </div>
+
+        <div class="flow-arrow">
+          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2)">&#128172;</div>
+          <h4>WhatsApp verstuurd</h4>
+          <p>Automatisch bericht met review-link</p>
+        </div>
+
+        <div class="flow-arrow">
+          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#11088;</div>
+          <h4>Review + kortingscode</h4>
+          <p>Klant ontvangt automatisch een beloning</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. STATISTIEKEN DASHBOARD V2
      ═══════════════════════════════════════════════════════════ -->
 <section id="dashboard">
   <div class="wrap">
-    <div class="label r">02 &mdash; Vernieuwd</div>
+    <div class="label r">03 &mdash; Vernieuwd</div>
     <h2 class="stitle r" style="transition-delay:.1s">Statistieken Dashboard V2</h2>
     <p class="sdesc r" style="transition-delay:.2s">
       Een volledig vernieuwd overzicht van je bezorgprestaties. Nieuwe KPI-kaarten, verbeterde grafieken en betrouwbaardere data — alles in &eacute;&eacute;n oogopslag.
@@ -1117,7 +1296,7 @@ section{padding:100px 0}
      ═══════════════════════════════════════════════════════════ -->
 <section id="more">
   <div class="wrap">
-    <div class="label r">03&ndash;05 &mdash; Verbeteringen</div>
+    <div class="label r">04&ndash;06 &mdash; Verbeteringen</div>
     <h2 class="stitle r" style="transition-delay:.1s">En nog meer</h2>
     <p class="sdesc r" style="transition-delay:.2s">
       Koerier-timing inzichten, eenvoudig herverbinden en een betere ervaring op elk scherm.
@@ -1255,6 +1434,18 @@ const phoneObs = new IntersectionObserver(entries=>{
   });
 },{threshold:0.3});
 phoneObs.observe(document.getElementById('phoneMock'));
+
+/* ─── WhatsApp Bubble Animation ──────────────────────────── */
+const waObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setTimeout(()=>document.getElementById('wa1').classList.add('show'),400);
+      setTimeout(()=>document.getElementById('wa2').classList.add('show'),1400);
+      waObs.disconnect();
+    }
+  });
+},{threshold:0.3});
+waObs.observe(document.getElementById('waPhoneMock'));
 
 /* ─── Dashboard Chart ────────────────────────────────────── */
 const chartData = [380,420,510,470,620,580,340,390,450,530,600,580,520,480];
