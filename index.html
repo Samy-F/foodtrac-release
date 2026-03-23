@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FoodTrac — Wat is er nieuw? | feb 2026</title>
+<title>FoodTrac Marketing — Meer omzet met slimme marketing</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="favicon.png">
@@ -11,10 +11,10 @@
 
 <!-- Open Graph / WhatsApp -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://release.foodtrac.nl/">
-<meta property="og:title" content="FoodTrac — Wat is er nieuw?">
-<meta property="og:description" content="SMS marketing, vernieuwd dashboard, koerier timing, herverbinden en meer. Bekijk alle nieuwe features van februari 2026.">
-<meta property="og:image" content="https://release.foodtrac.nl/og-image.png">
+<meta property="og:url" content="https://marketing.foodtrac.nl/">
+<meta property="og:title" content="FoodTrac Marketing — Slimme campagnes voor restaurants">
+<meta property="og:description" content="SMS marketing, automatische review boosters en late-order compensatie. Meer omzet voor je restaurant.">
+<meta property="og:image" content="https://marketing.foodtrac.nl/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="nl_NL">
@@ -22,12 +22,12 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FoodTrac — Wat is er nieuw?">
-<meta name="twitter:description" content="SMS marketing, vernieuwd dashboard, koerier timing, herverbinden en meer.">
-<meta name="twitter:image" content="https://release.foodtrac.nl/og-image.png">
+<meta name="twitter:title" content="FoodTrac Marketing — Slimme campagnes voor restaurants">
+<meta name="twitter:description" content="SMS marketing, review boosters en late-order compensatie. Meer omzet voor je restaurant.">
+<meta name="twitter:image" content="https://marketing.foodtrac.nl/og-image.png">
 
 <!-- General -->
-<meta name="description" content="Bekijk alle nieuwe FoodTrac features: SMS marketing, vernieuwd dashboard, koerier timing en meer. Februari 2026 update.">
+<meta name="description" content="FoodTrac Marketing Suite: SMS-campagnes, automatische review boosters en late-order compensatie. Meer omzet voor bezorgrestaurants.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -69,14 +69,14 @@ a{color:var(--blue-light);text-decoration:none}
 a:hover{text-decoration:underline}
 img{max-width:100%;display:block}
 
-/* ─── Grain Overlay ─────────────────────────────────────────── */
+/* Grain Overlay */
 body::after{
   content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
   opacity:.018;
   background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ─── Sticky Header ─────────────────────────────────────────── */
+/* Sticky Header */
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:0 28px;height:56px;
@@ -86,35 +86,41 @@ body::after{
 }
 .topbar-brand{display:flex;align-items:center;height:56px}
 .topbar-brand svg{height:26px;width:auto}
+.topbar-nav{display:flex;gap:6px;align-items:center}
+.topbar-nav a{
+  font-size:11px;font-weight:600;color:var(--muted);padding:6px 12px;
+  border-radius:8px;transition:all .2s;text-decoration:none;
+}
+.topbar-nav a:hover{color:var(--text);background:rgba(255,255,255,.04);text-decoration:none}
 .topbar-tag{
   font-family:var(--mono);font-size:10px;color:var(--muted);
   padding:4px 10px;border-radius:6px;border:1px solid var(--line-b);
   background:rgba(255,255,255,.03);letter-spacing:.04em;
 }
-@media(max-width:480px){.topbar-tag{display:none}}
+@media(max-width:680px){.topbar-nav{display:none}}
 
-/* ─── Layout ────────────────────────────────────────────────── */
+/* Layout */
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 section{padding:100px 0}
 
-/* ─── Reveal ────────────────────────────────────────────────── */
+/* Reveal */
 .r{opacity:0;transform:translateY(28px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
 .r.v{opacity:1;transform:translateY(0)}
 
-/* ─── Section Label ─────────────────────────────────────────── */
+/* Section Labels */
 .label{
   font-family:var(--mono);font-size:10px;font-weight:700;
   text-transform:uppercase;letter-spacing:.15em;color:var(--blue);
   margin-bottom:14px;display:flex;align-items:center;gap:8px;
 }
-.label::before{content:'';width:16px;height:1.5px;background:var(--blue);border-radius:1px}
+.label::before{content:'';width:16px;height:1.5px;background:currentColor;border-radius:1px}
 .stitle{
   font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.035em;
   line-height:1.1;margin-bottom:14px;
 }
 .sdesc{color:var(--text-2);font-size:15px;max-width:58ch;line-height:1.7;margin-bottom:36px}
 
-/* ─── Pill / Badge ──────────────────────────────────────────── */
+/* Pills */
 .pill{
   display:inline-flex;align-items:center;gap:6px;
   font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -125,7 +131,7 @@ section{padding:100px 0}
 .pill-purple{background:rgba(70,68,182,.1);color:var(--purple-light);border:1px solid rgba(70,68,182,.22)}
 .pill-amber{background:rgba(222,165,0,.1);color:var(--amber);border:1px solid rgba(222,165,0,.22)}
 
-/* ─── Cards ─────────────────────────────────────────────────── */
+/* Cards */
 .card{
   background:linear-gradient(180deg,rgba(255,255,255,.035) 0%,rgba(255,255,255,.012) 100%);
   border:1px solid var(--line);border-radius:20px;
@@ -168,7 +174,7 @@ section{padding:100px 0}
   -webkit-mask:radial-gradient(ellipse 70% 60% at 50% 40%,black 20%,transparent 70%);
   pointer-events:none;
 }
-.hero-inner{position:relative;z-index:1;max-width:680px}
+.hero-inner{position:relative;z-index:1;max-width:720px}
 .hero h1{
   font-size:clamp(40px,7vw,76px);font-weight:900;letter-spacing:-.045em;
   line-height:.95;margin-bottom:22px;
@@ -178,7 +184,7 @@ section{padding:100px 0}
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
 }
-.hero-sub{color:var(--text-2);font-size:clamp(15px,2vw,18px);line-height:1.7;max-width:52ch;margin:0 auto 40px}
+.hero-sub{color:var(--text-2);font-size:clamp(15px,2vw,18px);line-height:1.7;max-width:56ch;margin:0 auto 40px}
 .hero-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .hero-chip{
   font-size:12px;font-weight:600;padding:8px 16px;border-radius:10px;
@@ -199,17 +205,25 @@ section{padding:100px 0}
 .scroll-hint svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2}
 
 /* ═══════════════════════════════════════════════════════════════
-   1. SMS MARKETING
+   FEATURE SECTIONS (SMS, REVIEW, LATE ORDER)
    ═══════════════════════════════════════════════════════════════ */
 #sms{padding:120px 0;position:relative}
 #sms::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,var(--blue),transparent);
 }
-
 .sms-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 @media(max-width:860px){.sms-grid{grid-template-columns:1fr;gap:32px}}
 
+.section-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.section-grid.reversed{direction:rtl}
+.section-grid.reversed > *{direction:ltr}
+@media(max-width:860px){
+  .section-grid{grid-template-columns:1fr;gap:32px}
+  .section-grid.reversed{direction:ltr}
+}
+
+/* Phone Mockup */
 .phone-frame{
   width:280px;height:540px;
   border-radius:36px;border:3px solid rgba(255,255,255,.12);
@@ -231,10 +245,8 @@ section{padding:100px 0}
   padding:10px 20px 6px;font-size:10px;font-weight:600;
   position:relative;z-index:3;
 }
-.phone-messages{
-  flex:1;padding:12px 14px;overflow:hidden;
-  display:flex;flex-direction:column;justify-content:flex-end;gap:10px;
-}
+
+/* SMS Bubbles */
 .sms-bubble{
   max-width:92%;padding:10px 14px;border-radius:16px 16px 16px 4px;
   font-size:12px;line-height:1.55;color:#E9EDEF;
@@ -256,124 +268,12 @@ section{padding:100px 0}
   letter-spacing:.06em;
 }
 .sms-time{font-size:9px;color:var(--muted);text-align:right;margin-top:3px}
-
-.feature-list{display:flex;flex-direction:column;gap:18px;margin-top:28px}
-.feature-item{
-  display:flex;gap:14px;align-items:flex-start;
-  padding:14px 16px;border-radius:14px;
-  border:1px solid transparent;
-  transition:border-color .3s,background .3s;
-}
-.feature-item:hover{border-color:var(--line-b);background:rgba(255,255,255,.02)}
-.feature-icon{
-  width:36px;height:36px;border-radius:10px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:16px;
-}
-.feature-item h4{font-size:14px;font-weight:700;margin-bottom:3px}
-.feature-item p{font-size:12px;color:var(--muted);line-height:1.55}
-
-/* ─── Flyer + Flow ──────────────────────────────────────────── */
-.flow-section{margin-top:80px}
-.flow-visual{
-  display:grid;grid-template-columns:auto 1fr auto 1fr auto;
-  gap:0;align-items:center;margin:40px 0 0;
-}
-@media(max-width:860px){
-  .flow-visual{
-    grid-template-columns:1fr;gap:24px;
-    justify-items:center;
-  }
-  .flow-arrow{transform:rotate(90deg) !important}
+.phone-messages{
+  flex:1;padding:12px 14px;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;gap:10px;
 }
 
-.flyer-wrapper{
-  display:flex;flex-direction:column;align-items:center;gap:14px;
-}
-.flyer-frame{
-  width:220px;position:relative;
-  border-radius:16px;overflow:hidden;
-  box-shadow:
-    0 24px 60px rgba(0,0,0,.5),
-    0 0 0 1px rgba(255,255,255,.08),
-    0 0 80px rgba(216,192,138,.06);
-  transform:rotate(-2deg);
-  transition:transform .4s var(--ease),box-shadow .4s;
-}
-.flyer-frame:hover{
-  transform:rotate(0deg) scale(1.02);
-  box-shadow:
-    0 32px 80px rgba(0,0,0,.6),
-    0 0 0 1px rgba(216,192,138,.15),
-    0 0 120px rgba(216,192,138,.08);
-}
-.flyer-frame img{width:100%;display:block}
-
-/* Cloud bubble next to flyer */
-.flyer-cloud{
-  position:relative;
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:16px;
-  padding:14px 18px;
-  max-width:230px;
-  text-align:center;
-}
-.flyer-cloud::before{
-  content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);
-  width:16px;height:16px;background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);border-bottom:none;border-right:none;
-  border-radius:4px 0 0 0;transform:translateX(-50%) rotate(45deg);
-}
-.flyer-cloud-title{
-  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
-  color:var(--gold);margin-bottom:8px;
-}
-.flyer-channels{
-  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;
-}
-.flyer-channel{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:10px;font-weight:600;color:var(--text-2);
-  padding:4px 10px;border-radius:8px;
-  background:rgba(255,255,255,.04);border:1px solid var(--line);
-  transition:all .2s;
-}
-.flyer-channel:hover{border-color:var(--blue);color:var(--text)}
-.flyer-channel svg{width:14px;height:14px;flex-shrink:0}
-.flyer-cloud-note{font-size:9px;color:var(--muted);line-height:1.4}
-
-.flow-arrow{
-  display:flex;align-items:center;justify-content:center;
-  color:var(--muted);font-size:11px;font-weight:600;
-  gap:6px;padding:0 8px;
-  font-family:var(--mono);letter-spacing:.04em;
-}
-.flow-arrow svg{width:28px;height:28px;stroke:var(--blue);fill:none;stroke-width:1.5;opacity:.6}
-
-.flow-step{
-  text-align:center;padding:20px 16px;border-radius:16px;
-  border:1px solid var(--line);background:rgba(255,255,255,.02);
-  min-width:160px;
-}
-.flow-step-icon{
-  width:44px;height:44px;border-radius:12px;margin:0 auto 10px;
-  display:flex;align-items:center;justify-content:center;font-size:20px;
-}
-.flow-step h4{font-size:13px;font-weight:700;margin-bottom:3px}
-.flow-step p{font-size:10px;color:var(--muted);line-height:1.45}
-
-/* ═══════════════════════════════════════════════════════════════
-   2. REVIEW BOOSTER
-   ═══════════════════════════════════════════════════════════════ */
-#review-booster{padding:120px 0;position:relative}
-#review-booster::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--green),transparent);
-}
-.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-@media(max-width:860px){.review-grid{grid-template-columns:1fr;gap:32px}}
-
+/* WhatsApp Mockup */
 .wa-header{
   padding:10px 16px 8px;
   background:linear-gradient(180deg,#075e54,#064e45);
@@ -410,23 +310,211 @@ section{padding:100px 0}
   letter-spacing:.06em;
 }
 
-.review-flow .flow-visual{
-  grid-template-columns:auto 1fr auto 1fr auto;
+/* Amber WhatsApp variant (Late Order) */
+.wa-bubble.amber{
+  background:linear-gradient(135deg,#2a2818,#1f1c10);
+  border:1px solid rgba(222,165,0,.15);
+}
+.wa-bubble .wa-code-amber{
+  display:inline-block;margin-top:6px;padding:4px 10px;border-radius:6px;
+  background:rgba(222,165,0,.15);border:1px solid rgba(222,165,0,.25);
+  font-family:var(--mono);font-weight:700;font-size:13px;color:var(--amber);
+  letter-spacing:.06em;
+}
+
+/* Feature List */
+.feature-list{display:flex;flex-direction:column;gap:18px;margin-top:28px}
+.feature-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 16px;border-radius:14px;
+  border:1px solid transparent;
+  transition:border-color .3s,background .3s;
+}
+.feature-item:hover{border-color:var(--line-b);background:rgba(255,255,255,.02)}
+.feature-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.feature-item h4{font-size:14px;font-weight:700;margin-bottom:3px}
+.feature-item p{font-size:12px;color:var(--muted);line-height:1.55}
+
+/* Flow Diagrams */
+.flow-section{margin-top:80px}
+.flow-visual{
+  display:grid;grid-template-columns:auto 1fr auto 1fr auto;
+  gap:0;align-items:center;margin:40px 0 0;
 }
 @media(max-width:860px){
-  .review-flow .flow-visual{grid-template-columns:1fr;gap:24px;justify-items:center}
+  .flow-visual{
+    grid-template-columns:1fr;gap:24px;
+    justify-items:center;
+  }
+  .flow-arrow{transform:rotate(90deg) !important}
 }
+.flow-arrow{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:11px;font-weight:600;
+  gap:6px;padding:0 8px;
+  font-family:var(--mono);letter-spacing:.04em;
+}
+.flow-arrow svg{width:28px;height:28px;stroke:var(--blue);fill:none;stroke-width:1.5;opacity:.6}
+.flow-step{
+  text-align:center;padding:20px 16px;border-radius:16px;
+  border:1px solid var(--line);background:rgba(255,255,255,.02);
+  min-width:160px;
+}
+.flow-step-icon{
+  width:44px;height:44px;border-radius:12px;margin:0 auto 10px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.flow-step h4{font-size:13px;font-weight:700;margin-bottom:3px}
+.flow-step p{font-size:10px;color:var(--muted);line-height:1.45}
+
+/* Flyer + Flow */
+.flyer-wrapper{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+}
+.flyer-frame{
+  width:220px;position:relative;
+  border-radius:16px;overflow:hidden;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,255,.08),
+    0 0 80px rgba(216,192,138,.06);
+  transform:rotate(-2deg);
+  transition:transform .4s var(--ease),box-shadow .4s;
+}
+.flyer-frame:hover{
+  transform:rotate(0deg) scale(1.02);
+  box-shadow:
+    0 32px 80px rgba(0,0,0,.6),
+    0 0 0 1px rgba(216,192,138,.15),
+    0 0 120px rgba(216,192,138,.08);
+}
+.flyer-frame img{width:100%;display:block}
+
+.flyer-cloud{
+  position:relative;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;
+  padding:14px 18px;
+  max-width:230px;
+  text-align:center;
+}
+.flyer-cloud::before{
+  content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  width:16px;height:16px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);border-bottom:none;border-right:none;
+  border-radius:4px 0 0 0;transform:translateX(-50%) rotate(45deg);
+}
+.flyer-cloud-title{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gold);margin-bottom:8px;
+}
+.flyer-channels{
+  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;
+}
+.flyer-channel{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:600;color:var(--text-2);
+  padding:4px 10px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  transition:all .2s;
+}
+.flyer-channel:hover{border-color:var(--blue);color:var(--text)}
+.flyer-channel svg{width:14px;height:14px;flex-shrink:0}
+.flyer-cloud-note{font-size:9px;color:var(--muted);line-height:1.4}
+
+/* ROI Callout */
+.roi-card{
+  margin-top:40px;padding:24px 28px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
+  border:1px solid var(--line-b);position:relative;overflow:hidden;
+}
+.roi-card::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(600px 300px at var(--mx,50%) var(--my,0%),rgba(0,127,255,.05),transparent 60%);
+  opacity:0;transition:opacity .4s;
+}
+.roi-card:hover::before{opacity:1}
+.roi-stats{display:flex;gap:32px;flex-wrap:wrap}
+.roi-stat{text-align:center}
+.roi-stat-num{
+  font-size:clamp(28px,3vw,36px);font-weight:900;letter-spacing:-.03em;
+  line-height:1;margin-bottom:4px;
+}
+.roi-stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
 
 /* ═══════════════════════════════════════════════════════════════
-   INTERACTIVE SMS DEMO — Coupon Landing Style
+   ANALYTICS DASHBOARD
    ═══════════════════════════════════════════════════════════════ */
-#try-sms{padding:100px 0;position:relative}
-#try-sms::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+.dash-preview{
+  border-radius:20px;border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+  overflow:hidden;
+}
+.dash-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid var(--line);
+  flex-wrap:wrap;gap:10px;
+}
+.dash-topbar .title{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;
+}
+.dash-topbar .actions{display:flex;gap:6px}
+.action-btn{
+  font-size:10px;font-weight:600;padding:5px 12px;border-radius:8px;
+  border:1px solid var(--line-b);color:var(--muted);cursor:default;
+  transition:all .2s;
+}
+.kpi-row{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);
+}
+.kpi-card{
+  padding:18px 20px;background:var(--surface);
+  text-align:center;
+}
+.kpi-val{font-size:clamp(20px,2.5vw,28px);font-weight:900;letter-spacing:-.02em;line-height:1.2}
+.kpi-label{font-size:10px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.kpi-change{font-size:10px;font-weight:700;margin-top:4px}
+.kpi-change.up{color:var(--green)}
+@media(max-width:600px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+
+.dash-chart{padding:20px}
+.chart-bars{
+  display:flex;gap:4px;align-items:flex-end;height:120px;
+}
+.chart-bar{
+  flex:1;border-radius:4px 4px 0 0;
+  transition:height .6s var(--ease);min-width:0;
+}
+.chart-labels{
+  display:flex;gap:4px;margin-top:6px;
+}
+.chart-labels span{
+  flex:1;text-align:center;font-size:8px;color:var(--muted);
+  font-family:var(--mono);white-space:nowrap;overflow:hidden;
 }
 
-/* ─── Two-column coupon grid ───────────────────────────── */
+.improvements-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;
+}
+.improvement-card{
+  padding:18px 16px;border-radius:14px;
+  border:1px solid var(--line);background:rgba(255,255,255,.02);
+}
+.ic-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.ic-desc{font-size:11px;color:var(--muted);line-height:1.5}
+@media(max-width:860px){.improvements-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.improvements-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════════════════════════
+   INTERACTIVE SMS DEMO
+   ═══════════════════════════════════════════════════════════════ */
 .coupon-grid{
   width:min(980px,100%);margin:0 auto;
   display:grid;grid-template-columns:1.15fr .85fr;
@@ -441,8 +529,6 @@ section{padding:100px 0}
   box-shadow:0 20px 80px rgba(0,0,0,.55);
   overflow:hidden;position:relative;
 }
-
-/* ─── Hero card glow ───────────────────────────────────── */
 .coupon-hero::before{
   content:'';position:absolute;inset:0;pointer-events:none;opacity:.9;
   background:
@@ -454,8 +540,6 @@ section{padding:100px 0}
   position:relative;padding:26px 26px 22px;
   display:flex;flex-direction:column;height:100%;
 }
-
-/* ─── Brand bar ────────────────────────────────────────── */
 .coupon-top{
   display:flex;align-items:center;justify-content:space-between;
   gap:16px;padding-bottom:14px;
@@ -470,8 +554,6 @@ section{padding:100px 0}
   background:rgba(216,192,138,.08);
   padding:8px 10px;border-radius:999px;white-space:nowrap;
 }
-
-/* ─── Hero content ─────────────────────────────────────── */
 .coupon-hero h1{
   margin:18px 0 8px;
   font-size:clamp(28px,3.6vw,44px);
@@ -482,8 +564,6 @@ section{padding:100px 0}
   font-size:15px;line-height:1.55;max-width:54ch;
 }
 .coupon-sub strong{color:var(--text)}
-
-/* ─── Form ─────────────────────────────────────────────── */
 .coupon-form{margin-top:6px;display:grid;gap:12px;max-width:520px}
 .coupon-form label{font-size:13px;color:rgba(255,255,255,.78)}
 .input-group{
@@ -508,12 +588,9 @@ section{padding:100px 0}
   letter-spacing:.02em;
 }
 .input-group input::placeholder{color:rgba(255,255,255,.38)}
-
 .coupon-hint{
   color:rgba(255,255,255,.55);font-size:12px;line-height:1.4;margin-top:8px;
 }
-
-/* ─── Consent ──────────────────────────────────────────── */
 .consent-row{
   display:flex;align-items:flex-start;gap:10px;margin-top:4px;
 }
@@ -526,11 +603,8 @@ section{padding:100px 0}
 .checkbox.checked{background:var(--gold);border-color:var(--gold)}
 .checkbox.checked::after{content:'\2713';font-size:11px;color:#0b0b0c;font-weight:700}
 .consent-text{font-size:14px;color:rgba(255,255,255,.85);line-height:1.4;cursor:pointer}
-
 .field-error{font-size:13px;color:#ff5c5c;margin-top:4px;display:none}
 .field-error.show{display:block}
-
-/* ─── CTA button — gold ───────────────────────────────── */
 .cta-btn{
   border:0;border-radius:14px;padding:14px 16px;
   font-weight:800;font-size:15px;letter-spacing:.01em;cursor:pointer;
@@ -551,8 +625,6 @@ section{padding:100px 0}
   vertical-align:middle;margin-right:8px;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* ─── Status banner ────────────────────────────────────── */
 .demo-status{
   border:1px solid rgba(255,255,255,.14);
   background:rgba(255,255,255,.06);
@@ -572,8 +644,6 @@ section{padding:100px 0}
 .demo-status.err .status-dot{background:#ff5c5c;box-shadow:0 0 0 6px rgba(255,92,92,.12)}
 .status-title{font-weight:900;margin:0 0 2px}
 .status-desc{margin:0;color:rgba(255,255,255,.72);font-size:13px;line-height:1.45}
-
-/* ─── Foot link ────────────────────────────────────────── */
 .coupon-foot{
   margin-top:auto;color:rgba(255,255,255,.55);font-size:12px;line-height:1.5;
   padding-top:12px;
@@ -581,7 +651,7 @@ section{padding:100px 0}
 .coupon-foot a{color:rgba(255,255,255,.55);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25)}
 .coupon-foot a:hover{color:rgba(255,255,255,.8);text-decoration:underline}
 
-/* ─── Side panel — Klantenbestand ──────────────────────── */
+/* Side panel */
 .coupon-side-inner{
   padding:22px;height:100%;
   display:flex;flex-direction:column;gap:16px;
@@ -597,215 +667,136 @@ section{padding:100px 0}
 }
 .kb-header-text{font-size:14px;font-weight:700}
 .kb-header-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:1px}
-
-.kb-stat-row{display:flex;gap:10px}
+.kb-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .kb-stat{
-  flex:1;padding:12px;border-radius:14px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.03);
-  text-align:center;
+  text-align:center;padding:14px 8px;border-radius:12px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
 }
-.kb-stat-num{
-  font-size:22px;font-weight:900;letter-spacing:-.02em;
-  background:linear-gradient(180deg,var(--gold),var(--gold-dim));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.kb-stat-label{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
-
-.kb-benefit{
-  display:flex;gap:10px;align-items:flex-start;
-  padding:10px 12px;border-radius:12px;
-  border:1px solid rgba(255,255,255,.06);
-  background:rgba(255,255,255,.02);
-  transition:border-color .2s,background .2s;
-}
-.kb-benefit:hover{border-color:rgba(216,192,138,.2);background:rgba(216,192,138,.04)}
+.kb-stat-num{font-size:20px;font-weight:900;letter-spacing:-.02em;color:var(--gold)}
+.kb-stat-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;font-weight:600}
+.coupon-sep{height:1px;background:rgba(255,255,255,.07)}
+.kb-benefit{display:flex;gap:12px;align-items:flex-start}
 .kb-benefit-icon{
-  width:28px;height:28px;border-radius:8px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:13px;
-  background:rgba(216,192,138,.1);border:1px solid rgba(216,192,138,.2);
+  width:32px;height:32px;border-radius:8px;flex-shrink:0;
+  background:rgba(216,192,138,.08);border:1px solid rgba(216,192,138,.15);
+  display:flex;align-items:center;justify-content:center;font-size:14px;
 }
-.kb-benefit-title{font-size:12px;font-weight:700;margin-bottom:1px}
-.kb-benefit-desc{font-size:11px;color:rgba(255,255,255,.5);line-height:1.45}
-
-.coupon-sep{height:1px;background:rgba(255,255,255,.1);margin:4px 0}
+.kb-benefit-title{font-size:13px;font-weight:700;margin-bottom:2px}
+.kb-benefit-desc{font-size:11px;color:var(--muted);line-height:1.45}
 .demo-note{
-  text-align:center;font-size:11px;color:rgba(255,255,255,.55);margin-top:auto;line-height:1.5;
+  margin-top:auto;font-size:10px;color:var(--muted);
+  line-height:1.5;padding:12px;border-radius:10px;
+  background:rgba(255,255,255,.02);border:1px solid var(--line);
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   2. DASHBOARD V2
+   CTA SECTION
    ═══════════════════════════════════════════════════════════════ */
-.dash-preview{
-  border:1px solid var(--line-b);border-radius:16px;overflow:hidden;
-  background:#0D1117;
+.cta-section{
+  padding:100px 0;position:relative;text-align:center;
 }
-.dash-topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 20px;border-bottom:1px solid var(--line);
-  background:rgba(255,255,255,.02);
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(800px 500px at 30% 50%,rgba(0,127,255,.06),transparent 60%),
+    radial-gradient(600px 400px at 70% 50%,rgba(70,68,182,.05),transparent 60%);
+  pointer-events:none;
 }
-.dash-topbar .title{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
-.dash-topbar .actions{display:flex;gap:8px}
-.dash-topbar .action-btn{
-  font-size:10px;padding:5px 10px;border-radius:6px;
-  border:1px solid var(--line-b);background:rgba(255,255,255,.04);
-  color:var(--muted);font-family:var(--mono);
+.cta-card{
+  position:relative;max-width:640px;margin:0 auto;padding:48px 40px;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+  border:1px solid var(--line-b);
+  box-shadow:0 40px 80px rgba(0,0,0,.4);
 }
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
-.kpi-card{background:#0D1117;padding:18px 16px;text-align:center}
-.kpi-val{font-family:var(--mono);font-size:22px;font-weight:700;line-height:1}
-.kpi-label{font-size:10px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.06em}
-.kpi-change{font-size:10px;margin-top:4px;font-weight:600}
-.kpi-change.up{color:var(--green)}
-.kpi-change.down{color:var(--red)}
-.dash-chart{padding:20px;min-height:200px;position:relative}
-.chart-bars{display:flex;align-items:flex-end;gap:4px;height:160px;padding:0 4px}
-.chart-bar{flex:1;border-radius:3px 3px 0 0;position:relative;transition:height .6s var(--ease)}
-.chart-labels{display:flex;gap:4px;padding:6px 4px 0;font-family:var(--mono);font-size:8px;color:var(--muted)}
-.chart-labels span{flex:1;text-align:center}
-@media(max-width:600px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
-
-.improvements-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:24px;
-}
-.improvement-card{
-  padding:16px;border-radius:12px;border:1px solid var(--line);
-  background:rgba(255,255,255,.02);font-size:12px;
-}
-.improvement-card .ic-title{font-weight:700;margin-bottom:4px;font-size:13px}
-.improvement-card .ic-desc{color:var(--muted);font-size:11px;line-height:1.5}
-
-/* ═══════════════════════════════════════════════════════════════
-   3-5. MORE FEATURES
-   ═══════════════════════════════════════════════════════════════ */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:860px){.features-grid{grid-template-columns:1fr}}
-
-.fcard{
-  border:1px solid var(--line);border-radius:20px;
-  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-  padding:28px 24px;display:flex;flex-direction:column;
-  transition:border-color .3s,transform .3s;
-}
-.fcard:hover{border-color:var(--line-b);transform:translateY(-2px)}
-.fcard-icon{
-  width:44px;height:44px;border-radius:12px;margin-bottom:18px;
-  display:flex;align-items:center;justify-content:center;font-size:20px;
-}
-.fcard h3{font-size:16px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
-.fcard p{font-size:13px;color:var(--text-2);line-height:1.6;flex:1}
-.fcard-detail{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
-
-/* Timing visualization */
-.timing-mini{font-family:var(--mono);font-size:10px;margin-top:8px}
-.timing-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.timing-label{width:60px;color:var(--muted);text-align:right;flex-shrink:0;font-size:9px}
-.timing-track{flex:1;height:18px;border-radius:4px;background:rgba(255,255,255,.04);position:relative;overflow:hidden}
-.timing-block{
-  position:absolute;height:100%;border-radius:4px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:8px;font-weight:700;color:rgba(0,0,0,.8);
-}
-
-/* Reconnect mock */
-.reconnect-mock{
-  margin-top:12px;padding:14px;border-radius:12px;
-  border:1px solid rgba(51,153,255,.2);
-  background:linear-gradient(180deg,rgba(0,127,255,.06),transparent);
-  font-size:11px;
-}
-.reconnect-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.reconnect-icon{
-  width:28px;height:28px;border-radius:8px;
-  background:rgba(0,127,255,.12);border:1px solid rgba(0,127,255,.25);
-  display:flex;align-items:center;justify-content:center;font-size:12px;
-}
-.reconnect-qr{
-  width:52px;height:52px;background:white;border-radius:8px;
-  margin:0 auto;position:relative;
-  box-shadow:0 8px 24px rgba(0,0,0,.3);
-}
-.reconnect-qr::before,.reconnect-qr::after{
-  content:'';position:absolute;width:14px;height:14px;border:2px solid var(--blue-light);
-}
-.reconnect-qr::before{top:-3px;left:-3px;border-right:none;border-bottom:none;border-radius:4px 0 0 0}
-.reconnect-qr::after{bottom:-3px;right:-3px;border-left:none;border-top:none;border-radius:0 0 4px 0}
-.reconnect-qr-inner{
-  position:absolute;inset:6px;background:var(--bg);border-radius:2px;
-  display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);gap:1px;padding:2px;
-}
-.qrc{border-radius:1px}.qrc.d{background:var(--surface-2)}.qrc.l{background:white}
-
-/* Device mockups */
-.device-strip{display:flex;gap:10px;justify-content:center;margin-top:12px}
-.device-box{
-  width:40px;height:70px;border-radius:8px;border:1.5px solid var(--line-b);
-  background:rgba(255,255,255,.03);position:relative;overflow:hidden;
-}
-.device-box.tablet{width:56px;height:42px;border-radius:6px}
-.device-box .screen{
-  position:absolute;inset:3px;border-radius:5px;
-  background:linear-gradient(180deg,rgba(0,127,255,.08),rgba(70,68,182,.06));
-}
-.device-box.tablet .screen{border-radius:3px}
-
-/* ═══════════════════════════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════════════════════════ */
-.site-footer{
-  padding:60px 24px;text-align:center;
-  border-top:1px solid var(--line);margin-top:40px;
-}
-.footer-brand{
-  display:flex;justify-content:center;margin-bottom:10px;
-}
-.footer-brand svg{height:36px;width:auto}
-.footer-sub{font-size:13px;color:var(--muted);margin-bottom:16px}
-.footer-cta{
+.cta-card h2{font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-.03em;margin-bottom:12px}
+.cta-card p{color:var(--text-2);font-size:15px;line-height:1.6;max-width:44ch;margin:0 auto 28px}
+.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{
   display:inline-flex;align-items:center;gap:8px;
-  padding:10px 20px;border-radius:10px;
-  border:1px solid var(--line-b);background:rgba(255,255,255,.03);
-  font-size:13px;color:var(--text-2);font-weight:600;
-  transition:all .2s;cursor:pointer;text-decoration:none;
+  padding:14px 28px;border-radius:14px;
+  font-weight:800;font-size:15px;cursor:pointer;border:0;
+  color:#0b0b0c;
+  background:linear-gradient(180deg,var(--blue-light),var(--blue));
+  box-shadow:0 18px 45px rgba(0,127,255,.2);
+  transition:transform .12s,filter .12s;font-family:var(--font);
+  text-decoration:none;
 }
-.footer-cta:hover{border-color:var(--blue);color:var(--text);background:rgba(0,127,255,.05);text-decoration:none}
+.btn-primary:hover{transform:translateY(-1px);filter:brightness(1.05);text-decoration:none;color:#0b0b0c}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:14px;
+  font-weight:700;font-size:15px;cursor:pointer;
+  color:var(--text);
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line-b);
+  transition:all .2s;font-family:var(--font);
+  text-decoration:none;
+}
+.btn-secondary:hover{border-color:rgba(0,127,255,.3);background:rgba(0,127,255,.06);text-decoration:none}
+
+/* Footer */
+.site-footer{
+  padding:48px 24px;text-align:center;
+  border-top:1px solid var(--line);
+}
+.footer-brand{font-size:18px;font-weight:900;letter-spacing:-.02em;margin-bottom:4px}
+.footer-sub{font-size:12px;color:var(--muted);margin-bottom:16px}
+.footer-cta{
+  font-size:11px;color:var(--muted);font-weight:600;
+  text-decoration:none;transition:color .2s;
+}
+.footer-cta:hover{color:var(--text);text-decoration:none}
+
+/* ═══════════════════════════════════════════════════════════════
+   CTA BANNER (inline between sections)
+   ═══════════════════════════════════════════════════════════════ */
+.cta-banner{
+  margin-top:-10px;margin-bottom:24px;padding:16px 20px;border-radius:14px;
+  border:1px solid rgba(0,127,255,.15);
+}
+.cta-banner p:first-child{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+.cta-banner p:last-child{font-size:13px;color:var(--text-2);line-height:1.5}
 </style>
 </head>
-<body>
+<body id="top">
 
-<!-- ─── Sticky Header ─────────────────────────────────────── -->
+<!-- ═══════════════════════════════════════════════════════════
+     STICKY HEADER
+     ═══════════════════════════════════════════════════════════ -->
 <header class="topbar">
-  <div class="topbar-brand"><svg viewBox="0 0 241 70" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M84.428 44.4733V21.4438H90.0169V44.4733H84.428ZM87.0044 26.3589V21.4438H100.283V26.3985H87.0044V26.3589ZM87.0044 35.6341V30.9965H98.9353V35.6737H87.0044V35.6341Z" fill="white"/><path d="M111.936 44.7903C110.113 44.7903 108.488 44.3939 107.101 43.6011C105.674 42.8084 104.564 41.7382 103.731 40.3905C102.899 39.0428 102.503 37.4573 102.503 35.7132C102.503 33.9692 102.899 32.3837 103.731 31.036C104.564 29.6883 105.674 28.6181 107.101 27.8254C108.528 27.0326 110.153 26.6362 111.936 26.6362C113.76 26.6362 115.385 27.0326 116.772 27.8254C118.16 28.6181 119.309 29.6883 120.102 31.036C120.895 32.3837 121.331 33.9692 121.331 35.7132C121.331 37.4573 120.934 39.0428 120.102 40.3905C119.309 41.7382 118.16 42.8084 116.772 43.6011C115.385 44.3939 113.76 44.7903 111.936 44.7903ZM111.936 40.2716C112.729 40.2716 113.443 40.0734 114.037 39.677C114.632 39.2806 115.147 38.7257 115.504 38.0519C115.861 37.378 116.019 36.5853 115.979 35.7132C116.019 34.8412 115.821 34.0485 115.504 33.3746C115.147 32.7008 114.671 32.1459 114.037 31.7495C113.403 31.3531 112.729 31.1549 111.936 31.1549C111.144 31.1549 110.43 31.3531 109.796 31.7495C109.162 32.1459 108.686 32.7008 108.329 33.3746C107.973 34.0485 107.814 34.8412 107.854 35.7132C107.814 36.5853 108.012 37.378 108.329 38.0519C108.686 38.7257 109.162 39.2806 109.796 39.677C110.43 40.0734 111.144 40.2716 111.936 40.2716Z" fill="white"/><path d="M133.024 44.7903C131.2 44.7903 129.575 44.3939 128.188 43.6011C126.761 42.8084 125.651 41.7382 124.819 40.3905C123.986 39.0428 123.59 37.4573 123.59 35.7132C123.59 33.9692 123.986 32.3837 124.819 31.036C125.651 29.6883 126.761 28.6181 128.188 27.8254C129.615 27.0326 131.24 26.6362 133.024 26.6362C134.847 26.6362 136.472 27.0326 137.859 27.8254C139.247 28.6181 140.396 29.6883 141.189 31.036C141.982 32.3837 142.418 33.9692 142.418 35.7132C142.418 37.4573 142.021 39.0428 141.189 40.3905C140.396 41.7382 139.247 42.8084 137.859 43.6011C136.472 44.3939 134.847 44.7903 133.024 44.7903ZM133.024 40.2716C133.816 40.2716 134.53 40.0734 135.124 39.677C135.719 39.2806 136.234 38.7257 136.591 38.0519C136.948 37.378 137.106 36.5853 137.067 35.7132C137.106 34.8412 136.908 34.0485 136.591 33.3746C136.234 32.7008 135.759 32.1459 135.124 31.7495C134.49 31.3531 133.816 31.1549 133.024 31.1549C132.231 31.1549 131.517 31.3531 130.883 31.7495C130.249 32.1459 129.773 32.7008 129.417 33.3746C129.06 34.0485 128.901 34.8412 128.941 35.7132C128.901 36.5853 129.099 37.378 129.417 38.0519C129.773 38.7257 130.249 39.2806 130.883 39.677C131.517 40.0734 132.231 40.2716 133.024 40.2716Z" fill="white"/><path d="M152.486 44.83C150.979 44.83 149.632 44.4336 148.443 43.6805C147.254 42.8877 146.342 41.8175 145.668 40.4698C144.994 39.0825 144.637 37.5366 144.637 35.7926C144.637 34.0485 144.994 32.463 145.668 31.1154C146.342 29.728 147.293 28.6578 148.482 27.8651C149.671 27.0723 151.019 26.6759 152.565 26.6759C153.358 26.6759 154.111 26.7949 154.824 27.0327C155.538 27.2705 156.212 27.5876 156.806 28.0236C157.401 28.4596 157.876 28.9353 158.273 29.4506C158.63 30.0055 158.867 30.5604 158.947 31.1154L157.678 31.3928V20.1357H162.99V44.4732H158.075L157.797 40.5095L158.867 40.668C158.788 41.2229 158.59 41.7382 158.233 42.2535C157.876 42.7688 157.401 43.2048 156.846 43.6012C156.291 43.9976 155.617 44.275 154.904 44.5129C154.071 44.7111 153.318 44.83 152.486 44.83ZM153.873 40.4698C154.666 40.4698 155.379 40.2716 155.974 39.8753C156.568 39.4789 157.004 38.924 157.321 38.2105C157.639 37.497 157.797 36.7043 157.797 35.753C157.797 34.8017 157.639 33.9693 157.321 33.2558C157.004 32.5423 156.529 31.9874 155.974 31.591C155.379 31.1946 154.666 30.9964 153.873 30.9964C153.08 30.9964 152.367 31.1946 151.772 31.591C151.178 31.9874 150.742 32.5423 150.425 33.2558C150.107 33.9693 149.949 34.8017 149.949 35.753C149.949 36.7043 150.107 37.5366 150.425 38.2105C150.742 38.924 151.217 39.4789 151.772 39.8753C152.327 40.2716 153.041 40.4698 153.873 40.4698Z" fill="white"/><path d="M172.978 44.4733V26.3589H166.121V21.4438H185.583V26.3985H178.567V44.5129H172.978V44.4733Z" fill="white"/><path d="M187.01 44.4731V26.993H192.004L192.242 32.7008L191.251 31.6306C191.529 30.6793 191.965 29.8469 192.559 29.0938C193.154 28.3406 193.867 27.7461 194.7 27.3101C195.492 26.8741 196.364 26.6362 197.316 26.6362C197.712 26.6362 198.069 26.6759 198.426 26.7155C198.782 26.7948 199.06 26.8741 199.377 26.9533L197.91 32.7801C197.673 32.6215 197.355 32.5026 196.959 32.3837C196.563 32.3044 196.127 32.2251 195.691 32.2251C195.215 32.2251 194.739 32.3044 194.343 32.463C193.907 32.6215 193.59 32.8593 193.273 33.1764C192.995 33.4935 192.757 33.8503 192.599 34.2467C192.44 34.6827 192.361 35.1187 192.361 35.6736V44.4335H187.01V44.4731Z" fill="white"/><path d="M207.701 44.7505C206.234 44.7505 204.926 44.3542 203.777 43.601C202.627 42.8083 201.716 41.7381 201.042 40.3904C200.368 39.0031 200.011 37.4572 200.011 35.7528C200.011 33.9691 200.368 32.4232 201.042 31.0359C201.716 29.6882 202.667 28.618 203.856 27.8253C205.045 27.0325 206.393 26.6758 207.899 26.6758C208.732 26.6758 209.485 26.7947 210.198 27.0325C210.872 27.2703 211.506 27.6271 212.021 28.0235C212.537 28.4595 213.012 28.9351 213.369 29.4901C213.726 30.045 214.003 30.6395 214.201 31.2737L213.131 31.1548V26.9929H218.363V44.4731H213.012V40.2715L214.201 40.2318C214.043 40.866 213.726 41.421 213.329 41.9759C212.933 42.5308 212.457 43.0065 211.863 43.4425C211.308 43.8785 210.674 44.1956 209.96 44.4334C209.247 44.6316 208.494 44.7505 207.701 44.7505ZM209.128 40.3111C209.921 40.3111 210.634 40.1129 211.229 39.7562C211.823 39.3995 212.299 38.8445 212.616 38.1707C212.933 37.4968 213.092 36.6645 213.092 35.7132C213.092 34.7619 212.933 33.9691 212.616 33.2556C212.299 32.5818 211.823 32.0269 211.229 31.6305C210.634 31.2341 209.921 31.0359 209.128 31.0359C208.335 31.0359 207.661 31.2341 207.067 31.6305C206.472 32.0269 206.036 32.5421 205.719 33.2556C205.402 33.9295 205.243 34.7619 205.243 35.7132C205.243 36.6645 205.402 37.4572 205.719 38.1707C206.036 38.8445 206.512 39.3995 207.067 39.7562C207.661 40.1526 208.375 40.3111 209.128 40.3111Z" fill="white"/><path d="M230.611 44.7903C228.907 44.7903 227.401 44.3939 226.053 43.6011C224.705 42.8084 223.675 41.7382 222.882 40.3508C222.089 38.9635 221.733 37.4177 221.733 35.7132C221.733 33.9692 222.129 32.4233 222.882 31.0756C223.675 29.6883 224.705 28.6181 226.053 27.8254C227.401 27.0326 228.907 26.6362 230.611 26.6362C232.157 26.6362 233.584 26.9137 234.892 27.4686C236.2 28.0235 237.231 28.7767 237.984 29.7676L235.13 33.1764C234.813 32.8197 234.456 32.5026 234.06 32.1855C233.624 31.8684 233.188 31.6306 232.673 31.472C232.157 31.3135 231.642 31.1946 231.087 31.1946C230.255 31.1946 229.502 31.3927 228.867 31.7891C228.233 32.1855 227.718 32.7008 227.401 33.3746C227.044 34.0485 226.886 34.8412 226.886 35.7132C226.886 36.5456 227.084 37.2987 227.44 37.9726C227.797 38.6464 228.312 39.2014 228.947 39.5977C229.581 39.9941 230.294 40.1923 231.127 40.1923C231.682 40.1923 232.237 40.113 232.712 39.9941C233.188 39.8356 233.624 39.6374 234.06 39.3599C234.456 39.0824 234.853 38.7257 235.209 38.2897L238.024 41.7382C237.271 42.6895 236.24 43.4426 234.932 43.9579C233.545 44.5128 232.118 44.7903 230.611 44.7903Z" fill="white"/><path d="M84.4282 62.1916V53.3128H85.8155V62.1916H84.4282ZM85.0624 54.6208V53.3128H90.2153V54.6208H85.0624ZM85.0624 58.3864V57.0783H89.6604V58.3864H85.0624ZM99.8472 62.3105C99.213 62.3105 98.6581 62.1916 98.1032 61.9538C97.5879 61.7159 97.1123 61.3988 96.7159 61.0025C96.3195 60.6061 96.0024 60.0908 95.8042 59.5755C95.606 59.0206 95.4871 58.426 95.4871 57.7522C95.4871 57.0783 95.606 56.4838 95.8042 55.9288C96.0024 55.3739 96.3195 54.8983 96.7159 54.5019C97.1123 54.1055 97.5879 53.7884 98.1032 53.5506C98.6185 53.3128 99.213 53.1938 99.8472 53.1938C100.481 53.1938 101.036 53.3128 101.591 53.5506C102.107 53.7884 102.582 54.1055 102.979 54.5019C103.375 54.8983 103.692 55.4136 103.89 55.9685C104.088 56.5234 104.207 57.118 104.207 57.7918C104.207 58.426 104.088 59.0602 103.89 59.6151C103.692 60.1701 103.375 60.6457 102.979 61.0817C102.582 61.4781 102.107 61.8348 101.591 62.033C101.076 62.1916 100.481 62.3105 99.8472 62.3105ZM99.8472 60.9628C100.283 60.9628 100.68 60.8835 101.036 60.725C101.393 60.5664 101.71 60.3286 101.988 60.0512C102.265 59.7737 102.463 59.4169 102.622 59.0206C102.78 58.6242 102.86 58.1882 102.86 57.7522C102.86 57.2765 102.78 56.8405 102.622 56.4838C102.463 56.0874 102.265 55.7307 101.988 55.4532C101.71 55.1757 101.433 54.9379 101.036 54.7794C100.64 54.6208 100.283 54.5415 99.8472 54.5415C99.4112 54.5415 99.0149 54.6208 98.6581 54.7794C98.3014 54.9379 97.9843 55.1757 97.7068 55.4532C97.4294 55.7307 97.2312 56.0874 97.0726 56.4838C96.9141 56.8801 96.8744 57.3162 96.8744 57.7918C96.8744 58.2675 96.9537 58.7035 97.0726 59.0999C97.2312 59.4962 97.4294 59.853 97.7068 60.1304C97.9843 60.4079 98.3014 60.6457 98.6581 60.8043C99.0545 60.8835 99.4509 60.9628 99.8472 60.9628ZM113.958 62.3105C113.324 62.3105 112.769 62.1916 112.214 61.9538C111.699 61.7159 111.223 61.3988 110.827 61.0025C110.43 60.6061 110.113 60.0908 109.915 59.5755C109.717 59.0206 109.598 58.426 109.598 57.7522C109.598 57.0783 109.717 56.4838 109.915 55.9288C110.113 55.3739 110.43 54.8983 110.827 54.5019C111.223 54.1055 111.699 53.7884 112.214 53.5506C112.729 53.3128 113.324 53.1938 113.958 53.1938C114.592 53.1938 115.147 53.3128 115.702 53.5506C116.218 53.7884 116.693 54.1055 117.09 54.5019C117.486 54.8983 117.803 55.4136 118.001 55.9685C118.199 56.5234 118.318 57.118 118.318 57.7918C118.318 58.426 118.199 59.0602 118.001 59.6151C117.803 60.1701 117.486 60.6457 117.09 61.0817C116.693 61.4781 116.218 61.8348 115.702 62.033C115.187 62.1916 114.592 62.3105 113.958 62.3105ZM113.958 60.9628C114.394 60.9628 114.791 60.8835 115.147 60.725C115.504 60.5664 115.821 60.3286 116.099 60.0512C116.376 59.7737 116.574 59.4169 116.733 59.0206C116.891 58.6242 116.971 58.1882 116.971 57.7522C116.971 57.2765 116.891 56.8405 116.733 56.4838C116.574 56.0874 116.376 55.7307 116.099 55.4532C115.821 55.1757 115.544 54.9379 115.147 54.7794C114.751 54.6208 114.394 54.5415 113.958 54.5415C113.522 54.5415 113.126 54.6208 112.769 54.7794C112.412 54.9379 112.095 55.1757 111.818 55.4532C111.54 55.7307 111.342 56.0874 111.184 56.4838C111.025 56.8801 110.985 57.3162 110.985 57.7918C110.985 58.2675 111.065 58.7035 111.184 59.0999C111.342 59.4962 111.54 59.853 111.818 60.1304C112.095 60.4079 112.412 60.6457 112.769 60.8043C113.126 60.8835 113.522 60.9628 113.958 60.9628ZM124.343 62.1916V53.3128H127.831C128.466 53.3128 129.021 53.4317 129.536 53.6299C130.051 53.8281 130.487 54.1452 130.844 54.5415C131.201 54.9379 131.478 55.4136 131.676 55.9685C131.874 56.5234 131.954 57.118 131.954 57.7522C131.954 58.3864 131.874 59.0206 131.676 59.5755C131.478 60.1304 131.201 60.6061 130.844 61.0025C130.487 61.3988 130.051 61.7159 129.536 61.9141C129.021 62.1123 128.426 62.2312 127.792 62.2312H124.343V62.1916ZM125.731 61.0025L125.691 60.8439H127.752C128.188 60.8439 128.585 60.7646 128.941 60.6457C129.298 60.4872 129.575 60.289 129.813 60.0115C130.051 59.734 130.249 59.4169 130.368 59.0206C130.487 58.6242 130.566 58.1882 130.566 57.7125C130.566 57.2369 130.487 56.8009 130.368 56.4045C130.249 56.0081 130.051 55.691 129.813 55.4136C129.575 55.1361 129.258 54.9379 128.941 54.7794C128.585 54.6208 128.188 54.5812 127.752 54.5812H125.651L125.731 54.4622V61.0025ZM145.748 62.1916V53.3128H149.236C149.87 53.3128 150.425 53.4317 150.94 53.6299C151.455 53.8281 151.891 54.1452 152.248 54.5415C152.605 54.9379 152.882 55.4136 153.081 55.9685C153.279 56.5234 153.358 57.118 153.358 57.7522C153.358 58.3864 153.279 59.0206 153.081 59.5755C152.882 60.1304 152.605 60.6061 152.248 61.0025C151.891 61.3988 151.455 61.7159 150.94 61.9141C150.425 62.1123 149.83 62.2312 149.196 62.2312H145.748V62.1916ZM147.135 61.0025L147.095 60.8439H149.156C149.592 60.8439 149.989 60.7646 150.346 60.6457C150.702 60.4872 150.98 60.289 151.218 60.0115C151.455 59.734 151.654 59.4169 151.773 59.0206C151.891 58.6242 151.971 58.1882 151.971 57.7125C151.971 57.2369 151.891 56.8009 151.773 56.4045C151.654 56.0081 151.455 55.691 151.218 55.4136C150.98 55.1361 150.663 54.9379 150.346 54.7794C149.989 54.6208 149.592 54.5812 149.156 54.5812H147.056L147.135 54.4622V61.0025ZM159.423 62.1916V53.3128H165.011V54.6208H160.77V60.8439H165.011V62.1519H159.423V62.1916ZM160.057 58.3071V56.9991H164.338V58.3071H160.057ZM171.433 62.1916V53.3128H172.82V60.8835H176.982V62.1916H171.433ZM182.848 62.1916V60.9232H184.275V54.5812H182.848V53.3128H187.09V54.5812H185.663V60.9232H187.09V62.1916H182.848ZM196.048 62.1916L192.48 53.3128H194.026L196.127 58.7035C196.246 58.9809 196.325 59.2188 196.404 59.4169C196.484 59.6151 196.563 59.8133 196.603 60.0115C196.642 60.2097 196.722 60.3286 196.761 60.4872C196.801 60.6457 196.88 60.8043 196.92 60.9628H196.603C196.642 60.7646 196.722 60.5664 196.801 60.3286C196.88 60.0908 196.959 59.853 197.039 59.6151C197.118 59.3377 197.237 59.0602 197.356 58.7431L199.338 53.3524H200.923L197.356 62.2312H196.048V62.1916ZM206.71 62.1916V53.3128H212.299V54.6208H208.058V60.8439H212.299V62.1519H206.71V62.1916ZM207.305 58.3071V56.9991H211.586V58.3071H207.305ZM218.681 62.1916V53.3128H222.446C222.962 53.3128 223.437 53.4317 223.834 53.6695C224.27 53.9073 224.587 54.2641 224.864 54.7001C225.102 55.1361 225.261 55.6117 225.261 56.127C225.261 56.6027 225.142 57.0387 224.864 57.4747C224.626 57.8711 224.27 58.2278 223.834 58.4656C223.398 58.7035 222.922 58.8224 222.407 58.8224H219.989V62.1519H218.681V62.1916ZM220.028 57.5143H222.565C222.803 57.5143 223.041 57.4351 223.239 57.3162C223.437 57.1972 223.596 57.0387 223.715 56.8009C223.834 56.563 223.873 56.3649 223.873 56.0874C223.873 55.8099 223.794 55.5325 223.675 55.2946C223.517 55.0568 223.358 54.8983 223.081 54.7794C222.843 54.6604 222.565 54.5812 222.248 54.5812H220.068V57.5143H220.028ZM223.953 62.1916L221.693 58.1882L223.12 57.8711L225.617 62.1916H223.953ZM233.426 62.1916V57.7522L233.505 58.3864L229.898 53.3128H231.563L234.298 57.2369L233.981 57.1972L236.438 53.3128H238.024L234.575 58.5449L234.774 57.6729V62.1916H233.426Z" fill="url(#paint0_linear_tb)"/><path d="M57.6726 30.3225C54.4223 30.3622 52.0441 28.0236 52.0441 24.7733C52.0441 21.6419 54.3827 19.3826 57.5537 19.4222C60.3283 19.4222 62.9444 21.959 63.0633 24.7336C63.1822 27.6272 60.6454 30.2829 57.6726 30.3225ZM33.0577 53.9862C31.9082 53.9862 30.9965 54.8979 30.9965 56.0473C30.9965 57.1968 31.9082 58.1085 33.0577 58.1085C34.2071 58.1085 35.1188 57.1968 35.1188 56.0473C35.1188 54.8979 34.2071 53.9862 33.0577 53.9862ZM55.1754 58.9805C57.633 63.3407 62.548 65.0451 67.6613 63.2614C71.2287 62.0326 74.0826 57.3157 73.4484 52.7971C73.0916 50.4981 71.9421 47.8424 70.2377 46.455C67.7009 44.3543 64.0146 43.0859 60.804 41.7778C60.249 41.54 58.5446 41.9364 58.8617 43.2444C59.7734 47.1289 60.6058 51.053 61.5967 54.8979C61.8345 55.8888 62.5084 56.8401 64.2128 56.4041C65.9569 56.0077 66.4325 53.4709 64.7281 52.6781C64.7281 52.6781 64.411 50.181 63.8561 48.9522C68.0577 49.5468 70.0792 52.6385 68.89 55.7302C68.018 58.0292 65.4019 59.6147 63.0633 59.2976C60.7247 58.9409 58.9806 57.7518 58.3861 53.6691C58.0293 51.2512 57.7519 49.309 57.3555 46.8911C53.5899 50.1017 52.8368 54.8186 55.1754 58.9805ZM50.4189 34.7223C51.3702 35.634 56.7213 39.5581 56.7213 39.5581C56.7213 39.5581 62.3498 39.5977 65.3623 39.5977C67.3442 39.5977 68.6522 38.8843 68.6522 37.2195C68.6522 35.4358 67.6216 34.8016 65.7587 34.6827C63.3011 34.5638 60.0112 34.643 57.1177 34.643L49.0712 28.3803C49.0712 28.3803 49.0712 28.3803 44.4336 30.9171C41.3023 32.2251 38.8447 33.4539 36.3476 34.9998C33.4144 36.8231 35.0792 39.8752 37.3782 40.2319C41.1437 41.3418 44.3147 42.2535 47.8028 43.284C45.9399 46.7721 42.65 52.8763 42.0157 53.9466C45.0282 53.8276 47.7236 53.6295 47.7236 53.6295C50.1811 49.309 52.5197 45.0281 54.9376 40.7076C51.8855 39.2806 49.1109 37.933 46.257 36.5853C50.4586 34.643 50.4189 34.7223 50.4189 34.7223ZM32.582 47.446C29.0543 47.5649 26.1607 50.1413 25.249 53.8276C24.3374 57.5932 26.0814 61.8344 29.2524 63.6181C31.9478 65.164 36.0701 65.0054 38.2502 62.9839C40.0339 61.3191 40.3113 60.2489 40.3113 60.2489C41.9365 60.2093 47.2479 60.2489 48.437 60.2489C49.864 60.2489 51.4495 60.3678 51.4495 58.5049C51.4495 56.7608 49.7054 56.8797 48.2389 56.8797C45.821 56.8797 41.3419 56.8401 38.0916 56.9194C38.0916 56.9194 37.8538 58.0689 36.9025 59.2976C35.1981 61.4381 32.3045 61.6362 30.1245 59.9715C28.3011 58.5445 28.0633 55.7302 28.8957 53.7484C30.3623 50.3395 35.9512 50.0224 37.8934 53.9466C37.8934 53.9466 39.0033 53.9466 40.787 53.9466C39.3204 49.0711 36.625 47.2874 32.582 47.446ZM51.5288 19.3826C51.5288 19.3826 51.6477 13.0406 46.8119 10.1866C41.9761 7.33274 39.8753 11.9307 29.7281 2.77441C29.7281 2.77441 28.8561 19.8186 47.565 18.5502C47.565 18.5502 46.5741 16.1323 41.5797 14.8242C41.5401 14.8639 46.8515 13.9126 51.5288 19.3826ZM24.8923 17.9556C24.8923 17.1629 24.2581 16.5287 23.4654 16.5287H16.7666C15.9738 16.5287 15.3396 17.1629 15.3396 17.9556C15.3396 18.7484 15.9738 19.3826 16.7666 19.3826H23.4654C24.2581 19.3826 24.8923 18.7484 24.8923 17.9556ZM43.8787 27.0723C43.8787 26.2795 43.2445 25.6453 42.4518 25.6453H11.4552C10.6624 25.6453 10.0282 26.2795 10.0282 27.0723C10.0282 27.865 10.6624 28.4992 11.4552 28.4992H42.4518C43.2445 28.4992 43.8787 27.865 43.8787 27.0723ZM28.7768 36.506C28.7768 35.7133 28.1426 35.0791 27.3498 35.0791H14.1902C13.3974 35.0791 12.7632 35.7133 12.7632 36.506C12.7632 37.2988 13.3974 37.933 14.1902 37.933H27.3498C28.1426 37.933 28.7768 37.2591 28.7768 36.506ZM23.1879 46.0587C23.1879 45.2659 22.5537 44.6317 21.7609 44.6317H5.15278C4.36003 44.6317 3.72583 45.2659 3.72583 46.0587C3.72583 46.8514 4.36003 47.4856 5.15278 47.4856H21.8006C22.5537 47.4856 23.1879 46.8514 23.1879 46.0587Z" fill="url(#paint1_linear_tb)"/><defs><linearGradient id="paint0_linear_tb" x1="161.241" y1="53.772" x2="161.241" y2="62.8439" gradientUnits="userSpaceOnUse"><stop stop-color="#2AA5F8"/><stop offset="1" stop-color="#5ED6D6"/></linearGradient><linearGradient id="paint1_linear_tb" x1="36.8857" y1="6.84666" x2="36.8857" y2="80.1619" gradientUnits="userSpaceOnUse"><stop stop-color="#2AA5F8"/><stop offset="1" stop-color="#5ED6D6"/></linearGradient></defs></svg></div>
-  <div class="topbar-tag">NIEUW &middot; FEB 2026</div>
+  <a href="#top" class="topbar-brand" style="text-decoration:none">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="110" height="28" viewBox="0 335.5 612 121"><path fill="#fff" d="M22.866,345.363v13.287h39.216v87.619h100.906V345.363H22.866z M149.701,432.982H75.369v-74.31h74.31 v74.31H149.701z"/><rect x="103.117" y="386.697" fill="#fff" width="18.514" height="18.514"/><path fill="#fff" d="M212.843,357.636c-2.971,0-5.273,0.599-6.909,1.773c-1.635,1.175-2.464,2.948-2.464,5.296 c0,2.165,1.198,4.076,3.569,5.711c2.372,1.635,5.55,3.201,9.51,4.675c3.224,1.174,5.964,2.51,8.267,4.03 c2.28,1.52,4.191,3.592,5.711,6.263c1.52,2.648,2.279,6.033,2.279,10.109c0,3.523-0.921,6.793-2.74,9.787 c-1.819,2.993-4.49,5.388-8.013,7.139c-3.523,1.75-7.737,2.647-12.619,2.647c-4.076,0-8.129-0.599-12.159-1.818 c-4.03-1.198-7.76-3.04-11.214-5.527l5.941-10.478c2.349,1.728,5.043,3.155,8.06,4.261s5.757,1.681,8.151,1.681 c2.833,0,5.319-0.599,7.415-1.819c2.095-1.197,3.132-3.154,3.132-5.872c0-3.523-3.316-6.585-9.925-9.188 c-3.892-1.543-7.139-3.04-9.741-4.444c-2.602-1.428-4.836-3.454-6.724-6.125c-1.888-2.648-2.833-5.987-2.833-10.017 c0-5.872,1.935-10.615,5.803-14.185c3.869-3.592,9.003-5.527,15.451-5.849c5.066,0,9.303,0.576,12.711,1.727 c3.408,1.151,6.701,2.763,9.925,4.859l-5.112,10.293C222.376,359.271,217.218,357.636,212.843,357.636z"/><path fill="#fff" d="M334.911,414.33h-13.448v-25.676h-30.511v25.676h-13.448v-68.276h13.448v29.613h30.511v-29.613h13.448 V414.33z"/><path fill="#fff" d="M397.522,346.054v68.276h-13.448v-68.276H397.522z"/><path fill="#fff" d="M471.072,373.778l2.049-2.602l22.268-25.146h17.433l-28.209,30.604l28.301,37.673H495.85l-21.047-29.129 l-3.362,3.362v25.791h-13.632v-68.276h13.632v24.294L471.072,373.778z"/><path fill="#fff" d="M579.232,346.054v68.276h-13.448v-68.276H579.232z"/></svg>
+  </a>
+  <nav class="topbar-nav">
+    <a href="#sms">SMS</a>
+    <a href="#review">Reviews</a>
+    <a href="#late-order">Late Order</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#demo">Demo</a>
+  </nav>
+  <div class="topbar-tag">Marketing Suite</div>
 </header>
 
 <!-- ═══════════════════════════════════════════════════════════
      HERO
      ═══════════════════════════════════════════════════════════ -->
-<section class="hero" id="top">
+<section class="hero">
   <div class="hero-inner">
-    <div class="pill pill-blue r" style="margin-bottom:24px">
-      <span style="width:6px;height:6px;border-radius:50%;background:var(--blue-light);animation:pulse 2s infinite"></span>
-      NIEUWE UPDATE
+    <div class="r" style="margin-bottom:18px">
+      <span class="pill pill-blue">Marketing Suite</span>
     </div>
-    <h1 class="r" style="transition-delay:.15s">
-      Wat is er<br><span class="g">nieuw?</span>
-    </h1>
-    <p class="hero-sub r" style="transition-delay:.3s">
-      Meer klanten bereiken via SMS, automatisch reviews verzamelen, een compleet vernieuwd dashboard, real-time koerier-inzichten en verbeterde gebruiksvriendelijkheid op elk scherm.
+    <h1 class="r" style="transition-delay:.1s">Meer omzet<br>met <span class="g">slimme marketing</span></h1>
+    <p class="hero-sub r" style="transition-delay:.2s">
+      Automatische SMS-campagnes, review boosters en compensatie bij late bezorging. Alles om je klanten terug te laten komen.
     </p>
-    <div class="hero-chips r" style="transition-delay:.45s">
-      <a href="#sms" class="hero-chip"><em>01</em> SMS Marketing</a>
-      <a href="#review-booster" class="hero-chip"><em>02</em> Review Booster</a>
-      <a href="#dashboard" class="hero-chip"><em>03</em> Dashboard V2</a>
-      <a href="#more" class="hero-chip"><em>04</em> Koerier Timing</a>
-      <a href="#more" class="hero-chip"><em>05</em> Herverbinden</a>
-      <a href="#more" class="hero-chip"><em>06</em> Redesigns</a>
+    <div class="hero-chips r" style="transition-delay:.35s">
+      <a href="#sms" class="hero-chip"><em>01</em> SMS Campagnes</a>
+      <a href="#review" class="hero-chip"><em>02</em> Review Booster</a>
+      <a href="#late-order" class="hero-chip"><em>03</em> Late Order Compensatie</a>
     </div>
   </div>
-  <div class="scroll-hint r" style="transition-delay:.65s">
+  <div class="scroll-hint r" style="transition-delay:.5s">
     <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
     Scroll
   </div>
@@ -868,7 +859,7 @@ section{padding:100px 0}
             <div style="padding:8px 16px 4px;font-size:12px;font-weight:700;color:var(--text-2)">Berichten</div>
             <div class="phone-messages" id="phoneMessages">
               <div class="sms-bubble" id="sms1">
-                <div style="font-weight:700;margin-bottom:4px;color:var(--gold);font-size:11px">FoodTrac — Shiki Sushi</div>
+                <div style="font-weight:700;margin-bottom:4px;color:var(--gold);font-size:11px">FoodTrac &mdash; Shiki Sushi</div>
                 Je &euro;7,50 korting is actief<br>
                 Code: <span class="code">4Ik2ps6p2</span>
                 <div style="margin-top:4px;font-size:10px;color:var(--text-2);line-height:1.5">
@@ -959,9 +950,370 @@ section{padding:100px 0}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     PROBEER HET UIT — INTERACTIVE SMS DEMO (Coupon Landing Style)
+     2. REVIEW BOOSTER
      ═══════════════════════════════════════════════════════════ -->
-<section id="try-sms">
+<section id="review" style="position:relative">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)"></div>
+  <div class="wrap">
+    <div class="section-grid reversed">
+      <!-- WhatsApp phone mockup (left on desktop) -->
+      <div class="r" style="transition-delay:.35s">
+        <div class="phone-frame" id="reviewPhone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background:#0b141a">
+            <div class="phone-status">
+              <span>20:14</span>
+              <span style="display:flex;gap:4px;align-items:center">
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="3.5" y="4" width="2.5" height="6" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="7" y="2" width="2.5" height="8" rx="0.5" fill="rgba(255,255,255,.7)"/><rect x="10.5" y="0" width="2.5" height="10" rx="0.5" fill="white"/></svg>
+                <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><rect x="0" y="1" width="14" height="8" rx="1.5" stroke="rgba(255,255,255,.5)" stroke-width="1"/><rect x="1.5" y="2.5" width="9" height="5" rx="0.5" fill="var(--green)"/><rect x="15" y="3" width="2" height="4" rx="0.5" fill="rgba(255,255,255,.3)"/></svg>
+              </span>
+            </div>
+            <div class="wa-header">
+              <div class="wa-header-avatar">FT</div>
+              <div>
+                <div class="wa-header-name">FoodTrac &mdash; Shiki Sushi</div>
+                <div class="wa-header-sub">zakelijk account</div>
+              </div>
+            </div>
+            <div class="wa-chat">
+              <div class="wa-bubble" id="wa1">
+                Bedankt voor je bestelling bij <strong>Shiki Sushi</strong>! &#127843;<br><br>
+                We hopen dat je ervan genoten hebt. Laat een review achter:<br>
+                <span style="color:var(--green);text-decoration:underline">g.page/shiki-sushi/review</span><br><br>
+                Als bedankje ontvang je een kortingscode &#127873;
+                <div class="wa-time">20:14 &#10003;&#10003;</div>
+              </div>
+              <div class="wa-bubble" id="wa2">
+                Bedankt voor je review! &#11088;<br><br>
+                Hier is je kortingscode:<br>
+                <span class="wa-code">REVIEW-7K9X</span><br><br>
+                Bestel opnieuw via:<br>
+                <span style="color:var(--green);text-decoration:underline">www.restaurantshiki.com</span>
+                <div class="wa-time">20:32 &#10003;&#10003;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content (right on desktop) -->
+      <div>
+        <div class="label r" style="color:var(--green)">02 &mdash; Review Booster</div>
+        <h2 class="stitle r" style="transition-delay:.1s">Automatisch meer<br>Google Reviews</h2>
+        <p class="sdesc r" style="transition-delay:.2s">
+          Na elke succesvolle bezorging ontvangt je klant automatisch een WhatsApp-bericht met een review-link. Plaats een review en ontvang een kortingscode als beloning.
+        </p>
+
+        <div class="cta-banner r" style="transition-delay:.25s;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.04));border-color:rgba(34,197,94,.15)">
+          <p>Wil je dit ook voor jouw restaurant?</p>
+          <p>Neem contact op met FoodTrac en we zetten het voor je op. <a href="https://www.foodtrac.nl" style="color:var(--green);font-weight:600">www.foodtrac.nl</a></p>
+        </div>
+
+        <div class="feature-list r" style="transition-delay:.3s">
+          <div class="feature-item">
+            <div class="feature-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128236;</div>
+            <div>
+              <h4>Automatisch na bezorging</h4>
+              <p>WhatsApp-bericht naar de klant zodra de bestelling op tijd is afgeleverd.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#11088;</div>
+            <div>
+              <h4>Review + beloning</h4>
+              <p>Klant plaatst review en ontvangt automatisch een kortingscode voor de volgende bestelling.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" style="background:var(--blue-glow);border:1px solid rgba(0,127,255,.2)">&#128202;</div>
+            <div>
+              <h4>Campagne statistieken</h4>
+              <p>Berichten verstuurd, reviews ontvangen, codes verzilverd &mdash; alles in je dashboard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Flow -->
+    <div class="flow-section">
+      <div style="text-align:center;margin-bottom:8px">
+        <div class="label r" style="justify-content:center;color:var(--green)">Zo werkt het</div>
+        <h3 class="r" style="font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em;transition-delay:.1s">Van bezorging naar review</h3>
+        <p class="r" style="font-size:14px;color:var(--text-2);max-width:48ch;margin:10px auto 0;line-height:1.6;transition-delay:.15s">
+          Na een succesvolle bezorging ontvangt de klant automatisch een WhatsApp-bericht. Na het plaatsen van een review krijgt de klant een kortingscode.
+        </p>
+      </div>
+
+      <div class="flow-visual r" style="transition-delay:.25s">
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128693;</div>
+          <h4>Bestelling bezorgd</h4>
+          <p>Koerier levert op tijd af</p>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2)">&#128172;</div>
+          <h4>WhatsApp verstuurd</h4>
+          <p>Automatisch bericht met review-link</p>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke="var(--green)" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#11088;</div>
+          <h4>Review + kortingscode</h4>
+          <p>Klant ontvangt automatisch beloning</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI Callout -->
+    <div class="roi-card r" style="transition-delay:.1s">
+      <div class="roi-stats">
+        <div class="roi-stat">
+          <div class="roi-stat-num" style="color:var(--green)" data-target="40">0</div>
+          <div class="roi-stat-label">% Meer reviews</div>
+        </div>
+        <div class="roi-stat">
+          <div class="roi-stat-num" style="color:var(--amber)" data-target="134">0</div>
+          <div class="roi-stat-label">Reviews ontvangen</div>
+        </div>
+        <div class="roi-stat">
+          <div class="roi-stat-num" style="color:var(--blue-light)" data-target="89">0</div>
+          <div class="roi-stat-label">% Positief</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. LATE ORDER COMPENSATIE
+     ═══════════════════════════════════════════════════════════ -->
+<section id="late-order" style="position:relative">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent)"></div>
+  <div class="wrap">
+    <div class="section-grid">
+      <div>
+        <div class="label r" style="color:var(--amber)">03 &mdash; Late Order Compensatie</div>
+        <h2 class="stitle r" style="transition-delay:.1s">Automatische compensatie<br>bij vertraging</h2>
+        <p class="sdesc r" style="transition-delay:.2s">
+          Wanneer een bezorging te laat is, ontvangt je klant automatisch een WhatsApp-bericht met excuses en een kortingscode. Voorkom negatieve reviews en win de klant terug.
+        </p>
+
+        <div class="cta-banner r" style="transition-delay:.25s;background:linear-gradient(135deg,rgba(222,165,0,.08),rgba(222,165,0,.04));border-color:rgba(222,165,0,.15)">
+          <p>Wil je dit ook voor jouw restaurant?</p>
+          <p>Neem contact op met FoodTrac en we zetten het voor je op. <a href="https://www.foodtrac.nl" style="color:var(--amber);font-weight:600">www.foodtrac.nl</a></p>
+        </div>
+
+        <div class="feature-list r" style="transition-delay:.3s">
+          <div class="feature-item">
+            <div class="feature-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#9201;</div>
+            <div>
+              <h4>Automatische detectie</h4>
+              <p>Systeem detecteert automatisch wanneer een bezorging te laat is ten opzichte van de verwachte levertijd.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2)">&#9881;</div>
+            <div>
+              <h4>Instelbare drempel</h4>
+              <p>Bepaal zelf vanaf hoeveel minuten vertraging de automatische compensatie activeert.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128156;</div>
+            <div>
+              <h4>Voorkom negatieve reviews</h4>
+              <p>Proactieve compensatie zorgt ervoor dat klanten begripvol reageren in plaats van een klacht in te dienen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp Late Order phone mockup -->
+      <div class="r" style="transition-delay:.35s">
+        <div class="phone-frame" id="lateOrderPhone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" style="background:#0b141a">
+            <div class="phone-status">
+              <span>21:38</span>
+              <span style="display:flex;gap:4px;align-items:center">
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="3.5" y="4" width="2.5" height="6" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="7" y="2" width="2.5" height="8" rx="0.5" fill="rgba(255,255,255,.7)"/><rect x="10.5" y="0" width="2.5" height="10" rx="0.5" fill="white"/></svg>
+                <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><rect x="0" y="1" width="14" height="8" rx="1.5" stroke="rgba(255,255,255,.5)" stroke-width="1"/><rect x="1.5" y="2.5" width="9" height="5" rx="0.5" fill="var(--green)"/><rect x="15" y="3" width="2" height="4" rx="0.5" fill="rgba(255,255,255,.3)"/></svg>
+              </span>
+            </div>
+            <div class="wa-header" style="background:linear-gradient(180deg,#5e4b07,#453808)">
+              <div class="wa-header-avatar" style="background:linear-gradient(135deg,var(--amber),#b7975d)">FT</div>
+              <div>
+                <div class="wa-header-name">FoodTrac &mdash; Shiki Sushi</div>
+                <div class="wa-header-sub">zakelijk account</div>
+              </div>
+            </div>
+            <div class="wa-chat">
+              <div class="wa-bubble amber" id="lo1">
+                Onze excuses! &#128532;<br><br>
+                Je bestelling bij <strong>Shiki Sushi</strong> was helaas later dan verwacht. Dat spijt ons zeer.<br><br>
+                Als compensatie ontvang je een kortingscode voor je volgende bestelling:<br>
+                <span class="wa-code-amber">SORRY-8M2P</span><br><br>
+                Bestel opnieuw via:<br>
+                <span style="color:var(--amber);text-decoration:underline">www.restaurantshiki.com</span>
+                <div class="wa-time">21:38 &#10003;&#10003;</div>
+              </div>
+              <div class="wa-bubble amber" id="lo2">
+                Bedankt! Dat waardeer ik. Bestel snel weer &#128077;
+                <div class="wa-time">21:42 &#10003;&#10003;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Late Order Flow -->
+    <div class="flow-section">
+      <div style="text-align:center;margin-bottom:8px">
+        <div class="label r" style="justify-content:center;color:var(--amber)">Zo werkt het</div>
+        <h3 class="r" style="font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em;transition-delay:.1s">Van vertraging naar terugkerende klant</h3>
+        <p class="r" style="font-size:14px;color:var(--text-2);max-width:48ch;margin:10px auto 0;line-height:1.6;transition-delay:.15s">
+          Het systeem detecteert automatisch een te late bezorging en stuurt na een instelbare vertraging een compensatie-bericht.
+        </p>
+      </div>
+
+      <div class="flow-visual r" style="transition-delay:.25s">
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2)">&#9201;</div>
+          <h4>Vertraging gedetecteerd</h4>
+          <p>Bezorgtijd overschrijdt drempel</p>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke="var(--amber)" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#128172;</div>
+          <h4>WhatsApp verstuurd</h4>
+          <p>Automatisch excuus + kortingscode</p>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke="var(--amber)" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128156;</div>
+          <h4>Klant bestelt opnieuw</h4>
+          <p>Compensatie wint de klant terug</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI Callout -->
+    <div class="roi-card r" style="transition-delay:.1s">
+      <div class="roi-stats">
+        <div class="roi-stat">
+          <div class="roi-stat-num" style="color:var(--amber)" data-target="67">0</div>
+          <div class="roi-stat-label">Compensaties verstuurd</div>
+        </div>
+        <div class="roi-stat">
+          <div class="roi-stat-num" style="color:var(--green)" data-target="71">0</div>
+          <div class="roi-stat-label">% Herbestelling</div>
+        </div>
+        <div class="roi-stat">
+          <div class="roi-stat-num" style="color:var(--red)" data-target="85">0</div>
+          <div class="roi-stat-label">% Minder klachten</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     4. ANALYTICS DASHBOARD
+     ═══════════════════════════════════════════════════════════ -->
+<section id="analytics" style="position:relative">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent)"></div>
+  <div class="wrap">
+    <div class="label r" style="color:var(--purple-light)">04 &mdash; Analytics</div>
+    <h2 class="stitle r" style="transition-delay:.1s">Alles meetbaar<br>in je dashboard</h2>
+    <p class="sdesc r" style="transition-delay:.2s">
+      Volg het succes van al je campagnes in real-time. Van SMS-conversies tot review-aantallen en compensatie-statistieken.
+    </p>
+
+    <div class="dash-preview r" style="transition-delay:.3s">
+      <div class="dash-topbar">
+        <div class="title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" fill="var(--purple-light)"/><rect x="9" y="1" width="6" height="6" rx="1" fill="rgba(255,255,255,.1)"/><rect x="1" y="9" width="6" height="6" rx="1" fill="rgba(255,255,255,.1)"/><rect x="9" y="9" width="6" height="6" rx="1" fill="rgba(255,255,255,.1)"/></svg>
+          Marketing Overzicht
+        </div>
+        <div class="actions">
+          <div class="action-btn">7 dagen</div>
+          <div class="action-btn" style="border-color:rgba(70,68,182,.3);color:var(--purple-light);background:rgba(70,68,182,.08)">30 dagen</div>
+          <div class="action-btn">90 dagen</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--blue-light)">2.847</div>
+          <div class="kpi-label">SMS verstuurd</div>
+          <div class="kpi-change up">+18,3%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--green)">134</div>
+          <div class="kpi-label">Reviews ontvangen</div>
+          <div class="kpi-change up">+42,1%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--amber)">67</div>
+          <div class="kpi-label">Compensaties</div>
+          <div class="kpi-change up" style="color:var(--green)">-12,4%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--purple-light)">23%</div>
+          <div class="kpi-label">Conversie</div>
+          <div class="kpi-change up">+3,2%</div>
+        </div>
+      </div>
+      <div class="dash-chart">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <div style="font-size:12px;font-weight:700">Campagne prestaties</div>
+          <div style="display:flex;gap:12px;font-size:10px;color:var(--muted)">
+            <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--blue)"></span> SMS</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--green)"></span> Reviews</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--amber)"></span> Compensaties</span>
+          </div>
+        </div>
+        <div class="chart-bars" id="dashChart"></div>
+        <div class="chart-labels" id="dashLabels"></div>
+      </div>
+    </div>
+
+    <div class="improvements-grid r" style="transition-delay:.35s">
+      <div class="improvement-card">
+        <div class="ic-title">Per-campagne inzichten</div>
+        <div class="ic-desc">Bekijk conversie, kosten en opbrengst per individuele campagne.</div>
+      </div>
+      <div class="improvement-card">
+        <div class="ic-title">Per-restaurant overzicht</div>
+        <div class="ic-desc">Vergelijk prestaties tussen restaurants en optimaliseer je strategie.</div>
+      </div>
+      <div class="improvement-card">
+        <div class="ic-title">Trend analyse</div>
+        <div class="ic-desc">Bekijk dagelijkse, wekelijkse of maandelijkse trends in je campagnes.</div>
+      </div>
+      <div class="improvement-card">
+        <div class="ic-title">Export &amp; rapportage</div>
+        <div class="ic-desc">Exporteer data naar CSV voor verdere analyse of rapportage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     INTERACTIVE SMS DEMO
+     ═══════════════════════════════════════════════════════════ -->
+<section id="demo" style="position:relative">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
   <div class="wrap">
     <div style="text-align:center;margin-bottom:40px">
       <div class="label r" style="justify-content:center;--blue:var(--gold)">Probeer het zelf</div>
@@ -972,12 +1324,12 @@ section{padding:100px 0}
     </div>
 
     <div class="coupon-grid r" style="transition-delay:.25s">
-      <!-- LEFT — Hero card -->
+      <!-- LEFT: Hero card -->
       <div class="coupon-hero">
         <div class="coupon-hero-inner">
           <div class="coupon-top">
             <div class="coupon-brand">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="34" viewBox="0 335.5 612 121"><path fill="#fff" d="M22.866,345.363v13.287h39.216v87.619h100.906V345.363H22.866z M149.701,432.982H75.369v-74.31h74.31 v74.31H149.701z"/><rect x="103.117" y="386.697" fill="#fff" width="18.514" height="18.514"/><path fill="#fff" d="M212.843,357.636c-2.971,0-5.273,0.599-6.909,1.773c-1.635,1.175-2.464,2.948-2.464,5.296 c0,2.165,1.198,4.076,3.569,5.711c2.372,1.635,5.55,3.201,9.51,4.675c3.224,1.174,5.964,2.51,8.267,4.03 c2.28,1.52,4.191,3.592,5.711,6.263c1.52,2.648,2.279,6.033,2.279,10.109c0,3.523-0.921,6.793-2.74,9.787 c-1.819,2.993-4.49,5.388-8.013,7.139c-3.523,1.75-7.737,2.647-12.619,2.647c-4.076,0-8.129-0.599-12.159-1.818 c-4.03-1.198-7.76-3.04-11.214-5.527l5.941-10.478c2.349,1.728,5.043,3.155,8.06,4.261s5.757,1.681,8.151,1.681 c2.833,0,5.319-0.599,7.415-1.819c2.095-1.197,3.132-3.154,3.132-5.872c0-3.523-3.316-6.585-9.925-9.188 c-3.892-1.543-7.139-3.04-9.741-4.444c-2.602-1.428-4.836-3.454-6.724-6.125c-1.888-2.648-2.833-5.987-2.833-10.017 c0-5.872,1.935-10.615,5.803-14.185c3.869-3.592,9.003-5.527,15.451-5.849c5.066,0,9.303,0.576,12.711,1.727 c3.408,1.151,6.701,2.763,9.925,4.859l-5.112,10.293C222.376,359.271,217.218,357.636,212.843,357.636z"/><path fill="#fff" d="M334.911,414.33h-13.448v-25.676h-30.511v25.676h-13.448v-68.276h13.448v29.613h30.511v-29.613h13.448 V414.33z"/><path fill="#fff" d="M397.522,346.054v68.276h-13.448v-68.276H397.522z"/><path fill="#fff" d="M471.072,373.778l2.049-2.602l22.268-25.146h17.433l-28.209,30.604l28.301,37.673H495.85l-21.047-29.129 l-3.362,3.362v25.791h-13.632v-68.276h13.632v24.294L471.072,373.778z"/><path fill="#fff" d="M579.232,346.054v68.276h-13.448v-68.276H579.232z"/><path fill="#fff" d="M191.68,434.778c0-1.267-0.806-2.004-1.957-2.004c-0.967,0-1.865,0.875-1.865,1.889 c0,0.967,0.645,1.543,2.003,1.957c2.993,0.968,4.099,2.073,4.099,4.49c0,2.511-1.796,4.191-4.26,4.191 c-2.464,0-4.237-1.773-4.283-4.375h2.026c0.023,1.496,0.898,2.51,2.257,2.51c1.358,0,2.233-0.967,2.233-2.349 c0-1.014-0.438-1.658-1.934-2.165c-3.431-1.151-4.191-2.279-4.191-4.26c0-2.118,1.75-3.776,3.892-3.776 c2.279,0,3.938,1.45,3.983,3.868h-2.003V434.778z"/><path fill="#fff" d="M222.261,431.186h2.026v9.487c0,2.901-2.049,4.652-4.651,4.652s-4.652-1.773-4.652-4.652v-9.487h2.027 v9.326c0,1.728,0.967,2.948,2.625,2.948c1.658,0,2.625-1.244,2.625-2.948V431.186z"/><path fill="#fff" d="M251.367,434.778c0-1.267-0.806-2.004-1.957-2.004c-0.967,0-1.865,0.875-1.865,1.889 c0,0.967,0.645,1.543,2.003,1.957c2.994,0.968,4.099,2.073,4.099,4.49c0,2.511-1.796,4.191-4.26,4.191 c-2.487,0-4.237-1.773-4.283-4.375h2.026c0.023,1.496,0.898,2.51,2.257,2.51c1.358,0,2.233-0.967,2.233-2.349 c0-1.014-0.46-1.658-1.934-2.165c-3.431-1.151-4.168-2.279-4.168-4.26c0-2.118,1.75-3.776,3.892-3.776 c2.28,0,3.938,1.45,3.984,3.868h-2.027V434.778z"/><path fill="#fff" d="M282.455,445.049v-6.033h-5.711v6.033h-2.026v-13.863h2.026v5.987h5.711v-5.987h2.026v13.863H282.455z"/><path fill="#fff" d="M306.403,445.049v-13.863h2.026v13.863H306.403z"/><path fill="#fff" d="M362.521,442.884c-1.105,1.658-2.44,2.441-4.029,2.441c-2.349,0-4.237-1.797-4.237-4.146 c0-1.704,0.944-3.178,2.671-3.961c-1.036-1.036-1.335-1.796-1.335-2.763c0-1.935,1.45-3.547,3.5-3.547 c1.957,0,3.454,1.566,3.454,3.523c0,1.474-0.806,2.603-2.326,3.339l1.843,1.797l1.52-3.063h2.188l-2.257,4.583l2.786,2.855 l-1.358,1.358L362.521,442.884z M358.261,438.578c-1.175,0.391-1.957,1.266-1.957,2.579c0,1.335,0.921,2.303,2.21,2.303 c1.06,0,1.958-0.576,2.672-1.98L358.261,438.578z M360.518,434.387c0-0.875-0.622-1.612-1.451-1.612 c-0.852,0-1.45,0.714-1.45,1.682c0,0.645,0.368,1.243,1.174,1.957C360.126,435.745,360.518,435.216,360.518,434.387z"/><path fill="#fff" d="M411.73,445.049v-13.863h2.026v12.021h4.812v1.865h-6.839V445.049z"/><path fill="#fff" d="M445.535,445.325c-3.846,0-7.116-3.293-7.116-7.047c0-4.26,3.271-7.346,7.162-7.346 c4.122,0,7.276,3.247,7.276,7.115C452.857,442.216,449.634,445.325,445.535,445.325z M450.831,438.163 c0-2.878-2.188-5.389-5.112-5.389c-3.753,0-5.296,3.225-5.296,5.297c0,2.786,2.026,5.389,5.204,5.389 C448.92,443.46,450.831,440.696,450.831,438.163z"/><path fill="#fff" d="M481.365,431.186h2.026v9.487c0,2.901-2.049,4.652-4.651,4.652s-4.651-1.773-4.651-4.652v-9.487h2.026 v9.326c0,1.728,0.967,2.948,2.625,2.948s2.625-1.244,2.625-2.948V431.186z"/><path fill="#fff" d="M514.249,445.049l-6.862-10.731h-0.047v10.731h-2.026v-13.863h2.211l6.747,10.547h0.046v-10.547h2.026 v13.863H514.249L514.249,445.049z"/><path fill="#fff" d="M543.102,440.006v-1.865h8.773c-0.138,4.605-3.615,7.161-7.322,7.161c-3.754,0-6.954-3.27-6.954-7 c0-4.491,3.454-7.393,6.954-7.393c2.671,0,4.951,1.267,6.355,3.754h-2.372c-1.174-1.358-2.349-1.889-3.892-1.889 c-2.694,0-5.02,2.557-5.02,5.297c0,2.925,2.303,5.389,5.112,5.389c2.188,0,3.96-1.221,4.835-3.454H543.102z"/><path fill="#fff" d="M572.83,445.049v-13.863h7.484v1.865h-5.458v4.1h5.458v1.865h-5.458v4.214h5.458v1.865h-7.484V445.049z"/></svg>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="34" viewBox="0 335.5 612 121"><path fill="#fff" d="M22.866,345.363v13.287h39.216v87.619h100.906V345.363H22.866z M149.701,432.982H75.369v-74.31h74.31 v74.31H149.701z"/><rect x="103.117" y="386.697" fill="#fff" width="18.514" height="18.514"/><path fill="#fff" d="M212.843,357.636c-2.971,0-5.273,0.599-6.909,1.773c-1.635,1.175-2.464,2.948-2.464,5.296 c0,2.165,1.198,4.076,3.569,5.711c2.372,1.635,5.55,3.201,9.51,4.675c3.224,1.174,5.964,2.51,8.267,4.03 c2.28,1.52,4.191,3.592,5.711,6.263c1.52,2.648,2.279,6.033,2.279,10.109c0,3.523-0.921,6.793-2.74,9.787 c-1.819,2.993-4.49,5.388-8.013,7.139c-3.523,1.75-7.737,2.647-12.619,2.647c-4.076,0-8.129-0.599-12.159-1.818 c-4.03-1.198-7.76-3.04-11.214-5.527l5.941-10.478c2.349,1.728,5.043,3.155,8.06,4.261s5.757,1.681,8.151,1.681 c2.833,0,5.319-0.599,7.415-1.819c2.095-1.197,3.132-3.154,3.132-5.872c0-3.523-3.316-6.585-9.925-9.188 c-3.892-1.543-7.139-3.04-9.741-4.444c-2.602-1.428-4.836-3.454-6.724-6.125c-1.888-2.648-2.833-5.987-2.833-10.017 c0-5.872,1.935-10.615,5.803-14.185c3.869-3.592,9.003-5.527,15.451-5.849c5.066,0,9.303,0.576,12.711,1.727 c3.408,1.151,6.701,2.763,9.925,4.859l-5.112,10.293C222.376,359.271,217.218,357.636,212.843,357.636z"/><path fill="#fff" d="M334.911,414.33h-13.448v-25.676h-30.511v25.676h-13.448v-68.276h13.448v29.613h30.511v-29.613h13.448 V414.33z"/><path fill="#fff" d="M397.522,346.054v68.276h-13.448v-68.276H397.522z"/><path fill="#fff" d="M471.072,373.778l2.049-2.602l22.268-25.146h17.433l-28.209,30.604l28.301,37.673H495.85l-21.047-29.129 l-3.362,3.362v25.791h-13.632v-68.276h13.632v24.294L471.072,373.778z"/><path fill="#fff" d="M579.232,346.054v68.276h-13.448v-68.276H579.232z"/></svg>
             </div>
             <div class="coupon-pill">QR-actie &bull; Online bestellen</div>
           </div>
@@ -1026,7 +1378,7 @@ section{padding:100px 0}
         </div>
       </div>
 
-      <!-- RIGHT — Klantenbestand panel -->
+      <!-- RIGHT: Klantenbestand panel -->
       <aside class="coupon-side">
         <div class="coupon-side-inner">
           <div class="kb-header">
@@ -1089,298 +1441,16 @@ section{padding:100px 0}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     2. REVIEW BOOSTER
+     CTA SECTION
      ═══════════════════════════════════════════════════════════ -->
-<section id="review-booster">
+<section class="cta-section" id="contact">
   <div class="wrap">
-    <div class="review-grid">
-      <div>
-        <div class="label r" style="--blue:var(--green)">02 &mdash; Nieuw</div>
-        <h2 class="stitle r" style="transition-delay:.1s">Automatische<br>Review Booster</h2>
-        <p class="sdesc r" style="transition-delay:.2s">
-          Verzamel meer Google Reviews op de automatische piloot. Na elke bezorging ontvangt je klant een WhatsApp-bericht met een review-link &eacute;n een kortingscode als beloning.
-        </p>
-        <div class="r" style="transition-delay:.25s;margin-top:-10px;margin-bottom:24px;padding:16px 20px;border-radius:14px;background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.04));border:1px solid rgba(34,197,94,.15)">
-          <p style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">Wil je dit ook voor jouw restaurant?</p>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.5">Neem contact op met FoodTrac en we zetten het voor je op. <a href="https://www.foodtrac.nl" style="color:var(--green);font-weight:600">www.foodtrac.nl</a></p>
-        </div>
-
-        <div class="feature-list r" style="transition-delay:.3s">
-          <div class="feature-item">
-            <div class="feature-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128236;</div>
-            <div>
-              <h4>Automatisch na bezorging</h4>
-              <p>WhatsApp-bericht naar de klant zodra de bestelling op tijd is afgeleverd.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#11088;</div>
-            <div>
-              <h4>Review + beloning</h4>
-              <p>Klant plaatst een review en ontvangt automatisch een kortingscode voor de volgende bestelling.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon" style="background:var(--blue-glow);border:1px solid rgba(0,127,255,.2)">&#128202;</div>
-            <div>
-              <h4>Campagne statistieken</h4>
-              <p>Berichten verstuurd, reviews ontvangen, codes verzilverd &mdash; alles in je dashboard.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WhatsApp Phone mockup -->
-      <div class="r" style="transition-delay:.35s">
-        <div class="phone-frame" id="waPhoneMock">
-          <div class="phone-notch"></div>
-          <div class="phone-screen" style="background:#0b141a">
-            <div class="phone-status">
-              <span>20:14</span>
-              <span style="display:flex;gap:4px;align-items:center">
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="3.5" y="4" width="2.5" height="6" rx="0.5" fill="rgba(255,255,255,.5)"/><rect x="7" y="2" width="2.5" height="8" rx="0.5" fill="rgba(255,255,255,.7)"/><rect x="10.5" y="0" width="2.5" height="10" rx="0.5" fill="white"/></svg>
-                <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><rect x="0" y="1" width="14" height="8" rx="1.5" stroke="rgba(255,255,255,.5)" stroke-width="1"/><rect x="1.5" y="2.5" width="9" height="5" rx="0.5" fill="var(--green)"/><rect x="15" y="3" width="2" height="4" rx="0.5" fill="rgba(255,255,255,.3)"/></svg>
-              </span>
-            </div>
-            <div class="wa-header">
-              <div class="wa-header-avatar">FT</div>
-              <div>
-                <div class="wa-header-name">FoodTrac &mdash; Shiki Sushi</div>
-                <div class="wa-header-sub">zakelijk account</div>
-              </div>
-            </div>
-            <div class="wa-chat">
-              <div class="wa-bubble" id="wa1">
-                Bedankt voor je bestelling bij <strong>Shiki Sushi</strong>! &#127843;<br><br>
-                We hopen dat je ervan genoten hebt. Laat een review achter:<br>
-                <span style="color:var(--green);text-decoration:underline">g.page/shiki-sushi/review</span><br><br>
-                Als bedankje ontvang je een kortingscode &#127873;
-                <div class="wa-time">20:14 &#10003;&#10003;</div>
-              </div>
-              <div class="wa-bubble" id="wa2">
-                Bedankt voor je review! &#11088;<br><br>
-                Hier is je kortingscode:<br>
-                <span class="wa-code">REVIEW-7K9X</span><br><br>
-                Bestel opnieuw via:<br>
-                <span style="color:var(--green);text-decoration:underline">www.restaurantshiki.com</span>
-                <div class="wa-time">20:32 &#10003;&#10003;</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flow diagram -->
-    <div class="flow-section review-flow">
-      <div style="text-align:center;margin-bottom:8px">
-        <div class="label r" style="justify-content:center;--blue:var(--green)">Zo werkt het</div>
-        <h3 class="r" style="font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em;transition-delay:.1s">Van bezorging naar review</h3>
-        <p class="r" style="font-size:14px;color:var(--text-2);max-width:48ch;margin:10px auto 0;line-height:1.6;transition-delay:.15s">
-          Na een succesvolle bezorging ontvangt de klant automatisch een WhatsApp-bericht. Na het plaatsen van een review krijgt de klant een kortingscode.
-        </p>
-      </div>
-
-      <div class="flow-visual r" style="transition-delay:.25s">
-        <div class="flow-step">
-          <div class="flow-step-icon" style="background:var(--green-glow);border:1px solid rgba(34,197,94,.2)">&#128693;</div>
-          <h4>Bestelling bezorgd</h4>
-          <p>Koerier levert de bestelling op tijd af</p>
-        </div>
-
-        <div class="flow-arrow">
-          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="flow-step">
-          <div class="flow-step-icon" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2)">&#128172;</div>
-          <h4>WhatsApp verstuurd</h4>
-          <p>Automatisch bericht met review-link</p>
-        </div>
-
-        <div class="flow-arrow">
-          <svg viewBox="0 0 28 28"><path d="M6 14h16m0 0l-5-5m5 5l-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <div class="flow-step">
-          <div class="flow-step-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#11088;</div>
-          <h4>Review + kortingscode</h4>
-          <p>Klant ontvangt automatisch een beloning</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     3. STATISTIEKEN DASHBOARD V2
-     ═══════════════════════════════════════════════════════════ -->
-<section id="dashboard">
-  <div class="wrap">
-    <div class="label r">03 &mdash; Vernieuwd</div>
-    <h2 class="stitle r" style="transition-delay:.1s">Statistieken Dashboard V2</h2>
-    <p class="sdesc r" style="transition-delay:.2s">
-      Een volledig vernieuwd overzicht van je bezorgprestaties. Nieuwe KPI-kaarten, verbeterde grafieken en betrouwbaardere data — alles in &eacute;&eacute;n oogopslag.
-    </p>
-
-    <div class="dash-preview r" style="transition-delay:.3s">
-      <div class="dash-topbar">
-        <div class="title">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" fill="var(--blue)"/><rect x="9" y="1" width="6" height="6" rx="1" fill="rgba(255,255,255,.1)"/><rect x="1" y="9" width="6" height="6" rx="1" fill="rgba(255,255,255,.1)"/><rect x="9" y="9" width="6" height="6" rx="1" fill="rgba(255,255,255,.1)"/></svg>
-          Periode Samenvatting
-        </div>
-        <div class="actions">
-          <div class="action-btn">7 dagen</div>
-          <div class="action-btn" style="border-color:rgba(0,127,255,.3);color:var(--blue-light);background:rgba(0,127,255,.08)">30 dagen</div>
-          <div class="action-btn">90 dagen</div>
-        </div>
-      </div>
-      <div class="kpi-row">
-        <div class="kpi-card">
-          <div class="kpi-val" style="color:var(--blue-light)">&euro;12.480</div>
-          <div class="kpi-label">Totale omzet</div>
-          <div class="kpi-change up">+12,4%</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-val" style="color:var(--green)">847</div>
-          <div class="kpi-label">Totaal orders</div>
-          <div class="kpi-change up">+8,2%</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-val" style="color:var(--purple-light)">&euro;6,20</div>
-          <div class="kpi-label">Gem. arbeidskosten</div>
-          <div class="kpi-change up" style="color:var(--green)">-3,1%</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-val" style="color:var(--amber)">22 min</div>
-          <div class="kpi-label">Gem. levertijd</div>
-          <div class="kpi-change up" style="color:var(--green)">-2 min</div>
-        </div>
-      </div>
-      <div class="dash-chart">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-          <div style="font-size:12px;font-weight:700">Omzet per dag</div>
-          <div style="display:flex;gap:12px;font-size:10px;color:var(--muted)">
-            <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:var(--blue)"></span> Omzet</span>
-            <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:2px;background:rgba(34,197,94,.5)"></span> Orders</span>
-          </div>
-        </div>
-        <div class="chart-bars" id="dashChart"></div>
-        <div class="chart-labels" id="dashLabels"></div>
-      </div>
-    </div>
-
-    <div class="improvements-grid r" style="transition-delay:.35s">
-      <div class="improvement-card">
-        <div class="ic-title">Betrouwbare cijfers</div>
-        <div class="ic-desc">Alle grafieken en KPI's tonen nu correcte data, ook bij langere periodes en wisselende filters.</div>
-      </div>
-      <div class="improvement-card">
-        <div class="ic-title">Snellere laadtijden</div>
-        <div class="ic-desc">Het dashboard laadt sneller doordat onnodige bewerkingen zijn weggehaald.</div>
-      </div>
-      <div class="improvement-card">
-        <div class="ic-title">Postcode-filters</div>
-        <div class="ic-desc">Filter op postcode en bekijk per gebied welk platform de meeste orders oplevert.</div>
-      </div>
-      <div class="improvement-card">
-        <div class="ic-title">Flexibele periodes</div>
-        <div class="ic-desc">Kies 7, 30 of 90 dagen — of stel een eigen periode in. Alles past zich direct aan.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     3-5. MORE FEATURES
-     ═══════════════════════════════════════════════════════════ -->
-<section id="more">
-  <div class="wrap">
-    <div class="label r">04&ndash;06 &mdash; Verbeteringen</div>
-    <h2 class="stitle r" style="transition-delay:.1s">En nog meer</h2>
-    <p class="sdesc r" style="transition-delay:.2s">
-      Koerier-timing inzichten, eenvoudig herverbinden en een betere ervaring op elk scherm.
-    </p>
-
-    <div class="features-grid">
-      <!-- Koerier Timing -->
-      <div class="fcard r" style="transition-delay:.1s">
-        <div class="fcard-icon" style="background:rgba(222,165,0,.1);border:1px solid rgba(222,165,0,.2)">&#9201;</div>
-        <h3>Koerier Timing</h3>
-        <p>Zie direct hoe lang een koerier daadwerkelijk onderweg is ten opzichte van de verwachte levertijd. Afwijkingen worden meteen zichtbaar.</p>
-        <div class="fcard-detail">
-          <div class="timing-mini">
-            <div class="timing-row">
-              <div class="timing-label">Verwacht</div>
-              <div class="timing-track">
-                <div class="timing-block" style="left:0;width:55%;background:var(--green)">18 min</div>
-              </div>
-            </div>
-            <div class="timing-row">
-              <div class="timing-label">Werkelijk</div>
-              <div class="timing-track">
-                <div class="timing-block" style="left:0;width:80%;background:var(--amber)">26 min</div>
-              </div>
-            </div>
-            <div style="text-align:right;font-size:9px;color:var(--red);font-weight:700;margin-top:4px">+8 min vertraging</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Herverbinden -->
-      <div class="fcard r" style="transition-delay:.2s">
-        <div class="fcard-icon" style="background:var(--blue-glow);border:1px solid rgba(0,127,255,.2)">&#128279;</div>
-        <h3>Koerier Herverbinden</h3>
-        <p>Nieuwe telefoon? Geen probleem. Koppel een koerier opnieuw met een simpele QR-scan &mdash; zonder account opnieuw aan te maken.</p>
-        <div class="fcard-detail">
-          <div class="reconnect-mock">
-            <div class="reconnect-header">
-              <div class="reconnect-icon">&#128279;</div>
-              <div>
-                <div style="font-weight:700;font-size:12px">Herverbinden</div>
-                <div style="font-size:10px;color:var(--muted)">Mohamed A.</div>
-              </div>
-              <div style="margin-left:auto;font-size:9px;color:var(--muted);padding:3px 8px;border-radius:5px;border:1px solid var(--line);background:rgba(255,255,255,.03)">&#9888;&#65039; Offline</div>
-            </div>
-            <div class="reconnect-qr">
-              <div class="reconnect-qr-inner" id="miniQr"></div>
-            </div>
-            <div style="text-align:center;font-size:9px;color:var(--muted);margin-top:8px">Scan met de koerier-app</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Redesigns -->
-      <div class="fcard r" style="transition-delay:.3s">
-        <div class="fcard-icon" style="background:rgba(70,68,182,.1);border:1px solid rgba(70,68,182,.2)">&#127912;</div>
-        <h3>Redesigns & Mobile</h3>
-        <p>Meerdere schermen opnieuw ontworpen voor een prettigere ervaring. Nu ook volledig bruikbaar op mobiel en tablet.</p>
-        <div class="fcard-detail">
-          <div style="font-size:10px;color:var(--muted);margin-bottom:10px">Wat is er verbeterd</div>
-          <div style="display:flex;flex-direction:column;gap:6px;font-size:11px">
-            <div style="display:flex;align-items:center;gap:8px">
-              <span style="color:var(--green)">&#10003;</span>
-              <span>Pop-ups voor koerier toevoegen & herverbinden</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px">
-              <span style="color:var(--green)">&#10003;</span>
-              <span>Dashboard overzichtspagina</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px">
-              <span style="color:var(--green)">&#10003;</span>
-              <span>Kortingspagina (mobiel-vriendelijk)</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px">
-              <span style="color:var(--green)">&#10003;</span>
-              <span>Navigatiemenu (desktop + mobiel)</span>
-            </div>
-          </div>
-          <div class="device-strip">
-            <div class="device-box"><div class="screen"></div></div>
-            <div class="device-box"><div class="screen"></div></div>
-            <div class="device-box tablet"><div class="screen"></div></div>
-          </div>
-        </div>
+    <div class="cta-card r">
+      <h2>Klaar om te groeien?</h2>
+      <p>Neem contact op en we zetten de marketing-suite in voor jouw restaurant. Binnen een dag operationeel.</p>
+      <div class="cta-buttons">
+        <a href="https://www.foodtrac.nl" class="btn-primary">Neem contact op</a>
+        <a href="#demo" class="btn-secondary">Bekijk demo</a>
       </div>
     </div>
   </div>
@@ -1391,7 +1461,7 @@ section{padding:100px 0}
      ═══════════════════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="footer-brand">FoodTrac</div>
-  <div class="footer-sub">Bezorging zonder gedoe</div>
+  <div class="footer-sub">Slimme marketing voor bezorgrestaurants</div>
   <a href="#top" class="footer-cta">&#8593; Terug naar boven</a>
 </footer>
 
@@ -1402,8 +1472,8 @@ section{padding:100px 0}
 (function(){
 'use strict';
 
-/* ─── Card glow follow cursor ───────────────────────────── */
-document.querySelectorAll('.card,.coupon-hero').forEach(card=>{
+/* Card glow follow cursor */
+document.querySelectorAll('.card,.coupon-hero,.roi-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r = card.getBoundingClientRect();
     card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
@@ -1411,7 +1481,7 @@ document.querySelectorAll('.card,.coupon-hero').forEach(card=>{
   });
 });
 
-/* ─── Scroll Reveal ──────────────────────────────────────── */
+/* Scroll Reveal */
 const reveals = document.querySelectorAll('.r');
 const revealObs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -1423,7 +1493,26 @@ const revealObs = new IntersectionObserver(entries=>{
 },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
 reveals.forEach(r=>revealObs.observe(r));
 
-/* ─── Phone SMS Animation ────────────────────────────────── */
+/* Phone SMS Animation */
+function observePhone(phoneId, bubbleIds, delays){
+  const phone = document.getElementById(phoneId);
+  if(!phone) return;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        bubbleIds.forEach((id,i)=>{
+          setTimeout(()=>{
+            const el = document.getElementById(id);
+            if(el) el.classList.add('show');
+          }, delays[i]);
+        });
+        obs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  obs.observe(phone);
+}
+
 const phoneObs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1434,22 +1523,12 @@ const phoneObs = new IntersectionObserver(entries=>{
   });
 },{threshold:0.3});
 phoneObs.observe(document.getElementById('phoneMock'));
+observePhone('reviewPhone', ['wa1','wa2'], [400, 1400]);
+observePhone('lateOrderPhone', ['lo1','lo2'], [400, 1400]);
 
-/* ─── WhatsApp Bubble Animation ──────────────────────────── */
-const waObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      setTimeout(()=>document.getElementById('wa1').classList.add('show'),400);
-      setTimeout(()=>document.getElementById('wa2').classList.add('show'),1400);
-      waObs.disconnect();
-    }
-  });
-},{threshold:0.3});
-waObs.observe(document.getElementById('waPhoneMock'));
-
-/* ─── Dashboard Chart ────────────────────────────────────── */
-const chartData = [380,420,510,470,620,580,340,390,450,530,600,580,520,480];
-const chartLabels = ['13','14','15','16','17','18','19','20','21','22','23','24','25','26'];
+/* Dashboard Chart */
+const chartData = [180,220,310,270,420,380,140,190,250,330,400,380,320,280];
+const chartLabels = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14'];
 const chartEl = document.getElementById('dashChart');
 const labelsEl = document.getElementById('dashLabels');
 const maxVal = Math.max(...chartData);
@@ -1458,10 +1537,12 @@ chartData.forEach((v,i)=>{
   const bar = document.createElement('div');
   bar.className = 'chart-bar';
   bar.style.height = '0%';
-  bar.style.background = 'linear-gradient(180deg,rgba(0,127,255,.9),rgba(0,127,255,.45))';
+  const colors = ['var(--blue)','var(--green)','var(--amber)'];
+  const color = colors[i % 3];
+  bar.style.background = `linear-gradient(180deg,${color},${color}80)`;
   chartEl.appendChild(bar);
   const lbl = document.createElement('span');
-  lbl.textContent = chartLabels[i] + ' feb';
+  lbl.textContent = chartLabels[i] + ' mrt';
   labelsEl.appendChild(lbl);
 });
 
@@ -1477,15 +1558,42 @@ const chartObs = new IntersectionObserver(entries=>{
 },{threshold:0.2});
 chartObs.observe(chartEl);
 
-/* ─── Mini QR Code ───────────────────────────────────────── */
-const qrEl = document.getElementById('miniQr');
-[1,1,1,0,1,1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,0,1,1,0,1].forEach(v=>{
-  const cell = document.createElement('div');
-  cell.className = 'qrc '+(v?'d':'l');
-  qrEl.appendChild(cell);
+/* Animated Stat Counters */
+function animateCounter(el, target, suffix, duration){
+  duration = duration || 1500;
+  suffix = suffix || '';
+  let start = 0;
+  const stepTime = 16;
+  const steps = duration / stepTime;
+  const increment = target / steps;
+  function step(){
+    start += increment;
+    if(start >= target){
+      el.textContent = target + suffix;
+      return;
+    }
+    el.textContent = Math.floor(start) + suffix;
+    requestAnimationFrame(step);
+  }
+  step();
+}
+
+document.querySelectorAll('.roi-card').forEach(card=>{
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        card.querySelectorAll('.roi-stat-num[data-target]').forEach(el=>{
+          const target = parseInt(el.getAttribute('data-target'));
+          animateCounter(el, target, '', 1200);
+        });
+        obs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  obs.observe(card);
 });
 
-/* ─── Smooth scroll for anchor links ─────────────────────── */
+/* Smooth scroll for anchor links */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     e.preventDefault();
@@ -1495,9 +1603,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
 /* ═══════════════════════════════════════════════════════════════
-   INTERACTIVE SMS DEMO — Connects to real FoodTrac API
+   INTERACTIVE SMS DEMO
    ═══════════════════════════════════════════════════════════════ */
-// Auto-detect: use local backend if page is opened from file:// or localhost
 const IS_LOCAL = location.protocol === 'file:'
   || location.hostname === 'localhost'
   || location.hostname === '127.0.0.1';
@@ -1571,10 +1678,8 @@ consentBox.addEventListener('click',()=>{
 });
 consentText.addEventListener('click',()=>consentBox.click());
 
-/* ─── Error message mapping ──────────────────────────────── */
 function friendlyError(status, data){
   const msg = (data && data.message) || '';
-
   if(status === 429){
     return {
       title: 'Even geduld',
@@ -1593,7 +1698,6 @@ function friendlyError(status, data){
   };
 }
 
-/* ─── Submit handler ─────────────────────────────────────── */
 ctaBtn.addEventListener('click', async ()=>{
   if(ctaBtn.disabled) return;
 
@@ -1603,12 +1707,10 @@ ctaBtn.addEventListener('click', async ()=>{
     return;
   }
 
-  // Normalize to E.164: strip leading 0 or 06, build +316XXXXXXXX
   if(raw.startsWith('06')) raw = raw.slice(2);
   else if(raw.startsWith('0')) raw = raw.slice(1);
   const e164 = '+316' + raw;
 
-  // UI: loading
   ctaBtn.disabled = true;
   ctaBtnText.innerHTML = '<span class="spinner"></span>Bezig\u2026';
   demoStatus.className = 'demo-status';
@@ -1624,7 +1726,6 @@ ctaBtn.addEventListener('click', async ()=>{
     const data = await res.json().catch(()=>({}));
 
     if(res.ok){
-      // Success
       submitted = true;
       demoStatus.className = 'demo-status ok show';
       statusTitle.textContent = 'SMS verstuurd';
@@ -1632,17 +1733,14 @@ ctaBtn.addEventListener('click', async ()=>{
       ctaBtnText.textContent = 'Verstuurd \u2713';
       ctaBtn.disabled = true;
     } else {
-      // Known error
       const err = friendlyError(res.status, data);
       demoStatus.className = 'demo-status err show';
       statusTitle.textContent = err.title;
       statusDesc.textContent = err.desc;
-
       ctaBtn.disabled = false;
       ctaBtnText.textContent = 'Opnieuw proberen';
     }
   } catch(err){
-    // Network error
     demoStatus.className = 'demo-status err show';
     statusTitle.textContent = 'Geen verbinding';
     statusDesc.textContent = 'Controleer je internetverbinding en probeer het opnieuw.';
