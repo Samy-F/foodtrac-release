@@ -205,6 +205,293 @@ section{padding:100px 0}
 .scroll-hint svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2}
 
 /* ═══════════════════════════════════════════════════════════════
+   KOSTENVERGELIJKER
+   ═══════════════════════════════════════════════════════════════ */
+#kosten{
+  padding:120px 0 108px;position:relative;overflow:hidden;
+}
+#kosten::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(900px 540px at 16% 18%,rgba(34,197,94,.08),transparent 62%),
+    radial-gradient(760px 440px at 82% 38%,rgba(0,127,255,.06),transparent 62%);
+  pointer-events:none;
+}
+.kosten-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1.02fr;gap:28px;align-items:stretch;
+}
+@media(max-width:860px){.kosten-grid{grid-template-columns:1fr}}
+.kosten-panel{
+  padding:28px;border-radius:24px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018));
+  border:1px solid var(--line-b);
+  box-shadow:0 26px 80px rgba(0,0,0,.38);
+}
+.kosten-copy{max-width:56ch;margin-bottom:28px}
+.kosten-copy .sdesc{margin-bottom:0}
+.kosten-controls{
+  display:grid;gap:18px;
+}
+.kosten-control{
+  padding:18px;border-radius:18px;
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(255,255,255,.025);
+}
+.kosten-control-head{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  margin-bottom:14px;
+}
+.kosten-control-label{
+  font-size:13px;font-weight:700;color:var(--text);
+}
+.kosten-control-value{
+  font-family:var(--mono);font-size:13px;font-weight:700;color:var(--green);
+  padding:6px 10px;border-radius:999px;
+  background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.18);
+  white-space:nowrap;
+}
+.kosten-range{
+  width:100%;appearance:none;background:transparent;cursor:pointer;
+}
+.kosten-range:focus{outline:none}
+.kosten-range::-webkit-slider-runnable-track{
+  height:8px;border-radius:999px;
+  background:linear-gradient(90deg,rgba(34,197,94,.28),rgba(0,127,255,.28));
+}
+.kosten-range::-moz-range-track{
+  height:8px;border-radius:999px;border:0;
+  background:linear-gradient(90deg,rgba(34,197,94,.28),rgba(0,127,255,.28));
+}
+.kosten-range::-webkit-slider-thumb{
+  appearance:none;margin-top:-6px;
+  width:20px;height:20px;border-radius:50%;
+  background:linear-gradient(180deg,#fff,var(--gold));
+  border:2px solid rgba(6,9,15,.85);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+.kosten-range::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;border:2px solid rgba(6,9,15,.85);
+  background:linear-gradient(180deg,#fff,var(--gold));
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+.kosten-range-scale{
+  margin-top:10px;display:flex;justify-content:space-between;
+  font-size:11px;color:var(--muted);font-family:var(--mono);
+}
+.kosten-amount-wrap{
+  margin-top:10px;
+  display:flex;align-items:center;gap:10px;
+  padding:14px 16px;border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.24);
+}
+.kosten-currency{
+  font-size:16px;font-weight:800;color:var(--gold);line-height:1;
+}
+.kosten-input{
+  width:100%;appearance:none;border:0;outline:none;background:transparent;
+  color:var(--text);font-size:18px;font-weight:700;font-family:var(--font);
+  letter-spacing:.01em;
+}
+.kosten-input::placeholder{color:rgba(255,255,255,.34)}
+.kosten-input-note{
+  margin-top:10px;font-size:12px;color:var(--muted);line-height:1.45;
+}
+.kosten-assumptions{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+}
+@media(max-width:560px){.kosten-assumptions{grid-template-columns:1fr}}
+.kosten-assumption{
+  padding:16px;border-radius:16px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.02);
+}
+.kosten-assumption-label{
+  font-size:11px;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.08em;font-weight:700;
+}
+.kosten-assumption-value{
+  margin-top:6px;font-size:20px;font-weight:900;letter-spacing:-.02em;
+}
+.kosten-assumption-value.gold{color:var(--gold)}
+.kosten-assumption-value.blue{color:var(--blue-light)}
+.kosten-summary{
+  padding:20px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,127,255,.08),rgba(34,197,94,.08));
+  border:1px solid rgba(0,127,255,.14);
+}
+.kosten-summary-label{
+  font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;
+  letter-spacing:.1em;font-weight:700;
+}
+.kosten-summary-value{
+  margin-top:8px;font-size:clamp(32px,4vw,46px);font-weight:900;
+  letter-spacing:-.04em;line-height:1;
+}
+.kosten-summary-sub{
+  margin-top:10px;font-size:13px;color:rgba(255,255,255,.72);line-height:1.5;
+}
+.kosten-chart{
+  margin-top:22px;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;
+  align-items:end;
+}
+@media(max-width:520px){.kosten-chart{grid-template-columns:1fr}}
+.kosten-bar-card{
+  padding:18px 18px 16px;border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.025);
+}
+.kosten-bar-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+  margin-bottom:16px;
+}
+.kosten-bar-title{
+  font-size:13px;font-weight:700;color:var(--text);
+}
+.kosten-bar-desc{
+  margin-top:3px;font-size:11px;color:var(--muted);line-height:1.4;
+}
+.kosten-bar-value{
+  font-family:var(--mono);font-size:16px;font-weight:700;color:var(--text);
+  white-space:nowrap;
+}
+.kosten-bar-track{
+  height:180px;border-radius:18px;padding:10px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:flex-end;
+}
+.kosten-bar-fill{
+  width:100%;height:0;border-radius:12px;
+  transition:height .45s var(--ease);
+  box-shadow:0 24px 40px rgba(0,0,0,.24);
+}
+.kosten-bar-fill.tb{
+  background:linear-gradient(180deg,var(--blue-light),var(--blue));
+}
+.kosten-bar-fill.ft{
+  background:linear-gradient(180deg,var(--gold),var(--gold-dim));
+}
+.kosten-difference-grid{
+  margin-top:20px;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;
+}
+@media(max-width:560px){.kosten-difference-grid{grid-template-columns:1fr}}
+.kosten-difference-card{
+  padding:18px;border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.02);
+}
+.kosten-difference-period{
+  font-size:11px;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.1em;font-weight:700;
+}
+.kosten-difference-value{
+  margin-top:8px;font-size:28px;font-weight:900;letter-spacing:-.03em;line-height:1;
+}
+.kosten-difference-label{
+  margin-top:8px;font-size:12px;color:rgba(255,255,255,.72);line-height:1.45;
+}
+.kosten-callout{
+  margin-top:20px;padding:20px;border-radius:20px;
+  border:1px solid rgba(34,197,94,.16);
+  background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.04));
+  transition:border-color .3s,background .3s;
+}
+.kosten-callout.warning{
+  border-color:rgba(222,165,0,.2);
+  background:linear-gradient(135deg,rgba(222,165,0,.09),rgba(222,165,0,.04));
+}
+.kosten-callout-label{
+  font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;
+  color:var(--green);
+}
+.kosten-callout.warning .kosten-callout-label{color:var(--amber)}
+.kosten-callout-value{
+  margin-top:8px;font-size:clamp(34px,4vw,48px);font-weight:900;
+  letter-spacing:-.04em;line-height:1;
+}
+.kosten-callout-text{
+  margin-top:10px;font-size:13px;color:rgba(255,255,255,.78);line-height:1.55;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRICING SECTION
+   ═══════════════════════════════════════════════════════════════ */
+#prijzen{padding:100px 0 120px;position:relative}
+#prijzen::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.pricing-intro{max-width:56ch;margin-bottom:48px}
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  align-items:stretch;
+}
+@media(max-width:860px){.pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}
+.pricing-card{
+  position:relative;padding:36px 28px 32px;border-radius:20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  display:flex;flex-direction:column;transition:border-color .3s,transform .3s;
+}
+.pricing-card:hover{border-color:rgba(255,255,255,.14);transform:translateY(-4px)}
+.pricing-card.popular{
+  border-color:rgba(0,127,255,.3);
+  background:linear-gradient(180deg,rgba(0,127,255,.1),rgba(0,127,255,.03));
+}
+.pricing-card.popular:hover{border-color:rgba(0,127,255,.5)}
+.pricing-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:#fff;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:4px 14px;border-radius:20px;white-space:nowrap;
+}
+.pricing-name{
+  font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:rgba(255,255,255,.6);margin-bottom:12px;
+}
+.pricing-price{
+  font-size:clamp(40px,5vw,52px);font-weight:900;letter-spacing:-.04em;
+  line-height:1;color:var(--text);
+}
+.pricing-price span{font-size:18px;font-weight:600;color:rgba(255,255,255,.5)}
+.pricing-period{
+  font-size:13px;color:rgba(255,255,255,.5);margin-top:6px;margin-bottom:24px;
+}
+.pricing-divider{
+  height:1px;background:rgba(255,255,255,.08);margin-bottom:20px;
+}
+.pricing-features{
+  list-style:none;padding:0;margin:0 0 24px;flex:1;
+}
+.pricing-features li{
+  font-size:14px;color:rgba(255,255,255,.78);line-height:1.5;
+  padding:6px 0 6px 24px;position:relative;
+}
+.pricing-features li::before{
+  content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;
+}
+.pricing-breakeven{
+  padding:16px;border-radius:14px;
+  border:1px solid rgba(34,197,94,.15);
+  background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.03));
+  text-align:center;
+}
+.pricing-breakeven-label{
+  font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;
+  color:var(--green);margin-bottom:4px;
+}
+.pricing-breakeven-value{
+  font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--text);
+}
+.pricing-breakeven-sub{
+  font-size:12px;color:rgba(255,255,255,.56);margin-top:2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    FEATURE SECTIONS (SMS, REVIEW, LATE ORDER)
    ═══════════════════════════════════════════════════════════════ */
 #sms{padding:120px 0;position:relative}
@@ -769,6 +1056,8 @@ section{padding:100px 0}
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="110" height="28" viewBox="0 335.5 612 121"><path fill="#fff" d="M22.866,345.363v13.287h39.216v87.619h100.906V345.363H22.866z M149.701,432.982H75.369v-74.31h74.31 v74.31H149.701z"/><rect x="103.117" y="386.697" fill="#fff" width="18.514" height="18.514"/><path fill="#fff" d="M212.843,357.636c-2.971,0-5.273,0.599-6.909,1.773c-1.635,1.175-2.464,2.948-2.464,5.296 c0,2.165,1.198,4.076,3.569,5.711c2.372,1.635,5.55,3.201,9.51,4.675c3.224,1.174,5.964,2.51,8.267,4.03 c2.28,1.52,4.191,3.592,5.711,6.263c1.52,2.648,2.279,6.033,2.279,10.109c0,3.523-0.921,6.793-2.74,9.787 c-1.819,2.993-4.49,5.388-8.013,7.139c-3.523,1.75-7.737,2.647-12.619,2.647c-4.076,0-8.129-0.599-12.159-1.818 c-4.03-1.198-7.76-3.04-11.214-5.527l5.941-10.478c2.349,1.728,5.043,3.155,8.06,4.261s5.757,1.681,8.151,1.681 c2.833,0,5.319-0.599,7.415-1.819c2.095-1.197,3.132-3.154,3.132-5.872c0-3.523-3.316-6.585-9.925-9.188 c-3.892-1.543-7.139-3.04-9.741-4.444c-2.602-1.428-4.836-3.454-6.724-6.125c-1.888-2.648-2.833-5.987-2.833-10.017 c0-5.872,1.935-10.615,5.803-14.185c3.869-3.592,9.003-5.527,15.451-5.849c5.066,0,9.303,0.576,12.711,1.727 c3.408,1.151,6.701,2.763,9.925,4.859l-5.112,10.293C222.376,359.271,217.218,357.636,212.843,357.636z"/><path fill="#fff" d="M334.911,414.33h-13.448v-25.676h-30.511v25.676h-13.448v-68.276h13.448v29.613h30.511v-29.613h13.448 V414.33z"/><path fill="#fff" d="M397.522,346.054v68.276h-13.448v-68.276H397.522z"/><path fill="#fff" d="M471.072,373.778l2.049-2.602l22.268-25.146h17.433l-28.209,30.604l28.301,37.673H495.85l-21.047-29.129 l-3.362,3.362v25.791h-13.632v-68.276h13.632v24.294L471.072,373.778z"/><path fill="#fff" d="M579.232,346.054v68.276h-13.448v-68.276H579.232z"/></svg>
   </a>
   <nav class="topbar-nav">
+    <a href="#kosten">Kosten</a>
+    <a href="#prijzen">Prijzen</a>
     <a href="#sms">SMS</a>
     <a href="#review">Reviews</a>
     <a href="#late-order">Late Order</a>
@@ -799,6 +1088,213 @@ section{padding:100px 0}
   <div class="scroll-hint r" style="transition-delay:.5s">
     <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
     Scroll
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     KOSTENVERGELIJKER
+     ═══════════════════════════════════════════════════════════ -->
+<section id="kosten">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)"></div>
+  <div class="wrap">
+    <div class="kosten-grid">
+      <div>
+        <div class="label r" style="color:var(--green)">Slim rekenen</div>
+        <div class="kosten-copy r" style="transition-delay:.1s">
+          <h2 class="stitle">Wat kost Thuisbezorgd je<br>per maand aan commissie?</h2>
+          <p class="sdesc">
+            Schuif met je aantal orders per maand en pas je gemiddelde bestelbedrag aan. Je ziet direct wat 14% commissie doet tegenover een vast FoodTrac-abonnement.
+          </p>
+        </div>
+
+        <div class="kosten-panel card r" style="transition-delay:.2s">
+          <div class="kosten-controls">
+            <div class="kosten-control">
+              <div class="kosten-control-head">
+                <div class="kosten-control-label">Orders per maand</div>
+                <div class="kosten-control-value"><span id="ordersValue">300</span> orders</div>
+              </div>
+              <input
+                class="kosten-range"
+                type="range"
+                id="ordersRange"
+                min="50"
+                max="1500"
+                step="10"
+                value="300"
+                aria-label="Aantal orders per maand"
+              >
+              <div class="kosten-range-scale">
+                <span>50</span>
+                <span>1500</span>
+              </div>
+            </div>
+
+            <div class="kosten-control">
+              <div class="kosten-control-label">Gemiddeld bestelbedrag</div>
+              <div class="kosten-amount-wrap">
+                <span class="kosten-currency">&euro;</span>
+                <input
+                  class="kosten-input"
+                  type="text"
+                  id="avgOrderInput"
+                  value="28,50"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  placeholder="28,50"
+                  aria-label="Gemiddeld bestelbedrag"
+                >
+              </div>
+              <div class="kosten-input-note">Standaard ingevuld op 28,50. Komma of punt werkt allebei.</div>
+            </div>
+
+            <div class="kosten-assumptions">
+              <div class="kosten-assumption">
+                <div class="kosten-assumption-label">Thuisbezorgd.nl</div>
+                <div class="kosten-assumption-value blue">14% commissie</div>
+              </div>
+              <div class="kosten-assumption">
+                <div class="kosten-assumption-label">FoodTrac</div>
+                <div class="kosten-assumption-value gold" id="foodtracPlanLabel">&euro;49 / maand</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kosten-panel card r" style="transition-delay:.3s">
+        <div class="kosten-summary">
+          <div class="kosten-summary-label">Maandomzet op basis van jouw input</div>
+          <div class="kosten-summary-value" id="monthlyRevenueValue">&euro;8.550,00</div>
+          <div class="kosten-summary-sub">
+            <span id="ordersSummaryValue">300</span> orders/maand &times;
+            <span id="avgOrderSummaryValue">&euro;28,50</span> gemiddeld
+          </div>
+        </div>
+
+        <div class="kosten-chart">
+          <div class="kosten-bar-card">
+            <div class="kosten-bar-head">
+              <div>
+                <div class="kosten-bar-title">Thuisbezorgd.nl</div>
+                <div class="kosten-bar-desc">14% commissie op je maandomzet</div>
+              </div>
+              <div class="kosten-bar-value" id="thuisbezorgdMonthlyValue">&euro;1.197,00</div>
+            </div>
+            <div class="kosten-bar-track">
+              <div class="kosten-bar-fill tb" id="thuisbezorgdBar" style="height:100%"></div>
+            </div>
+          </div>
+
+          <div class="kosten-bar-card">
+            <div class="kosten-bar-head">
+              <div>
+                <div class="kosten-bar-title" id="foodtracBarTitle">FoodTrac &mdash; Starter</div>
+                <div class="kosten-bar-desc">Vast abonnement per maand</div>
+              </div>
+              <div class="kosten-bar-value" id="foodtracMonthlyValue">&euro;49,00</div>
+            </div>
+            <div class="kosten-bar-track">
+              <div class="kosten-bar-fill ft" id="foodtracBar" style="height:4%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kosten-difference-grid">
+          <div class="kosten-difference-card">
+            <div class="kosten-difference-period">Per maand</div>
+            <div class="kosten-difference-value" id="monthlyDifferenceValue">&euro;1.148,00</div>
+            <div class="kosten-difference-label" id="monthlyDifferenceLabel">Besparing per maand</div>
+          </div>
+          <div class="kosten-difference-card">
+            <div class="kosten-difference-period">Per jaar</div>
+            <div class="kosten-difference-value" id="yearlyDifferenceValue">&euro;13.776,00</div>
+            <div class="kosten-difference-label" id="yearlyDifferenceLabel">Besparing per jaar</div>
+          </div>
+        </div>
+
+        <div class="kosten-callout" id="kostenCallout">
+          <div class="kosten-callout-label" id="kostenCalloutLabel">Besparing per maand</div>
+          <div class="kosten-callout-value" id="kostenCalloutValue">&euro;1.148,00</div>
+          <div class="kosten-callout-text" id="kostenCalloutText">
+            Met 300 orders per maand kost Thuisbezorgd.nl je ongeveer &euro;1.148,00 meer per maand dan FoodTrac.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRIJZEN — BREAK-EVEN
+     ═══════════════════════════════════════════════════════════ -->
+<section id="prijzen">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+  <div class="wrap">
+    <div class="label r" style="color:var(--gold)">Prijzen</div>
+    <div class="pricing-intro r" style="transition-delay:.1s">
+      <h2 class="stitle">Kies het plan dat bij je past</h2>
+      <p class="sdesc">Hoeveel orders heeft FoodTrac nodig om zichzelf terug te verdienen? Minder dan je denkt.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card r" style="transition-delay:.15s">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-price">&euro;49 <span>/maand</span></div>
+        <div class="pricing-period">Tot 300 orders per maand</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Eigen bestelwebsite</li>
+          <li>Geen commissie per order</li>
+          <li>SMS-marketingcampagnes</li>
+          <li>Review Booster</li>
+          <li>Klantenbestand opbouwen</li>
+        </ul>
+        <div class="pricing-breakeven">
+          <div class="pricing-breakeven-label">Break-even</div>
+          <div class="pricing-breakeven-value" id="breakeven1">13 orders</div>
+          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
+        </div>
+      </div>
+
+      <div class="pricing-card popular r" style="transition-delay:.25s">
+        <div class="pricing-badge">Populair</div>
+        <div class="pricing-name">Groei</div>
+        <div class="pricing-price">&euro;90 <span>/maand</span></div>
+        <div class="pricing-period">Tot 750 orders per maand</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Eigen bestelwebsite</li>
+          <li>Geen commissie per order</li>
+          <li>SMS-marketingcampagnes</li>
+          <li>Review Booster</li>
+          <li>Klantenbestand opbouwen</li>
+        </ul>
+        <div class="pricing-breakeven">
+          <div class="pricing-breakeven-label">Break-even</div>
+          <div class="pricing-breakeven-value" id="breakeven2">23 orders</div>
+          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
+        </div>
+      </div>
+
+      <div class="pricing-card r" style="transition-delay:.35s">
+        <div class="pricing-name">Unlimited</div>
+        <div class="pricing-price">&euro;149 <span>/maand</span></div>
+        <div class="pricing-period">Onbeperkt aantal orders</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Alles van Groei</li>
+          <li>Onbeperkt orders</li>
+          <li>Online social media reclame</li>
+          <li>Flyer-campagnes</li>
+        </ul>
+        <div class="pricing-breakeven">
+          <div class="pricing-breakeven-label">Break-even</div>
+          <div class="pricing-breakeven-value" id="breakeven3">38 orders</div>
+          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1593,6 +2089,149 @@ document.querySelectorAll('.roi-card').forEach(card=>{
   },{threshold:0.3});
   obs.observe(card);
 });
+
+/* Cost Comparison */
+const DEFAULT_AVG_ORDER = 28.5;
+const THUISBEZORGD_RATE = 0.14;
+const FOODTRAC_PLANS = [
+  { name: 'Starter', price: 49, maxOrders: 300 },
+  { name: 'Groei', price: 90, maxOrders: 750 },
+  { name: 'Unlimited', price: 149, maxOrders: Infinity }
+];
+function getFoodtracPlan(monthlyOrders){
+  return FOODTRAC_PLANS.find(p => monthlyOrders <= p.maxOrders) || FOODTRAC_PLANS[2];
+}
+
+const euroFormatter = new Intl.NumberFormat('nl-NL', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
+const numberFormatter = new Intl.NumberFormat('nl-NL', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
+
+const ordersRange = document.getElementById('ordersRange');
+const ordersValue = document.getElementById('ordersValue');
+const avgOrderInput = document.getElementById('avgOrderInput');
+const monthlyRevenueValue = document.getElementById('monthlyRevenueValue');
+const ordersSummaryValue = document.getElementById('ordersSummaryValue');
+const avgOrderSummaryValue = document.getElementById('avgOrderSummaryValue');
+const thuisbezorgdMonthlyValue = document.getElementById('thuisbezorgdMonthlyValue');
+const foodtracMonthlyValue = document.getElementById('foodtracMonthlyValue');
+const foodtracBarTitle = document.getElementById('foodtracBarTitle');
+const foodtracPlanLabel = document.getElementById('foodtracPlanLabel');
+const monthlyDifferenceValue = document.getElementById('monthlyDifferenceValue');
+const monthlyDifferenceLabel = document.getElementById('monthlyDifferenceLabel');
+const yearlyDifferenceValue = document.getElementById('yearlyDifferenceValue');
+const yearlyDifferenceLabel = document.getElementById('yearlyDifferenceLabel');
+const kostenCallout = document.getElementById('kostenCallout');
+const kostenCalloutLabel = document.getElementById('kostenCalloutLabel');
+const kostenCalloutValue = document.getElementById('kostenCalloutValue');
+const kostenCalloutText = document.getElementById('kostenCalloutText');
+const thuisbezorgdBar = document.getElementById('thuisbezorgdBar');
+const foodtracBar = document.getElementById('foodtracBar');
+const breakeven1 = document.getElementById('breakeven1');
+const breakeven2 = document.getElementById('breakeven2');
+const breakeven3 = document.getElementById('breakeven3');
+
+function formatInputAmount(value){
+  return numberFormatter.format(value);
+}
+
+function parseAverageOrderValue(value){
+  const cleaned = String(value || '')
+    .trim()
+    .replace(/[^\d.,]/g,'');
+
+  if(!cleaned) return DEFAULT_AVG_ORDER;
+
+  const lastComma = cleaned.lastIndexOf(',');
+  const lastDot = cleaned.lastIndexOf('.');
+  const decimalIndex = Math.max(lastComma, lastDot);
+  let normalized = cleaned;
+
+  if(decimalIndex >= 0){
+    const integerPart = cleaned.slice(0, decimalIndex).replace(/[.,]/g,'');
+    const decimalPart = cleaned.slice(decimalIndex + 1).replace(/[^\d]/g,'');
+    normalized = integerPart + '.' + decimalPart;
+  } else {
+    normalized = cleaned.replace(/[^\d]/g,'');
+  }
+
+  const parsed = Number.parseFloat(normalized);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : DEFAULT_AVG_ORDER;
+}
+
+function getBarHeight(value, maxValue){
+  if(value <= 0) return '0%';
+  return Math.max((value / maxValue) * 100, 12) + '%';
+}
+
+function updateCostComparison(){
+  if(!ordersRange || !avgOrderInput) return;
+
+  const ordersPerMonth = Number.parseInt(ordersRange.value, 10) || 300;
+  const averageOrderValue = parseAverageOrderValue(avgOrderInput.value);
+  const monthlyRevenue = ordersPerMonth * averageOrderValue;
+  const thuisbezorgdMonthly = monthlyRevenue * THUISBEZORGD_RATE;
+  const plan = getFoodtracPlan(ordersPerMonth);
+  const foodtracMonthly = plan.price;
+  const monthlyDiff = thuisbezorgdMonthly - foodtracMonthly;
+  const yearlyDiff = monthlyDiff * 12;
+  const comparisonMax = Math.max(thuisbezorgdMonthly, foodtracMonthly, 1);
+  const isSaving = monthlyDiff > 0;
+  const monthlyDiffAbs = Math.abs(monthlyDiff);
+  const yearlyDiffAbs = Math.abs(yearlyDiff);
+
+  ordersValue.textContent = ordersPerMonth;
+  ordersSummaryValue.textContent = ordersPerMonth;
+  monthlyRevenueValue.textContent = euroFormatter.format(monthlyRevenue);
+  avgOrderSummaryValue.textContent = euroFormatter.format(averageOrderValue);
+  thuisbezorgdMonthlyValue.textContent = euroFormatter.format(thuisbezorgdMonthly);
+  foodtracMonthlyValue.textContent = euroFormatter.format(foodtracMonthly);
+  foodtracBarTitle.textContent = 'FoodTrac \u2014 ' + plan.name;
+  foodtracPlanLabel.textContent = '\u20AC' + plan.price + ' / maand';
+  monthlyDifferenceValue.textContent = euroFormatter.format(monthlyDiffAbs);
+  yearlyDifferenceValue.textContent = euroFormatter.format(yearlyDiffAbs);
+  monthlyDifferenceLabel.textContent = isSaving ? 'Besparing per maand' : 'Verschil per maand';
+  yearlyDifferenceLabel.textContent = isSaving ? 'Besparing per jaar' : 'Verschil per jaar';
+  kostenCalloutLabel.textContent = isSaving ? 'Besparing per maand' : 'Verschil per maand';
+  kostenCalloutValue.textContent = euroFormatter.format(monthlyDiffAbs);
+  kostenCallout.classList.toggle('warning', !isSaving);
+  kostenCalloutText.textContent = isSaving
+    ? `Met ${ordersPerMonth} orders per maand kost Thuisbezorgd.nl je ongeveer ${euroFormatter.format(monthlyDiffAbs)} meer dan het ${plan.name}-plan van FoodTrac.`
+    : `Bij ${ordersPerMonth} orders per maand ligt het verschil op ongeveer ${euroFormatter.format(monthlyDiffAbs)} in het voordeel van Thuisbezorgd.nl.`;
+
+  thuisbezorgdBar.style.height = getBarHeight(thuisbezorgdMonthly, comparisonMax);
+  foodtracBar.style.height = getBarHeight(foodtracMonthly, comparisonMax);
+
+  // Update break-even in pricing cards
+  const commissionPerOrder = averageOrderValue * THUISBEZORGD_RATE;
+  if(commissionPerOrder > 0){
+    FOODTRAC_PLANS.forEach((p, i) => {
+      const be = document.getElementById('breakeven' + (i + 1));
+      if(be) be.textContent = Math.ceil(p.price / commissionPerOrder) + ' orders';
+    });
+  }
+}
+
+if(avgOrderInput){
+  avgOrderInput.addEventListener('input', updateCostComparison);
+  avgOrderInput.addEventListener('blur', ()=>{
+    avgOrderInput.value = formatInputAmount(parseAverageOrderValue(avgOrderInput.value));
+    updateCostComparison();
+  });
+  avgOrderInput.addEventListener('focus', ()=>avgOrderInput.select());
+}
+
+if(ordersRange){
+  ordersRange.addEventListener('input', updateCostComparison);
+}
+
+updateCostComparison();
 
 /* Smooth scroll for anchor links */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
