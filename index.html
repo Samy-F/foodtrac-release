@@ -417,6 +417,50 @@ section{padding:100px 0}
   margin-top:10px;font-size:13px;color:rgba(255,255,255,.78);line-height:1.55;
 }
 
+/* Step-by-step breakdown */
+.kosten-steps{
+  display:flex;flex-direction:column;gap:0;margin-bottom:24px;
+}
+.kosten-step{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);
+  gap:12px;
+}
+.kosten-step:last-child{border-bottom:none}
+.kosten-step-label{
+  display:flex;align-items:baseline;gap:10px;
+  font-size:14px;color:rgba(255,255,255,.72);line-height:1.45;
+  flex:1;min-width:0;
+}
+.kosten-step-num{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);
+}
+.kosten-step-value{
+  font-size:15px;font-weight:700;color:var(--text);
+  white-space:nowrap;flex-shrink:0;
+}
+.kosten-step.result{
+  margin-top:8px;padding:16px 20px;border-radius:14px;border-bottom:none;
+  background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.04));
+  border:1px solid rgba(34,197,94,.15);
+}
+.kosten-step.result .kosten-step-num{
+  background:var(--green);color:#fff;
+}
+.kosten-step.result .kosten-step-value{
+  font-size:clamp(20px,2.5vw,26px);color:var(--green);
+}
+.kosten-step.result.warning{
+  background:linear-gradient(135deg,rgba(222,165,0,.1),rgba(222,165,0,.04));
+  border-color:rgba(222,165,0,.2);
+}
+.kosten-step.result.warning .kosten-step-num{background:var(--amber)}
+.kosten-step.result.warning .kosten-step-value{color:var(--amber)}
+.kosten-step.negative .kosten-step-value{color:var(--red)}
+
 /* ═══════════════════════════════════════════════════════════════
    PRICING SECTION
    ═══════════════════════════════════════════════════════════════ */
@@ -1101,9 +1145,9 @@ section{padding:100px 0}
       <div>
         <div class="label r" style="color:var(--green)">Slim rekenen</div>
         <div class="kosten-copy r" style="transition-delay:.1s">
-          <h2 class="stitle">Wat kost Thuisbezorgd je<br>per maand aan commissie?</h2>
+          <h2 class="stitle">Hoeveel levert FoodTrac<br>jouw restaurant op?</h2>
           <p class="sdesc">
-            Schuif met je aantal orders per maand en pas je gemiddelde bestelbedrag aan. Je ziet direct wat 14% commissie doet tegenover een vast FoodTrac-abonnement.
+            FoodTrac zorgt dat meer klanten rechtstreeks bij jou bestellen in plaats van via Thuisbezorgd. Geen 14% commissie meer op die orders. Reken het zelf uit.
           </p>
         </div>
 
@@ -1111,7 +1155,7 @@ section{padding:100px 0}
           <div class="kosten-controls">
             <div class="kosten-control">
               <div class="kosten-control-head">
-                <div class="kosten-control-label">Orders per maand</div>
+                <div class="kosten-control-label">Hoeveel orders heb je nu per maand?</div>
                 <div class="kosten-control-value"><span id="ordersValue">300</span> orders</div>
               </div>
               <input
@@ -1148,13 +1192,34 @@ section{padding:100px 0}
               <div class="kosten-input-note">Standaard ingevuld op 28,50. Komma of punt werkt allebei.</div>
             </div>
 
+            <div class="kosten-control">
+              <div class="kosten-control-head">
+                <div class="kosten-control-label">Hoeveel % haalt FoodTrac naar je eigen website?</div>
+                <div class="kosten-control-value"><span id="percentValue">15</span>%</div>
+              </div>
+              <input
+                class="kosten-range"
+                type="range"
+                id="percentRange"
+                min="5"
+                max="40"
+                step="1"
+                value="15"
+                aria-label="Percentage extra orders via eigen website"
+              >
+              <div class="kosten-range-scale">
+                <span>5%</span>
+                <span>40%</span>
+              </div>
+            </div>
+
             <div class="kosten-assumptions">
               <div class="kosten-assumption">
-                <div class="kosten-assumption-label">Thuisbezorgd.nl</div>
-                <div class="kosten-assumption-value blue">14% commissie</div>
+                <div class="kosten-assumption-label">Commissie bespaard</div>
+                <div class="kosten-assumption-value blue">14% per order</div>
               </div>
               <div class="kosten-assumption">
-                <div class="kosten-assumption-label">FoodTrac</div>
+                <div class="kosten-assumption-label">FoodTrac-plan</div>
                 <div class="kosten-assumption-value gold" id="foodtracPlanLabel">&euro;49 / maand</div>
               </div>
             </div>
@@ -1164,60 +1229,57 @@ section{padding:100px 0}
 
       <div class="kosten-panel card r" style="transition-delay:.3s">
         <div class="kosten-summary">
-          <div class="kosten-summary-label">Maandomzet op basis van jouw input</div>
-          <div class="kosten-summary-value" id="monthlyRevenueValue">&euro;8.550,00</div>
-          <div class="kosten-summary-sub">
-            <span id="ordersSummaryValue">300</span> orders/maand &times;
-            <span id="avgOrderSummaryValue">&euro;28,50</span> gemiddeld
-          </div>
+          <div class="kosten-summary-label">Zo werkt de berekening</div>
         </div>
 
-        <div class="kosten-chart">
-          <div class="kosten-bar-card">
-            <div class="kosten-bar-head">
-              <div>
-                <div class="kosten-bar-title">Thuisbezorgd.nl</div>
-                <div class="kosten-bar-desc">14% commissie op je maandomzet</div>
-              </div>
-              <div class="kosten-bar-value" id="thuisbezorgdMonthlyValue">&euro;1.197,00</div>
+        <div class="kosten-steps">
+          <div class="kosten-step">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">1</span>
+              <span><span id="stepOrders">300</span> orders &times; <span id="stepPercent">15</span>% via eigen website</span>
             </div>
-            <div class="kosten-bar-track">
-              <div class="kosten-bar-fill tb" id="thuisbezorgdBar" style="height:100%"></div>
-            </div>
+            <div class="kosten-step-value" id="stepExtraOrders">= 45 orders</div>
           </div>
-
-          <div class="kosten-bar-card">
-            <div class="kosten-bar-head">
-              <div>
-                <div class="kosten-bar-title" id="foodtracBarTitle">FoodTrac &mdash; Starter</div>
-                <div class="kosten-bar-desc">Vast abonnement per maand</div>
-              </div>
-              <div class="kosten-bar-value" id="foodtracMonthlyValue">&euro;49,00</div>
+          <div class="kosten-step">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">2</span>
+              <span><span id="stepExtraOrders2">45</span> orders &times; <span id="stepAvg">&euro;28,50</span></span>
             </div>
-            <div class="kosten-bar-track">
-              <div class="kosten-bar-fill ft" id="foodtracBar" style="height:4%"></div>
+            <div class="kosten-step-value" id="stepRevenue">= &euro;1.282,50 omzet</div>
+          </div>
+          <div class="kosten-step">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">3</span>
+              <span>Bespaarde commissie (14%)</span>
             </div>
+            <div class="kosten-step-value" style="color:var(--green)" id="stepCommission">+ &euro;179,55</div>
+          </div>
+          <div class="kosten-step negative">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">4</span>
+              <span>FoodTrac abonnement (<span id="stepPlanName">Starter</span>)</span>
+            </div>
+            <div class="kosten-step-value" id="stepPlanCost">&minus; &euro;49,00</div>
+          </div>
+          <div class="kosten-step result" id="stepResult">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">5</span>
+              <span id="stepResultLabel">Netto besparing per maand</span>
+            </div>
+            <div class="kosten-step-value" id="stepResultValue">&euro;130,55</div>
           </div>
         </div>
 
         <div class="kosten-difference-grid">
           <div class="kosten-difference-card">
             <div class="kosten-difference-period">Per maand</div>
-            <div class="kosten-difference-value" id="monthlyDifferenceValue">&euro;1.148,00</div>
-            <div class="kosten-difference-label" id="monthlyDifferenceLabel">Besparing per maand</div>
+            <div class="kosten-difference-value" id="monthlyDifferenceValue">&euro;130,55</div>
+            <div class="kosten-difference-label" id="monthlyDifferenceLabel">Netto besparing</div>
           </div>
           <div class="kosten-difference-card">
             <div class="kosten-difference-period">Per jaar</div>
-            <div class="kosten-difference-value" id="yearlyDifferenceValue">&euro;13.776,00</div>
-            <div class="kosten-difference-label" id="yearlyDifferenceLabel">Besparing per jaar</div>
-          </div>
-        </div>
-
-        <div class="kosten-callout" id="kostenCallout">
-          <div class="kosten-callout-label" id="kostenCalloutLabel">Besparing per maand</div>
-          <div class="kosten-callout-value" id="kostenCalloutValue">&euro;1.148,00</div>
-          <div class="kosten-callout-text" id="kostenCalloutText">
-            Met 300 orders per maand kost Thuisbezorgd.nl je ongeveer &euro;1.148,00 meer per maand dan FoodTrac.
+            <div class="kosten-difference-value" id="yearlyDifferenceValue">&euro;1.566,60</div>
+            <div class="kosten-difference-label" id="yearlyDifferenceLabel">Netto besparing</div>
           </div>
         </div>
       </div>
@@ -1244,7 +1306,7 @@ section{padding:100px 0}
         <div class="pricing-period">Tot 300 orders per maand</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li>Eigen bestelwebsite</li>
+          <li>Meer orders via eigen website</li>
           <li>Geen commissie per order</li>
           <li>SMS-marketingcampagnes</li>
           <li>Review Booster</li>
@@ -1264,7 +1326,7 @@ section{padding:100px 0}
         <div class="pricing-period">Tot 750 orders per maand</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li>Eigen bestelwebsite</li>
+          <li>Meer orders via eigen website</li>
           <li>Geen commissie per order</li>
           <li>SMS-marketingcampagnes</li>
           <li>Review Booster</li>
@@ -2116,26 +2178,25 @@ const numberFormatter = new Intl.NumberFormat('nl-NL', {
 const ordersRange = document.getElementById('ordersRange');
 const ordersValue = document.getElementById('ordersValue');
 const avgOrderInput = document.getElementById('avgOrderInput');
-const monthlyRevenueValue = document.getElementById('monthlyRevenueValue');
-const ordersSummaryValue = document.getElementById('ordersSummaryValue');
-const avgOrderSummaryValue = document.getElementById('avgOrderSummaryValue');
-const thuisbezorgdMonthlyValue = document.getElementById('thuisbezorgdMonthlyValue');
-const foodtracMonthlyValue = document.getElementById('foodtracMonthlyValue');
-const foodtracBarTitle = document.getElementById('foodtracBarTitle');
+const percentRange = document.getElementById('percentRange');
+const percentValue = document.getElementById('percentValue');
 const foodtracPlanLabel = document.getElementById('foodtracPlanLabel');
+const stepOrders = document.getElementById('stepOrders');
+const stepPercent = document.getElementById('stepPercent');
+const stepExtraOrders = document.getElementById('stepExtraOrders');
+const stepExtraOrders2 = document.getElementById('stepExtraOrders2');
+const stepAvg = document.getElementById('stepAvg');
+const stepRevenue = document.getElementById('stepRevenue');
+const stepCommission = document.getElementById('stepCommission');
+const stepPlanName = document.getElementById('stepPlanName');
+const stepPlanCost = document.getElementById('stepPlanCost');
+const stepResult = document.getElementById('stepResult');
+const stepResultLabel = document.getElementById('stepResultLabel');
+const stepResultValue = document.getElementById('stepResultValue');
 const monthlyDifferenceValue = document.getElementById('monthlyDifferenceValue');
 const monthlyDifferenceLabel = document.getElementById('monthlyDifferenceLabel');
 const yearlyDifferenceValue = document.getElementById('yearlyDifferenceValue');
 const yearlyDifferenceLabel = document.getElementById('yearlyDifferenceLabel');
-const kostenCallout = document.getElementById('kostenCallout');
-const kostenCalloutLabel = document.getElementById('kostenCalloutLabel');
-const kostenCalloutValue = document.getElementById('kostenCalloutValue');
-const kostenCalloutText = document.getElementById('kostenCalloutText');
-const thuisbezorgdBar = document.getElementById('thuisbezorgdBar');
-const foodtracBar = document.getElementById('foodtracBar');
-const breakeven1 = document.getElementById('breakeven1');
-const breakeven2 = document.getElementById('breakeven2');
-const breakeven3 = document.getElementById('breakeven3');
 
 function formatInputAmount(value){
   return numberFormatter.format(value);
@@ -2165,48 +2226,49 @@ function parseAverageOrderValue(value){
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : DEFAULT_AVG_ORDER;
 }
 
-function getBarHeight(value, maxValue){
-  if(value <= 0) return '0%';
-  return Math.max((value / maxValue) * 100, 12) + '%';
-}
-
 function updateCostComparison(){
-  if(!ordersRange || !avgOrderInput) return;
+  if(!ordersRange || !avgOrderInput || !percentRange) return;
 
   const ordersPerMonth = Number.parseInt(ordersRange.value, 10) || 300;
   const averageOrderValue = parseAverageOrderValue(avgOrderInput.value);
-  const monthlyRevenue = ordersPerMonth * averageOrderValue;
-  const thuisbezorgdMonthly = monthlyRevenue * THUISBEZORGD_RATE;
+  const extraPercent = Number.parseInt(percentRange.value, 10) || 15;
+  const extraOrders = Math.round(ordersPerMonth * (extraPercent / 100));
+  const extraRevenue = extraOrders * averageOrderValue;
+  const commissionSaved = extraRevenue * THUISBEZORGD_RATE;
   const plan = getFoodtracPlan(ordersPerMonth);
   const foodtracMonthly = plan.price;
-  const monthlyDiff = thuisbezorgdMonthly - foodtracMonthly;
+  const monthlyDiff = commissionSaved - foodtracMonthly;
   const yearlyDiff = monthlyDiff * 12;
-  const comparisonMax = Math.max(thuisbezorgdMonthly, foodtracMonthly, 1);
   const isSaving = monthlyDiff > 0;
   const monthlyDiffAbs = Math.abs(monthlyDiff);
   const yearlyDiffAbs = Math.abs(yearlyDiff);
 
+  // Slider values
   ordersValue.textContent = ordersPerMonth;
-  ordersSummaryValue.textContent = ordersPerMonth;
-  monthlyRevenueValue.textContent = euroFormatter.format(monthlyRevenue);
-  avgOrderSummaryValue.textContent = euroFormatter.format(averageOrderValue);
-  thuisbezorgdMonthlyValue.textContent = euroFormatter.format(thuisbezorgdMonthly);
-  foodtracMonthlyValue.textContent = euroFormatter.format(foodtracMonthly);
-  foodtracBarTitle.textContent = 'FoodTrac \u2014 ' + plan.name;
+  percentValue.textContent = extraPercent;
   foodtracPlanLabel.textContent = '\u20AC' + plan.price + ' / maand';
+
+  // Step-by-step breakdown
+  stepOrders.textContent = ordersPerMonth;
+  stepPercent.textContent = extraPercent;
+  stepExtraOrders.textContent = '= ' + extraOrders + ' orders';
+  stepExtraOrders2.textContent = extraOrders;
+  stepAvg.textContent = euroFormatter.format(averageOrderValue);
+  stepRevenue.textContent = '= ' + euroFormatter.format(extraRevenue) + ' omzet';
+  stepCommission.textContent = '+ ' + euroFormatter.format(commissionSaved);
+  stepPlanName.textContent = plan.name;
+  stepPlanCost.textContent = '\u2212 ' + euroFormatter.format(foodtracMonthly);
+
+  // Result step
+  stepResult.classList.toggle('warning', !isSaving);
+  stepResultLabel.textContent = isSaving ? 'Netto besparing per maand' : 'FoodTrac kost meer dan het oplevert';
+  stepResultValue.textContent = (isSaving ? '' : '\u2212 ') + euroFormatter.format(monthlyDiffAbs);
+
+  // Summary cards
   monthlyDifferenceValue.textContent = euroFormatter.format(monthlyDiffAbs);
   yearlyDifferenceValue.textContent = euroFormatter.format(yearlyDiffAbs);
-  monthlyDifferenceLabel.textContent = isSaving ? 'Besparing per maand' : 'Verschil per maand';
-  yearlyDifferenceLabel.textContent = isSaving ? 'Besparing per jaar' : 'Verschil per jaar';
-  kostenCalloutLabel.textContent = isSaving ? 'Besparing per maand' : 'Verschil per maand';
-  kostenCalloutValue.textContent = euroFormatter.format(monthlyDiffAbs);
-  kostenCallout.classList.toggle('warning', !isSaving);
-  kostenCalloutText.textContent = isSaving
-    ? `Met ${ordersPerMonth} orders per maand kost Thuisbezorgd.nl je ongeveer ${euroFormatter.format(monthlyDiffAbs)} meer dan het ${plan.name}-plan van FoodTrac.`
-    : `Bij ${ordersPerMonth} orders per maand ligt het verschil op ongeveer ${euroFormatter.format(monthlyDiffAbs)} in het voordeel van Thuisbezorgd.nl.`;
-
-  thuisbezorgdBar.style.height = getBarHeight(thuisbezorgdMonthly, comparisonMax);
-  foodtracBar.style.height = getBarHeight(foodtracMonthly, comparisonMax);
+  monthlyDifferenceLabel.textContent = isSaving ? 'Netto besparing' : 'Extra kosten';
+  yearlyDifferenceLabel.textContent = isSaving ? 'Netto besparing' : 'Extra kosten';
 
   // Update break-even in pricing cards
   const commissionPerOrder = averageOrderValue * THUISBEZORGD_RATE;
@@ -2229,6 +2291,10 @@ if(avgOrderInput){
 
 if(ordersRange){
   ordersRange.addEventListener('input', updateCostComparison);
+}
+
+if(percentRange){
+  percentRange.addEventListener('input', updateCostComparison);
 }
 
 updateCostComparison();
