@@ -1136,231 +1136,6 @@ section{padding:100px 0}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     KOSTENVERGELIJKER
-     ═══════════════════════════════════════════════════════════ -->
-<section id="kosten">
-  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)"></div>
-  <div class="wrap">
-    <div class="kosten-grid">
-      <div>
-        <div class="label r" style="color:var(--green)">Slim rekenen</div>
-        <div class="kosten-copy r" style="transition-delay:.1s">
-          <h2 class="stitle">Hoeveel levert FoodTrac<br>jouw restaurant op?</h2>
-          <p class="sdesc">
-            FoodTrac zorgt dat meer klanten rechtstreeks bij jou bestellen in plaats van via Thuisbezorgd. Geen 14% commissie meer op die orders. Reken het zelf uit.
-          </p>
-        </div>
-
-        <div class="kosten-panel card r" style="transition-delay:.2s">
-          <div class="kosten-controls">
-            <div class="kosten-control">
-              <div class="kosten-control-head">
-                <div class="kosten-control-label">Hoeveel orders heb je nu per maand?</div>
-                <div class="kosten-control-value"><span id="ordersValue">300</span> orders</div>
-              </div>
-              <input
-                class="kosten-range"
-                type="range"
-                id="ordersRange"
-                min="50"
-                max="1500"
-                step="10"
-                value="300"
-                aria-label="Aantal orders per maand"
-              >
-              <div class="kosten-range-scale">
-                <span>50</span>
-                <span>1500</span>
-              </div>
-            </div>
-
-            <div class="kosten-control">
-              <div class="kosten-control-label">Gemiddeld bestelbedrag</div>
-              <div class="kosten-amount-wrap">
-                <span class="kosten-currency">&euro;</span>
-                <input
-                  class="kosten-input"
-                  type="text"
-                  id="avgOrderInput"
-                  value="28,50"
-                  inputmode="decimal"
-                  autocomplete="off"
-                  placeholder="28,50"
-                  aria-label="Gemiddeld bestelbedrag"
-                >
-              </div>
-              <div class="kosten-input-note">Standaard ingevuld op 28,50. Komma of punt werkt allebei.</div>
-            </div>
-
-            <div class="kosten-control">
-              <div class="kosten-control-head">
-                <div class="kosten-control-label">Hoeveel % haalt FoodTrac naar je eigen website?</div>
-                <div class="kosten-control-value"><span id="percentValue">15</span>%</div>
-              </div>
-              <input
-                class="kosten-range"
-                type="range"
-                id="percentRange"
-                min="5"
-                max="40"
-                step="1"
-                value="15"
-                aria-label="Percentage extra orders via eigen website"
-              >
-              <div class="kosten-range-scale">
-                <span>5%</span>
-                <span>40%</span>
-              </div>
-            </div>
-
-            <div class="kosten-assumptions">
-              <div class="kosten-assumption">
-                <div class="kosten-assumption-label">Commissie bespaard</div>
-                <div class="kosten-assumption-value blue">14% per order</div>
-              </div>
-              <div class="kosten-assumption">
-                <div class="kosten-assumption-label">FoodTrac-plan</div>
-                <div class="kosten-assumption-value gold" id="foodtracPlanLabel">&euro;49 / maand</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="kosten-panel card r" style="transition-delay:.3s">
-        <div class="kosten-summary">
-          <div class="kosten-summary-label">Zo werkt de berekening</div>
-        </div>
-
-        <div class="kosten-steps">
-          <div class="kosten-step">
-            <div class="kosten-step-label">
-              <span class="kosten-step-num">1</span>
-              <span><span id="stepOrders">300</span> orders &times; <span id="stepPercent">15</span>% via eigen website</span>
-            </div>
-            <div class="kosten-step-value" id="stepExtraOrders">= 45 orders</div>
-          </div>
-          <div class="kosten-step">
-            <div class="kosten-step-label">
-              <span class="kosten-step-num">2</span>
-              <span><span id="stepExtraOrders2">45</span> orders &times; <span id="stepAvg">&euro;28,50</span></span>
-            </div>
-            <div class="kosten-step-value" id="stepRevenue">= &euro;1.282,50 omzet</div>
-          </div>
-          <div class="kosten-step">
-            <div class="kosten-step-label">
-              <span class="kosten-step-num">3</span>
-              <span>Bespaarde commissie (14%)</span>
-            </div>
-            <div class="kosten-step-value" style="color:var(--green)" id="stepCommission">+ &euro;179,55</div>
-          </div>
-          <div class="kosten-step negative">
-            <div class="kosten-step-label">
-              <span class="kosten-step-num">4</span>
-              <span>FoodTrac abonnement (<span id="stepPlanName">Starter</span>)</span>
-            </div>
-            <div class="kosten-step-value" id="stepPlanCost">&minus; &euro;49,00</div>
-          </div>
-          <div class="kosten-step result" id="stepResult">
-            <div class="kosten-step-label">
-              <span class="kosten-step-num">5</span>
-              <span id="stepResultLabel">Netto besparing per maand</span>
-            </div>
-            <div class="kosten-step-value" id="stepResultValue">&euro;130,55</div>
-          </div>
-        </div>
-
-        <div class="kosten-difference-grid">
-          <div class="kosten-difference-card">
-            <div class="kosten-difference-period">Per maand</div>
-            <div class="kosten-difference-value" id="monthlyDifferenceValue">&euro;130,55</div>
-            <div class="kosten-difference-label" id="monthlyDifferenceLabel">Netto besparing</div>
-          </div>
-          <div class="kosten-difference-card">
-            <div class="kosten-difference-period">Per jaar</div>
-            <div class="kosten-difference-value" id="yearlyDifferenceValue">&euro;1.566,60</div>
-            <div class="kosten-difference-label" id="yearlyDifferenceLabel">Netto besparing</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     PRIJZEN — BREAK-EVEN
-     ═══════════════════════════════════════════════════════════ -->
-<section id="prijzen">
-  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
-  <div class="wrap">
-    <div class="label r" style="color:var(--gold)">Prijzen</div>
-    <div class="pricing-intro r" style="transition-delay:.1s">
-      <h2 class="stitle">Kies het plan dat bij je past</h2>
-      <p class="sdesc">Hoeveel orders heeft FoodTrac nodig om zichzelf terug te verdienen? Minder dan je denkt.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="pricing-card r" style="transition-delay:.15s">
-        <div class="pricing-name">Starter</div>
-        <div class="pricing-price">&euro;49 <span>/maand</span></div>
-        <div class="pricing-period">Tot 300 orders per maand</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li>Meer orders via eigen website</li>
-          <li>Geen commissie per order</li>
-          <li>SMS-marketingcampagnes</li>
-          <li>Review Booster</li>
-          <li>Klantenbestand opbouwen</li>
-        </ul>
-        <div class="pricing-breakeven">
-          <div class="pricing-breakeven-label">Break-even</div>
-          <div class="pricing-breakeven-value" id="breakeven1">13 orders</div>
-          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
-        </div>
-      </div>
-
-      <div class="pricing-card popular r" style="transition-delay:.25s">
-        <div class="pricing-badge">Populair</div>
-        <div class="pricing-name">Groei</div>
-        <div class="pricing-price">&euro;90 <span>/maand</span></div>
-        <div class="pricing-period">Tot 750 orders per maand</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li>Meer orders via eigen website</li>
-          <li>Geen commissie per order</li>
-          <li>SMS-marketingcampagnes</li>
-          <li>Review Booster</li>
-          <li>Klantenbestand opbouwen</li>
-        </ul>
-        <div class="pricing-breakeven">
-          <div class="pricing-breakeven-label">Break-even</div>
-          <div class="pricing-breakeven-value" id="breakeven2">23 orders</div>
-          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
-        </div>
-      </div>
-
-      <div class="pricing-card r" style="transition-delay:.35s">
-        <div class="pricing-name">Unlimited</div>
-        <div class="pricing-price">&euro;149 <span>/maand</span></div>
-        <div class="pricing-period">Onbeperkt aantal orders</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li>Alles van Groei</li>
-          <li>Onbeperkt orders</li>
-          <li>Online social media reclame</li>
-          <li>Flyer-campagnes</li>
-        </ul>
-        <div class="pricing-breakeven">
-          <div class="pricing-breakeven-label">Break-even</div>
-          <div class="pricing-breakeven-value" id="breakeven3">38 orders</div>
-          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
      1. SMS MARKETING CAMPAGNES
      ═══════════════════════════════════════════════════════════ -->
 <section id="sms">
@@ -1998,6 +1773,236 @@ section{padding:100px 0}
   </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════════════════════
+     KOSTENVERGELIJKER
+     ═══════════════════════════════════════════════════════════ -->
+<section id="kosten">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)"></div>
+  <div class="wrap">
+    <div class="kosten-grid">
+      <div>
+        <div class="label r" style="color:var(--green)">Slim rekenen</div>
+        <div class="kosten-copy r" style="transition-delay:.1s">
+          <h2 class="stitle">Hoeveel levert FoodTrac<br>jouw restaurant op?</h2>
+          <p class="sdesc">
+            FoodTrac zorgt dat meer klanten rechtstreeks bij jou bestellen in plaats van via Thuisbezorgd. Geen 14% commissie meer op die orders. Reken het zelf uit.
+          </p>
+        </div>
+
+        <div class="kosten-panel card r" style="transition-delay:.2s">
+          <div class="kosten-controls">
+            <div class="kosten-control">
+              <div class="kosten-control-head">
+                <div class="kosten-control-label">Hoeveel orders heb je nu per maand?</div>
+                <div class="kosten-control-value"><span id="ordersValue">300</span> orders</div>
+              </div>
+              <input
+                class="kosten-range"
+                type="range"
+                id="ordersRange"
+                min="50"
+                max="1500"
+                step="10"
+                value="300"
+                aria-label="Aantal orders per maand"
+              >
+              <div class="kosten-range-scale">
+                <span>50</span>
+                <span>1500</span>
+              </div>
+            </div>
+
+            <div class="kosten-control">
+              <div class="kosten-control-label">Gemiddeld bestelbedrag</div>
+              <div class="kosten-amount-wrap">
+                <span class="kosten-currency">&euro;</span>
+                <input
+                  class="kosten-input"
+                  type="text"
+                  id="avgOrderInput"
+                  value="28,50"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  placeholder="28,50"
+                  aria-label="Gemiddeld bestelbedrag"
+                >
+              </div>
+              <div class="kosten-input-note">Standaard ingevuld op 28,50. Komma of punt werkt allebei.</div>
+            </div>
+
+            <div class="kosten-control">
+              <div class="kosten-control-head">
+                <div class="kosten-control-label">Hoeveel % haalt FoodTrac naar je eigen website?</div>
+                <div class="kosten-control-value"><span id="percentValue">15</span>%</div>
+              </div>
+              <input
+                class="kosten-range"
+                type="range"
+                id="percentRange"
+                min="5"
+                max="40"
+                step="1"
+                value="15"
+                aria-label="Percentage extra orders via eigen website"
+              >
+              <div class="kosten-range-scale">
+                <span>5%</span>
+                <span>40%</span>
+              </div>
+            </div>
+
+            <div class="kosten-assumptions">
+              <div class="kosten-assumption">
+                <div class="kosten-assumption-label">Commissie bespaard</div>
+                <div class="kosten-assumption-value blue">14% per order</div>
+              </div>
+              <div class="kosten-assumption">
+                <div class="kosten-assumption-label">FoodTrac-plan</div>
+                <div class="kosten-assumption-value gold" id="foodtracPlanLabel">&euro;49 / maand</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kosten-panel card r" style="transition-delay:.3s">
+        <div class="kosten-summary">
+          <div class="kosten-summary-label">Zo werkt de berekening</div>
+        </div>
+
+        <div class="kosten-steps">
+          <div class="kosten-step">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">1</span>
+              <span><span id="stepOrders">300</span> orders &times; <span id="stepPercent">15</span>% via eigen website</span>
+            </div>
+            <div class="kosten-step-value" id="stepExtraOrders">= 45 orders</div>
+          </div>
+          <div class="kosten-step">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">2</span>
+              <span><span id="stepExtraOrders2">45</span> orders &times; <span id="stepAvg">&euro;28,50</span></span>
+            </div>
+            <div class="kosten-step-value" id="stepRevenue">= &euro;1.282,50 omzet</div>
+          </div>
+          <div class="kosten-step">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">3</span>
+              <span>Bespaarde commissie (14%)</span>
+            </div>
+            <div class="kosten-step-value" style="color:var(--green)" id="stepCommission">+ &euro;179,55</div>
+          </div>
+          <div class="kosten-step negative">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">4</span>
+              <span>FoodTrac abonnement (<span id="stepPlanName">Starter</span>)</span>
+            </div>
+            <div class="kosten-step-value" id="stepPlanCost">&minus; &euro;49,00</div>
+          </div>
+          <div class="kosten-step result" id="stepResult">
+            <div class="kosten-step-label">
+              <span class="kosten-step-num">5</span>
+              <span id="stepResultLabel">Netto besparing per maand</span>
+            </div>
+            <div class="kosten-step-value" id="stepResultValue">&euro;130,55</div>
+          </div>
+        </div>
+
+        <div class="kosten-difference-grid">
+          <div class="kosten-difference-card">
+            <div class="kosten-difference-period">Per maand</div>
+            <div class="kosten-difference-value" id="monthlyDifferenceValue">&euro;130,55</div>
+            <div class="kosten-difference-label" id="monthlyDifferenceLabel">Netto besparing</div>
+          </div>
+          <div class="kosten-difference-card">
+            <div class="kosten-difference-period">Per jaar</div>
+            <div class="kosten-difference-value" id="yearlyDifferenceValue">&euro;1.566,60</div>
+            <div class="kosten-difference-label" id="yearlyDifferenceLabel">Netto besparing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRIJZEN — BREAK-EVEN
+     ═══════════════════════════════════════════════════════════ -->
+<section id="prijzen">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+  <div class="wrap">
+    <div class="label r" style="color:var(--gold)">Prijzen</div>
+    <div class="pricing-intro r" style="transition-delay:.1s">
+      <h2 class="stitle">Kies het plan dat bij je past</h2>
+      <p class="sdesc">Hoeveel orders heeft FoodTrac nodig om zichzelf terug te verdienen? Minder dan je denkt.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card r" style="transition-delay:.15s">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-price">&euro;49 <span>/maand</span></div>
+        <div class="pricing-period">Tot 300 orders per maand</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Meer orders via eigen website</li>
+          <li>Geen commissie per order</li>
+          <li>Efficiënter bezorgen</li>
+          <li>SMS-marketingcampagnes</li>
+          <li>Review Booster</li>
+          <li>Automatische compensatie</li>
+          <li>Klantenbestand opbouwen</li>
+        </ul>
+        <div class="pricing-breakeven">
+          <div class="pricing-breakeven-label">Break-even</div>
+          <div class="pricing-breakeven-value" id="breakeven1">13 orders</div>
+          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
+        </div>
+      </div>
+
+      <div class="pricing-card popular r" style="transition-delay:.25s">
+        <div class="pricing-badge">Populair</div>
+        <div class="pricing-name">Groei</div>
+        <div class="pricing-price">&euro;90 <span>/maand</span></div>
+        <div class="pricing-period">Tot 750 orders per maand</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Meer orders via eigen website</li>
+          <li>Geen commissie per order</li>
+          <li>Efficiënter bezorgen</li>
+          <li>SMS-marketingcampagnes</li>
+          <li>Review Booster</li>
+          <li>Automatische compensatie</li>
+          <li>Klantenbestand opbouwen</li>
+          <li>Online social media reclame</li>
+        </ul>
+        <div class="pricing-breakeven">
+          <div class="pricing-breakeven-label">Break-even</div>
+          <div class="pricing-breakeven-value" id="breakeven2">23 orders</div>
+          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
+        </div>
+      </div>
+
+      <div class="pricing-card r" style="transition-delay:.35s">
+        <div class="pricing-name">Unlimited</div>
+        <div class="pricing-price">&euro;149 <span>/maand</span></div>
+        <div class="pricing-period">Onbeperkt aantal orders</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Alles van Groei</li>
+          <li>Onbeperkt orders</li>
+          <li>Online social media reclame</li>
+          <li>Flyer-campagnes</li>
+        </ul>
+        <div class="pricing-breakeven">
+          <div class="pricing-breakeven-label">Break-even</div>
+          <div class="pricing-breakeven-value" id="breakeven3">38 orders</div>
+          <div class="pricing-breakeven-sub">per maand om goedkoper uit te zijn</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════
      CTA SECTION
