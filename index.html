@@ -1722,6 +1722,31 @@ section{padding:100px 0}
         </div>
       </div>
     </div>
+
+    <!-- Late Order sample demo form -->
+    <div class="r" style="transition-delay:.15s">
+      <div class="demo-form">
+        <h4>Probeer het zelf</h4>
+        <p>Ontvang een voorbeeld compensatie-bericht op je telefoon.</p>
+        <div class="input-group" id="lateOrderInputGroup">
+          <span class="input-prefix">+31 6</span>
+          <input id="lateOrderPhoneInput" type="tel" inputmode="numeric" placeholder="12 34 56 78" />
+        </div>
+        <div class="field-error" id="lateOrderPhoneError"></div>
+        <div class="consent-row">
+          <div class="checkbox" id="lateOrderConsentBox"></div>
+          <span class="consent-text" id="lateOrderConsentText">Ik geef toestemming om een eenmalig demo-bericht te ontvangen.</span>
+        </div>
+        <button id="lateOrderCtaBtn" class="cta-btn" disabled><span id="lateOrderCtaBtnText">Stuur voorbeeld</span></button>
+        <div class="demo-status" id="lateOrderDemoStatus">
+          <div class="status-dot"></div>
+          <div>
+            <div class="status-title" id="lateOrderStatusTitle"></div>
+            <div class="status-desc" id="lateOrderStatusDesc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2580,6 +2605,7 @@ ctaBtn.addEventListener('click', async ()=>{
 });
 
 bindDemoForm('review', '/demo/review-sample');
+bindDemoForm('lateOrder', '/demo/late-order-sample');
 
 })();
 </script>
