@@ -2450,6 +2450,12 @@ function bindDemoForm(prefix, endpoint) {
         if (res.status === 429 && data.reason === 'phone_rate_limited') {
           statusTitle.textContent = 'Even geduld';
           statusDesc.textContent = 'Probeer het over een paar minuten opnieuw.';
+        } else if (res.status === 429 && data.reason === 'daily_cap_exceeded') {
+          statusTitle.textContent = 'Daglimiet bereikt';
+          statusDesc.textContent = 'We hebben de demo-limiet voor vandaag bereikt. Probeer het morgen opnieuw.';
+        } else if (res.status === 429 && data.reason === 'rate_limiter_unavailable') {
+          statusTitle.textContent = 'Tijdelijk niet beschikbaar';
+          statusDesc.textContent = 'De service is even niet beschikbaar. Probeer het over een minuut opnieuw.';
         } else {
           statusTitle.textContent = 'Er ging iets mis';
           statusDesc.textContent = (data && data.message) || 'Probeer het later opnieuw.';
