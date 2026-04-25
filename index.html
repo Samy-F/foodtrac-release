@@ -1088,6 +1088,14 @@ section{padding:100px 0}
 }
 .cta-banner p:first-child{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
 .cta-banner p:last-child{font-size:13px;color:var(--text-2);line-height:1.5}
+.demo-form{
+  max-width:440px;margin:32px auto 0;padding:24px;border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
+  backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:12px;
+}
+.demo-form h4{font-size:16px;font-weight:800;margin:0;letter-spacing:-.01em}
+.demo-form>p{font-size:14px;color:var(--text-2);margin:0;line-height:1.5}
+.input-prefix{font-size:14px;font-weight:600;color:rgba(255,255,255,.6);white-space:nowrap;flex-shrink:0}
 </style>
 </head>
 <body id="top">
@@ -1548,6 +1556,31 @@ section{padding:100px 0}
         <div class="roi-stat">
           <div class="roi-stat-num" style="color:var(--blue-light)" data-target="89">0</div>
           <div class="roi-stat-label">% Positief</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review sample demo form -->
+    <div class="r" style="transition-delay:.15s">
+      <div class="demo-form">
+        <h4>Probeer het zelf</h4>
+        <p>Ontvang een voorbeeld review-bericht op je telefoon.</p>
+        <div class="input-group" id="reviewInputGroup">
+          <span class="input-prefix">+31 6</span>
+          <input id="reviewPhoneInput" type="tel" inputmode="numeric" placeholder="12 34 56 78" />
+        </div>
+        <div class="field-error" id="reviewPhoneError"></div>
+        <div class="consent-row">
+          <div class="checkbox" id="reviewConsentBox"></div>
+          <span class="consent-text" id="reviewConsentText">Ik geef toestemming om een eenmalig demo-bericht te ontvangen.</span>
+        </div>
+        <button id="reviewCtaBtn" class="cta-btn" disabled><span id="reviewCtaBtnText">Stuur voorbeeld</span></button>
+        <div class="demo-status" id="reviewDemoStatus">
+          <div class="status-dot"></div>
+          <div>
+            <div class="status-title" id="reviewStatusTitle"></div>
+            <div class="status-desc" id="reviewStatusDesc"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -2323,6 +2356,92 @@ const API_BASE = IS_LOCAL
   ? 'http://localhost:8080/api/v1'
   : 'https://backend.foodtrac.nl/api/v1';
 
+function bindDemoForm(prefix, endpoint) {
+  const $ = (id) => document.getElementById(prefix + id);
+  const phoneInput = $('PhoneInput');
+  const inputGroup = $('InputGroup');
+  const phoneError = $('PhoneError');
+  const consentBox = $('ConsentBox');
+  const consentText = $('ConsentText');
+  const ctaBtn = $('CtaBtn');
+  const ctaBtnText = $('CtaBtnText');
+  const demoStatus = $('DemoStatus');
+  const statusTitle = $('StatusTitle');
+  const statusDesc = $('StatusDesc');
+  if (!phoneInput || !ctaBtn) return; // section absent on this page
+
+  let consented = false;
+  let submitted = false;
+
+  const getRawDigits = () => phoneInput.value.replace(/\D/g, '');
+  const formatPhone = (val) => {
+    const nums = val.replace(/\D/g, '').slice(0, 10);
+    if (nums.length <= 2) return nums;
+    if (nums.length <= 6) return nums.slice(0, 2) + ' ' + nums.slice(2);
+    return nums.slice(0, 2) + ' ' + nums.slice(2, 6) + ' ' + nums.slice(6);
+  };
+  const isValidPhone = () => {
+    const raw = getRawDigits();
+    return raw.length >= 8 && raw.length <= 10;
+  };
+  const validateForm = () => { ctaBtn.disabled = !(isValidPhone() && consented && !submitted); };
+  const showError = (msg) => { phoneError.textContent = msg; phoneError.classList.add('show'); inputGroup.classList.add('error'); };
+  const clearError = () => { phoneError.classList.remove('show'); inputGroup.classList.remove('error'); };
+
+  phoneInput.addEventListener('input', () => { phoneInput.value = formatPhone(phoneInput.value); clearError(); validateForm(); });
+  phoneInput.addEventListener('blur', () => { const raw = getRawDigits(); if (raw.length > 0 && raw.length < 8) showError('Ongeldig telefoonnummer'); });
+  consentBox.addEventListener('click', () => { consented = !consented; consentBox.classList.toggle('checked', consented); validateForm(); });
+  consentText.addEventListener('click', () => consentBox.click());
+
+  ctaBtn.addEventListener('click', async () => {
+    if (ctaBtn.disabled) return;
+    let raw = getRawDigits();
+    if (raw.length < 8 || raw.length > 10) { showError('Ongeldig telefoonnummer'); return; }
+    if (raw.startsWith('06')) raw = raw.slice(2);
+    else if (raw.startsWith('0')) raw = raw.slice(1);
+    const e164 = '+316' + raw;
+
+    ctaBtn.disabled = true;
+    ctaBtnText.innerHTML = '<span class="spinner"></span>Bezig…';
+    demoStatus.className = 'demo-status';
+    clearError();
+
+    try {
+      const res = await fetch(API_BASE + endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: e164 }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        submitted = true;
+        demoStatus.className = 'demo-status ok show';
+        statusTitle.textContent = 'Bericht verstuurd';
+        statusDesc.textContent = 'Check je telefoon voor het voorbeeld.';
+        ctaBtnText.textContent = 'Verstuurd ✓';
+        ctaBtn.disabled = true;
+      } else {
+        demoStatus.className = 'demo-status err show';
+        if (res.status === 429 && data.reason === 'phone_rate_limited') {
+          statusTitle.textContent = 'Even geduld';
+          statusDesc.textContent = 'Probeer het over een paar minuten opnieuw.';
+        } else {
+          statusTitle.textContent = 'Er ging iets mis';
+          statusDesc.textContent = (data && data.message) || 'Probeer het later opnieuw.';
+        }
+        ctaBtn.disabled = false;
+        ctaBtnText.textContent = 'Opnieuw proberen';
+      }
+    } catch {
+      demoStatus.className = 'demo-status err show';
+      statusTitle.textContent = 'Geen verbinding';
+      statusDesc.textContent = 'Controleer je internetverbinding en probeer het opnieuw.';
+      ctaBtn.disabled = false;
+      ctaBtnText.textContent = 'Opnieuw proberen';
+    }
+  });
+}
+
 const phoneInput   = document.getElementById('phoneInput');
 const inputGroup   = document.getElementById('inputGroup');
 const phoneError   = document.getElementById('phoneError');
@@ -2459,6 +2578,8 @@ ctaBtn.addEventListener('click', async ()=>{
     ctaBtnText.textContent = 'Opnieuw proberen';
   }
 });
+
+bindDemoForm('review', '/demo/review-sample');
 
 })();
 </script>
