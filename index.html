@@ -475,65 +475,187 @@ section{padding:100px 0}
   align-items:stretch;
 }
 @media(max-width:860px){.pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}
+
 .pricing-card{
   position:relative;padding:36px 28px 32px;border-radius:20px;
   border:1px solid rgba(255,255,255,.08);
   background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
-  display:flex;flex-direction:column;transition:border-color .3s,transform .3s;
+  display:flex;flex-direction:column;transition:border-color .3s,transform .3s,box-shadow .3s;
 }
-.pricing-card:hover{border-color:rgba(255,255,255,.14);transform:translateY(-4px)}
+.pricing-card:hover{
+  border-color:rgba(255,255,255,.16);transform:translateY(-4px);
+  box-shadow:0 18px 50px -24px rgba(0,0,0,.5);
+}
 .pricing-card.popular{
-  border-color:rgba(0,127,255,.3);
-  background:linear-gradient(180deg,rgba(0,127,255,.1),rgba(0,127,255,.03));
+  border-color:rgba(0,127,255,.32);
+  background:linear-gradient(180deg,rgba(0,127,255,.10),rgba(0,127,255,.02));
 }
-.pricing-card.popular:hover{border-color:rgba(0,127,255,.5)}
+.pricing-card.popular:hover{border-color:rgba(0,127,255,.55)}
+.pricing-card.premium{
+  border-color:rgba(216,192,138,.40);
+  background:linear-gradient(180deg,rgba(216,192,138,.08),rgba(216,192,138,.015));
+}
+.pricing-card.premium:hover{
+  border-color:rgba(216,192,138,.65);
+  box-shadow:0 18px 50px -22px rgba(216,192,138,.28);
+}
+
+/* Tier meter (top of every card) */
+.tier-meter{display:flex;gap:6px;margin-bottom:18px}
+.tier-meter-bar{
+  flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.08);
+  transition:background .5s var(--ease),box-shadow .5s var(--ease);
+}
+.tier-meter-bar.on{
+  background:linear-gradient(90deg,var(--blue),rgba(0,127,255,.6));
+  box-shadow:0 0 10px rgba(0,127,255,.4);
+}
+.pricing-card.premium .tier-meter-bar.on{
+  background:linear-gradient(90deg,var(--gold),rgba(216,192,138,.7));
+  box-shadow:0 0 10px rgba(216,192,138,.45);
+}
+
+/* Badge */
 .pricing-badge{
   position:absolute;top:-12px;left:50%;transform:translateX(-50%);
   background:var(--blue);color:#fff;font-size:11px;font-weight:700;
   text-transform:uppercase;letter-spacing:.08em;
-  padding:4px 14px;border-radius:20px;white-space:nowrap;
+  padding:5px 14px;border-radius:20px;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,127,255,.35);
 }
+.pricing-card.premium .pricing-badge{
+  background:linear-gradient(135deg,#f0d99e,var(--gold));
+  color:#1a1305;
+  box-shadow:0 4px 18px rgba(216,192,138,.4);
+}
+
+/* Tier name + price */
 .pricing-name{
-  font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
-  color:rgba(255,255,255,.6);margin-bottom:12px;
+  font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:rgba(255,255,255,.6);margin-bottom:14px;
 }
+.pricing-card.popular .pricing-name{color:var(--blue-light)}
+.pricing-card.premium .pricing-name{color:var(--gold)}
+
 .pricing-price{
-  font-size:clamp(40px,5vw,52px);font-weight:900;letter-spacing:-.04em;
+  font-size:clamp(42px,5vw,54px);font-weight:900;letter-spacing:-.04em;
   line-height:1;color:var(--text);
 }
 .pricing-price span{font-size:18px;font-weight:600;color:rgba(255,255,255,.5)}
+
 .pricing-period{
-  font-size:13px;color:rgba(255,255,255,.5);margin-top:6px;margin-bottom:24px;
+  align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
+  margin-top:16px;margin-bottom:26px;
+  padding:8px 14px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--text);
+  border:1px solid rgba(0,127,255,.30);
+  background:linear-gradient(135deg,rgba(0,127,255,.16),rgba(0,127,255,.05));
 }
-.pricing-divider{
-  height:1px;background:rgba(255,255,255,.08);margin-bottom:20px;
+.pricing-period::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--blue);box-shadow:0 0 8px rgba(0,127,255,.6);
 }
-.pricing-features{
-  list-style:none;padding:0;margin:0 0 24px;flex:1;
+.pricing-card.popular .pricing-period{
+  border-color:rgba(0,127,255,.48);
+  background:linear-gradient(135deg,rgba(0,127,255,.24),rgba(0,127,255,.08));
 }
+.pricing-card.premium .pricing-period{
+  border-color:rgba(216,192,138,.42);
+  background:linear-gradient(135deg,rgba(216,192,138,.20),rgba(216,192,138,.04));
+}
+.pricing-card.premium .pricing-period::before{
+  background:var(--gold);box-shadow:0 0 8px rgba(216,192,138,.6);
+}
+
+/* Divider */
+.pricing-divider{height:1px;background:rgba(255,255,255,.08);margin-bottom:20px}
+
+/* Inherited row (Alles van Starter / Groei) */
+.pricing-inherits{
+  display:flex;align-items:center;gap:11px;
+  padding:11px 14px;border-radius:11px;
+  margin-bottom:14px;
+  font-size:14px;font-weight:700;letter-spacing:.005em;
+  color:var(--text);
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+}
+.pricing-inherits-icon{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;line-height:1;
+  background:rgba(255,255,255,.08);color:var(--text-2);
+}
+.pricing-card.popular .pricing-inherits{
+  background:rgba(0,127,255,.10);border-color:rgba(0,127,255,.34);
+  color:#fff;
+}
+.pricing-card.popular .pricing-inherits-icon{
+  background:rgba(0,127,255,.26);color:var(--blue-light);
+}
+.pricing-card.premium .pricing-inherits{
+  background:rgba(216,192,138,.10);border-color:rgba(216,192,138,.40);
+  color:#fff;
+}
+.pricing-card.premium .pricing-inherits-icon{
+  background:rgba(216,192,138,.26);color:var(--gold);
+}
+.pricing-inherits.base{
+  background:rgba(255,255,255,.022);
+  border-color:rgba(255,255,255,.06);
+  color:var(--text-2);
+  font-weight:600;
+}
+.pricing-inherits.base .pricing-inherits-icon{
+  background:rgba(255,255,255,.06);
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* Features list */
+.pricing-features{list-style:none;padding:0 0 0 8px;margin:0 0 24px;flex:1}
 .pricing-features li{
-  font-size:14px;color:rgba(255,255,255,.78);line-height:1.5;
-  padding:6px 0 6px 24px;position:relative;
+  font-size:14.5px;color:var(--text);line-height:1.5;
+  padding:7px 0 7px 26px;position:relative;
 }
 .pricing-features li::before{
-  content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;
+  content:'✓';position:absolute;left:0;top:6px;
+  width:18px;height:18px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.42);
+  color:var(--green);font-size:10px;font-weight:900;line-height:1;
 }
+
+/* Break-even box */
 .pricing-breakeven{
-  padding:16px;border-radius:14px;
-  border:1px solid rgba(34,197,94,.15);
-  background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.03));
-  text-align:center;
+  padding:16px;border-radius:14px;text-align:center;
+  border:1px solid rgba(34,197,94,.18);
+  background:linear-gradient(135deg,rgba(34,197,94,.10),rgba(34,197,94,.02));
 }
 .pricing-breakeven-label{
-  font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;
+  font-size:11px;text-transform:uppercase;letter-spacing:.10em;font-weight:700;
   color:var(--green);margin-bottom:4px;
 }
 .pricing-breakeven-value{
-  font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--text);
+  font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--text);
 }
-.pricing-breakeven-sub{
-  font-size:12px;color:rgba(255,255,255,.56);margin-top:2px;
+.pricing-breakeven-sub{font-size:12px;color:var(--text-2);margin-top:2px}
+
+/* Disclaimer */
+.pricing-disclaimer{
+  margin-top:48px;padding:20px 24px;border-radius:14px;
+  border:1px solid rgba(216,192,138,.28);
+  background:linear-gradient(135deg,rgba(216,192,138,.08),rgba(216,192,138,.01));
+  font-size:14px;line-height:1.6;color:var(--text-2);
+  display:flex;gap:14px;align-items:flex-start;
 }
+.pricing-disclaimer-icon{
+  flex-shrink:0;width:28px;height:28px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(216,192,138,.16);color:var(--gold);
+  font-size:15px;font-weight:900;
+}
+.pricing-disclaimer strong{color:var(--gold);font-weight:700}
 
 /* ═══════════════════════════════════════════════════════════════
    FEATURE SECTIONS (SMS, REVIEW, LATE ORDER)
@@ -1988,7 +2110,6 @@ section{padding:100px 0}
      PRIJZEN — BREAK-EVEN
      ═══════════════════════════════════════════════════════════ -->
 <section id="prijzen">
-  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
   <div class="wrap">
     <div class="label r" style="color:var(--gold)">Prijzen</div>
     <div class="pricing-intro r" style="transition-delay:.1s">
@@ -1997,19 +2118,27 @@ section{padding:100px 0}
     </div>
 
     <div class="pricing-grid">
+      <!-- STARTER -->
       <div class="pricing-card r" style="transition-delay:.15s">
+        <div class="tier-meter" aria-hidden="true">
+          <div class="tier-meter-bar on"></div>
+          <div class="tier-meter-bar"></div>
+          <div class="tier-meter-bar"></div>
+        </div>
         <div class="pricing-name">Starter</div>
         <div class="pricing-price">&euro;49 <span>/maand</span></div>
-        <div class="pricing-period">Tot 300 orders per maand</div>
+        <div class="pricing-period">Tot 500 orders per maand</div>
         <div class="pricing-divider"></div>
+        <div class="pricing-inherits base">
+          <span class="pricing-inherits-icon">●</span>
+          Basisniveau
+        </div>
         <ul class="pricing-features">
           <li>Meer orders via eigen website</li>
           <li>Geen commissie per order</li>
           <li>Efficiënter bezorgen</li>
-          <li>SMS-marketingcampagnes</li>
           <li>Review Booster</li>
           <li>Automatische compensatie</li>
-          <li>Klantenbestand opbouwen</li>
         </ul>
         <div class="pricing-breakeven">
           <div class="pricing-breakeven-label">Break-even</div>
@@ -2018,21 +2147,27 @@ section{padding:100px 0}
         </div>
       </div>
 
-      <div class="pricing-card popular r" style="transition-delay:.25s">
+      <!-- GROEI -->
+      <div class="pricing-card popular r" style="transition-delay:.22s">
         <div class="pricing-badge">Populair</div>
+        <div class="tier-meter" aria-hidden="true">
+          <div class="tier-meter-bar on"></div>
+          <div class="tier-meter-bar on"></div>
+          <div class="tier-meter-bar"></div>
+        </div>
         <div class="pricing-name">Groei</div>
         <div class="pricing-price">&euro;90 <span>/maand</span></div>
         <div class="pricing-period">Tot 750 orders per maand</div>
         <div class="pricing-divider"></div>
+        <div class="pricing-inherits">
+          <span class="pricing-inherits-icon">+</span>
+          Alles van Starter
+        </div>
         <ul class="pricing-features">
-          <li>Meer orders via eigen website</li>
-          <li>Geen commissie per order</li>
-          <li>Efficiënter bezorgen</li>
-          <li>SMS-marketingcampagnes</li>
-          <li>Review Booster</li>
-          <li>Automatische compensatie</li>
           <li>Klantenbestand opbouwen</li>
-          <li>Online social media reclame</li>
+          <li>SMS-marketingcampagnes</li>
+          <li>Stempelkaart</li>
+          <li>Flyer-campagnes (met SMS)</li>
         </ul>
         <div class="pricing-breakeven">
           <div class="pricing-breakeven-label">Break-even</div>
@@ -2041,16 +2176,24 @@ section{padding:100px 0}
         </div>
       </div>
 
-      <div class="pricing-card r" style="transition-delay:.35s">
+      <!-- UNLIMITED -->
+      <div class="pricing-card premium r" style="transition-delay:.29s">
+        <div class="pricing-badge">Beste keus</div>
+        <div class="tier-meter" aria-hidden="true">
+          <div class="tier-meter-bar on"></div>
+          <div class="tier-meter-bar on"></div>
+          <div class="tier-meter-bar on"></div>
+        </div>
         <div class="pricing-name">Unlimited</div>
         <div class="pricing-price">&euro;149 <span>/maand</span></div>
         <div class="pricing-period">Onbeperkt aantal orders</div>
         <div class="pricing-divider"></div>
+        <div class="pricing-inherits">
+          <span class="pricing-inherits-icon">+</span>
+          Alles van Groei
+        </div>
         <ul class="pricing-features">
-          <li>Alles van Groei</li>
-          <li>Onbeperkt orders</li>
           <li>Online social media reclame</li>
-          <li>Flyer-campagnes</li>
         </ul>
         <div class="pricing-breakeven">
           <div class="pricing-breakeven-label">Break-even</div>
@@ -2059,8 +2202,16 @@ section{padding:100px 0}
         </div>
       </div>
     </div>
+
+    <div class="pricing-disclaimer r" style="transition-delay:.45s">
+      <div class="pricing-disclaimer-icon">!</div>
+      <div>
+        <strong>Belangrijk — extra kosten niet inbegrepen.</strong> De abonnementsprijzen zijn <strong>exclusief</strong> de kosten voor het drukken van flyers en het opzetten en uitvoeren van marketingcampagnes (SMS-, flyer- en social media-campagnes). Deze worden los gefactureerd op basis van omvang en oplage. Vraag een offerte aan voor een prijsindicatie op maat.
+      </div>
+    </div>
   </div>
 </section>
+
 
 <!-- ═══════════════════════════════════════════════════════════
      CTA SECTION
@@ -2219,7 +2370,7 @@ document.querySelectorAll('.roi-card').forEach(card=>{
 const DEFAULT_AVG_ORDER = 28.5;
 const THUISBEZORGD_RATE = 0.14;
 const FOODTRAC_PLANS = [
-  { name: 'Starter', price: 49, maxOrders: 300 },
+  { name: 'Starter', price: 49, maxOrders: 500 },
   { name: 'Groei', price: 90, maxOrders: 750 },
   { name: 'Unlimited', price: 149, maxOrders: Infinity }
 ];
