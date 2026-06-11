@@ -191,6 +191,7 @@ section{padding:100px 0}
   border:1px solid var(--line-b);background:rgba(255,255,255,.04);
   color:var(--text-2);cursor:default;
   transition:border-color .3s,background .3s,color .3s;text-decoration:none;
+  min-height:40px;display:inline-flex;align-items:center;
 }
 .hero-chip:hover{border-color:rgba(0,127,255,.3);background:rgba(0,127,255,.06);color:var(--text);text-decoration:none}
 .hero-chip em{font-style:normal;color:var(--blue-light);font-weight:700}
@@ -203,6 +204,36 @@ section{padding:100px 0}
 }
 @keyframes bobDown{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 .scroll-hint svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2}
+
+@media(max-width:640px){
+  .hero{padding:64px 18px 48px;min-height:auto}
+  .hero h1{font-size:clamp(32px,8.5vw,48px);line-height:1;margin-bottom:18px}
+  .hero-sub{margin-bottom:28px}
+  .hero-chips{gap:8px}
+  .hero-chip{font-size:11px;padding:8px 12px}
+  .scroll-hint{bottom:18px;font-size:9px}
+}
+@media(max-width:480px){
+  .hero{padding:56px 16px 40px}
+  .hero h1{font-size:clamp(28px,9vw,40px);letter-spacing:-.035em;word-break:normal;overflow-wrap:break-word}
+  .hero-sub{font-size:14px;line-height:1.6;margin-bottom:24px}
+}
+@media(max-width:360px){
+  .hero{padding:48px 14px 36px}
+  .hero h1{font-size:clamp(26px,9.5vw,34px)}
+  .hero-chip{padding:8px 10px;font-size:10px}
+}
+@media(max-height:560px){
+  .hero{min-height:auto;padding:64px 20px 48px}
+  .scroll-hint{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero h1,.hero-sub,.hero-chips,.hero-chip,.scroll-hint,.scroll-hint svg,
+  .hero .r,.flow-section .r,.flyer-frame,.flow-arrow{
+    animation:none !important;transition:none !important;
+  }
+  .hero .r,.flow-section .r{opacity:1 !important;transform:none !important}
+}
 
 /* ═══════════════════════════════════════════════════════════════
    KOSTENVERGELIJKER
@@ -658,6 +689,52 @@ section{padding:100px 0}
 .pricing-disclaimer strong{color:var(--gold);font-weight:700}
 
 /* ═══════════════════════════════════════════════════════════════
+   MARKETINGDIENSTEN — LOSSE TARIEVEN
+   ═══════════════════════════════════════════════════════════════ */
+#marketingprijzen{padding:20px 0 120px}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:960px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}
+
+.service-card{
+  padding:24px 22px;border-radius:16px;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  display:flex;flex-direction:column;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.service-card:hover{
+  border-color:rgba(255,255,255,.16);transform:translateY(-3px);
+  box-shadow:0 14px 40px -22px rgba(0,0,0,.5);
+}
+.service-name{
+  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+  color:rgba(255,255,255,.6);margin-bottom:12px;
+}
+.service-price{
+  font-size:30px;font-weight:900;letter-spacing:-.03em;line-height:1;
+  color:var(--text);margin-bottom:8px;
+}
+.service-price span{font-size:14px;font-weight:600;color:rgba(255,255,255,.5)}
+.service-price.passthrough{font-size:20px;line-height:1.2;padding-top:4px}
+.service-sub{font-size:13px;color:var(--text-2);line-height:1.5;margin-top:auto}
+
+.services-note{
+  margin-top:32px;padding:18px 24px;border-radius:14px;
+  border:1px solid rgba(0,127,255,.25);
+  background:linear-gradient(135deg,rgba(0,127,255,.10),rgba(0,127,255,.02));
+  font-size:14px;line-height:1.6;color:var(--text-2);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.services-note-icon{
+  flex-shrink:0;width:28px;height:28px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,127,255,.16);color:var(--blue-light);
+  font-size:14px;font-weight:900;
+}
+.services-note strong{color:var(--blue-light);font-weight:700}
+
+/* ═══════════════════════════════════════════════════════════════
    FEATURE SECTIONS (SMS, REVIEW, LATE ORDER)
    ═══════════════════════════════════════════════════════════════ */
 #sms{padding:120px 0;position:relative}
@@ -799,10 +876,10 @@ section{padding:100px 0}
 }
 @media(max-width:860px){
   .flow-visual{
-    grid-template-columns:1fr;gap:24px;
+    grid-template-columns:1fr;gap:28px;
     justify-items:center;
   }
-  .flow-arrow{transform:rotate(90deg) !important}
+  .flow-arrow{transform:rotate(90deg) !important;padding:4px 0}
 }
 .flow-arrow{
   display:flex;align-items:center;justify-content:center;
@@ -879,6 +956,23 @@ section{padding:100px 0}
 .flyer-channel:hover{border-color:var(--blue);color:var(--text)}
 .flyer-channel svg{width:14px;height:14px;flex-shrink:0}
 .flyer-cloud-note{font-size:9px;color:var(--muted);line-height:1.4}
+
+@media(max-width:860px){
+  .flyer-frame{width:min(220px,78vw)}
+}
+@media(max-width:480px){
+  .flow-visual{gap:22px}
+  .flyer-frame{width:min(200px,72vw)}
+  .flyer-cloud{max-width:min(260px,88vw);padding:12px 14px}
+  .flow-step{min-width:0;width:min(260px,88vw);padding:18px 14px}
+  .flow-arrow svg{width:24px;height:24px}
+}
+@media(max-width:360px){
+  .flow-visual{gap:18px}
+  .flyer-frame{width:min(180px,68vw)}
+  .flyer-cloud{padding:10px 12px}
+  .flow-step{padding:16px 12px}
+}
 
 /* ROI Callout */
 .roi-card{
@@ -2206,7 +2300,65 @@ section{padding:100px 0}
     <div class="pricing-disclaimer r" style="transition-delay:.45s">
       <div class="pricing-disclaimer-icon">!</div>
       <div>
-        <strong>Belangrijk — extra kosten niet inbegrepen.</strong> De abonnementsprijzen zijn <strong>exclusief</strong> de kosten voor het drukken van flyers en het opzetten en uitvoeren van marketingcampagnes (SMS-, flyer- en social media-campagnes). Deze worden los gefactureerd op basis van omvang en oplage. Vraag een offerte aan voor een prijsindicatie op maat.
+        <strong>Let op:</strong> abonnementsprijzen zijn <strong>exclusief</strong> uitvoerende marketingdiensten. Zie de <a href="#marketingprijzen">vaste tarieven hieronder</a>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MARKETINGDIENSTEN — LOSSE TARIEVEN
+     ═══════════════════════════════════════════════════════════ -->
+<section id="marketingprijzen">
+  <div class="wrap">
+    <div class="label r" style="color:var(--gold)">Marketingdiensten</div>
+    <div class="pricing-intro r" style="transition-delay:.1s">
+      <h2 class="stitle">Marketing laten uitvoeren?</h2>
+      <p class="sdesc">Vaste, transparante tarieven — geen verrassingen.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card r" style="transition-delay:.12s">
+        <div class="service-name">Flyer ontwerpen</div>
+        <div class="service-price">&euro;25 <span>eenmalig</span></div>
+        <div class="service-sub">Excl. drukwerk</div>
+      </div>
+      <div class="service-card r" style="transition-delay:.16s">
+        <div class="service-name">Drukwerk &amp; verspreiding</div>
+        <div class="service-price passthrough">Kostprijs</div>
+        <div class="service-sub">Doorberekend tegen kostprijs</div>
+      </div>
+      <div class="service-card r" style="transition-delay:.20s">
+        <div class="service-name">Instagram-post</div>
+        <div class="service-price">&euro;25 <span>per post</span></div>
+        <div class="service-sub">Ontwerp &amp; plaatsing</div>
+      </div>
+      <div class="service-card r" style="transition-delay:.24s">
+        <div class="service-name">Advertentie maken</div>
+        <div class="service-price">&euro;25 <span>per advertentie</span></div>
+        <div class="service-sub">Creative voor social of Google</div>
+      </div>
+      <div class="service-card r" style="transition-delay:.28s">
+        <div class="service-name">Social media ads &mdash; opstart</div>
+        <div class="service-price">&euro;300 <span>eenmalig</span></div>
+        <div class="service-sub">Excl. advertentiebudget</div>
+      </div>
+      <div class="service-card r" style="transition-delay:.32s">
+        <div class="service-name">Google Ads &mdash; opstart</div>
+        <div class="service-price">&euro;200 <span>eenmalig</span></div>
+        <div class="service-sub">Inrichting campagne &amp; doelgroepen</div>
+      </div>
+      <div class="service-card r" style="transition-delay:.36s">
+        <div class="service-name">SMS versturen</div>
+        <div class="service-price passthrough">Doorberekend</div>
+        <div class="service-sub">Verzendkosten 1-op-1 doorberekend</div>
+      </div>
+    </div>
+
+    <div class="services-note r" style="transition-delay:.42s">
+      <div class="services-note-icon">&#10003;</div>
+      <div>
+        <strong>Advertentiebeheer inbegrepen bij Unlimited.</strong> Het doorlopende beheer van je social media- en Google Ads-campagnes zit in het Unlimited-abonnement (&euro;149/maand) &mdash; je betaalt alleen los voor het maken van advertenties en de eenmalige opstart.
       </div>
     </div>
   </div>
